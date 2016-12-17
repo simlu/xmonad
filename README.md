@@ -12,7 +12,7 @@ sudo apt-get update
 sudo apt-get install xorg xinit
 sudo apt-get install xmonad
 ```
-Type `startx` to xmonad.
+Type `startx` to start xmonad.
 
 # 2) Update Keyboard if necessary
 Reference: http://askubuntu.com/questions/342066/how-to-permanently-configure-keyboard
