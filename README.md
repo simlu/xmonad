@@ -28,3 +28,8 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable
 sudo apt-get update 
 sudo apt-get install google-chrome-stable
 ```
+Then configure the alias `chrome`:
+```
+vi .bash_aliases
+alias chrome='/opt/google/chrome/google-chrome --enable-plugins &> /dev/null &'
+```
