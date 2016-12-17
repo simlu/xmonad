@@ -58,3 +58,16 @@ Reference: https://kb.vmware.com/selfservice/microsites/search.do?language=en_US
 ```shell
 sudo apt-get install open-vm-tools open-vm-tools-desktop
 ```
+
+# 7) Install XMonad Configuration and XMobar
+## a) Download XMonad Config
+Download `.xmonad/xmonad.hs` and copy to `~/.xmonad/xmonad.hs` locally.
+## b) Install XMobar
+- Search [Releases](http://projects.haskell.org/xmobar/releases.html)
+- Find latest deb file here: https://pkgs.org/search/xmobar
+- Install deb file by using
+```shell
+dpkg -i ...
+```
+## c) Install XMobar Config
+Downlaod .xmobarrc and copy to `~/.xmobarrc` locally.
