@@ -31,5 +31,8 @@ sudo apt-get install google-chrome-stable
 Then configure the alias `chrome`:
 ```shell
 vi .bash_aliases
+```
+Then enter:
+```shell
 alias chrome='/opt/google/chrome/google-chrome --enable-plugins &> /dev/null &'
 ```
