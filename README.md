@@ -37,7 +37,13 @@ Then enter:
 alias chrome='/opt/google/chrome/google-chrome --enable-plugins &> /dev/null &'
 ```
 
-# 4) Install Java 8
+# 4) Add `apt-get-repository` command
+Reference: http://askubuntu.com/questions/493460/how-to-install-add-apt-repository-using-the-terminal
+```shell
+sudo apt-get install software-properties-common
+```
+
+# 5) Install Java 8
 Reference: http://tecadmin.net/install-oracle-java-8-jdk-8-ubuntu-via-ppa/#
 ```shell
 sudo add-apt-repository ppa:webupd8team/java
