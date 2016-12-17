@@ -52,3 +52,6 @@ sudo apt-get install oracle-java8-installer
 java -version
 sudo apt-get install oracle-java8-set-default
 ```
+
+# 6) Install VMWare Tools
+Reference: https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1022525
