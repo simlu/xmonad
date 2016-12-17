@@ -67,7 +67,7 @@ Download `.xmonad/xmonad.hs` and copy to `~/.xmonad/xmonad.hs` locally.
 - Find latest deb file here: https://pkgs.org/search/xmobar
 - Install deb file by using
 ```shell
-dpkg -i ...
+sudo dpkg -i ...
 ```
 ## c) Install XMobar Config
 Downlaod .xmobarrc and copy to `~/.xmobarrc` locally.
