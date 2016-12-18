@@ -10,7 +10,7 @@ Use `ARROW UP/DOWN` to navigate previously executed commands.
 Use `TAB` to autocomplete folder and files.
 
 ### Xmonad
-Xmonad is the windowing system. No more bloat. It's heavily customized, but the basic functionality should be the same:
+Xmonad is the windowing system. No more bloat. It's heavily customized, but the basics work as usual.
 Switch between workspaces: `ALT + 0-9`
 Kill a Program: `ALT + SHIFT + C`
 Key combinations can be found [here](https://wiki.haskell.org/wikiupload/b/b8/Xmbindings.png).
