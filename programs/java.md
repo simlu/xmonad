@@ -1,4 +1,4 @@
-# 8) Install Java 8
+# Install Java
 ## a) Add `apt-get-repository` command
 Reference: http://askubuntu.com/questions/493460/how-to-install-add-apt-repository-using-the-terminal
 ```shell
