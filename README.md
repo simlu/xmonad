@@ -12,7 +12,20 @@ sudo apt-get update
 sudo apt-get install xorg xinit
 sudo apt-get install xmonad
 ```
-Type `startx` to start xmonad (we will add this to autostart later).
+Type `startx` to start xmonad.
+
+## c) Autstart XMonad
+> Reference: https://linuxexpresso.wordpress.com/2010/10/03/startx-automatically-on-login-ubuntu/
+
+To automatically start xmonad after login we edit `~/.profile` and add:
+```shell
+# start xmonad on login
+if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
+ . startx
+ logout
+fi
+```
+If the file doesn't exist already we can copy it from `/etc/skel/.profile`.
 
 # 2) Update Keyboard if necessary
 Reference: http://askubuntu.com/questions/342066/how-to-permanently-configure-keyboard
