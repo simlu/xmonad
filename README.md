@@ -128,13 +128,20 @@ java -version
 sudo apt-get install oracle-java8-set-default
 ```
 
-# 12) Install IntelliJ Idea
+# 9) JetBrains IDE
+
+## a) Install wmname
+```shell
+sudo apt install suckless-tools
+```
+
+## b) Install IntelliJ Idea
 Install, Unzip and define in `.bash_aliases`:
 ```shell
 alias idea='wmname LG3D && IDEA_JDK=/usr/lib/jvm/java-8-oracle ~/programs/intellij/bin/idea.sh &> /dev/null &'
 ```
 
-# 13) Install PyCharm
+## c) Install PyCharm
 Install, Unzip and define in `.bash_aliases`:
 ```shell
 alias pycharm='wmname LG3D && PYCHARM_JDK=/usr/lib/jvm/java-8-oracle ~/programs/pycharm/bin/pycharm.sh &> /dev/null &'
