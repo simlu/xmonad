@@ -99,12 +99,12 @@ sleep 3; import screenshot.png
 ```
 
 ### File and Directory Management
-List Files and Dirs: `ls`
-List Files and Dirs including hidden: `ls -al`
-List Hierarchy (two levels): `tree -L 2`
-Remove File: `rm [FILENAMe]`
-Remove Empty Directory: `rmdir [DIRNAME]`
-Remove Any Directory: `rm -rf [DIRNAME]`
+* List Files and Dirs: `ls`
+* List Files and Dirs including hidden: `ls -al`
+* List Hierarchy (two levels): `tree -L 2`
+* Remove File: `rm [FILENAMe]`
+* Remove Empty Directory: `rmdir [DIRNAME]`
+* Remove Any Directory: `rm -rf [DIRNAME]`
 
 ### Unzip a *.tar.gz file
 ```shell
