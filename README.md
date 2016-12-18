@@ -50,6 +50,8 @@ Then enter:
 alias chrome='/opt/google/chrome/google-chrome --enable-plugins &> /dev/null &'
 ```
 
+Dont forget to install [Adblock Plus](https://chrome.google.com/webstore/detail/adblock-plus/cfhdojbkjhnklbpkdaibdccddilifddb).
+
 # 4) Add `apt-get-repository` command
 Reference: http://askubuntu.com/questions/493460/how-to-install-add-apt-repository-using-the-terminal
 ```shell
