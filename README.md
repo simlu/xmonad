@@ -33,7 +33,7 @@ sudo apt-get install open-vm-tools-desktop
 To enable vm tools you need to run `/usr/bin/vmware-user-suid-wrapper`.
 Reference: http://askubuntu.com/questions/777839/fresh-ubuntu-16-04-install-broken-vmware-tools#answer-777922
 
-To enable this as autostart, copy `.xmonad/autostart` to `~/.xmonad/autostart`.
+To enable this as autostart, copy `config/.xmonad/autostart` to `~/.xmonad/autostart`.
 
 # 4) Install Chrome
 Reference: http://askubuntu.com/questions/510056/how-to-install-google-chrome
@@ -58,7 +58,7 @@ Change download directory to `downloads` in settings.
 
 # 5) Install XMonad Configuration and XMobar
 ## a) Download XMonad Config
-Download `.xmonad/xmonad.hs` and copy to `~/.xmonad/xmonad.hs` locally.
+Download `config/.xmonad/xmonad.hs` and copy to `~/.xmonad/xmonad.hs` locally.
 ## b) Install XMobar
 - Search [Releases](http://projects.haskell.org/xmobar/releases.html)
 - Find latest deb file here: https://pkgs.org/search/xmobar
@@ -68,15 +68,15 @@ sudo apt-get install libiw30
 sudo dpkg -i xmobar_x.xx.x-x_amd64.deb
 ```
 ## c) Install XMobar Config
-Copy file `.xmobarrc` to local `~/.xmobarrc`
+Copy file `config/.xmobarrc` to local `~/.xmobarrc`
 
 # 6) Autostart XMmonad
 > Reference: https://linuxexpresso.wordpress.com/2010/10/03/startx-automatically-on-login-ubuntu/
 
 ```shell
-cp /etc/skel/.profile .profile
+cp /etc/skel/.profile ~/.profile
 ```
-Append the following to `.profile`
+Append the following to `~/.profile`
 ```shell
 # start xmonad on login
 if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
@@ -91,16 +91,14 @@ xmonad --recompile && xmonad --restart
 
 # 7) Compile Misc Configurations
 ## a) Fix vi Arrow Keys
-Copy file `.vimrc` to local `~/.vimrc`
+Copy file `config/.vimrc` to local `~/.vimrc`
 ## b) Improve Shell Highlighting
-Copy file `.xprofile` to local `~/.xprofile` (this also does some other things, see below)
-and add the following to `.bash_aliases`:
+Copy file `config/.xprofile` to local `~/.xprofile` (this also does some other things, see below)
+and add the following to `~/.bash_aliases`:
 ```shell
 alias ls='ls --color'
 LS_COLORS='di=36:ex=92'
 export LS_COLORS
 ```
 ## c) Disable Screensave and Hibernate
-Copy files `.xprofile` and `.xscreensaver` to local `~/.xprofile` and `~/.xscreensaver`
-## d) Configure Multi Screen Setup
-Edit `.xprofile`
+Copy files `config/.xprofile` and `config/.xscreensaver` to local `~/.xprofile` and `~/.xscreensaver`
