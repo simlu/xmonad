@@ -90,16 +90,9 @@ xmonad --recompile && xmonad --restart
 ```
 
 # 7) Compile Misc Configurations
-## a) Re-configure Keyboard
-Reference: http://askubuntu.com/questions/342066/how-to-permanently-configure-keyboard
-
-If you messed up your keyboard you can reconfigure it like this
-```shell
-sudo dpkg-reconfigure keyboard-configuration
-```
-## b) Fix vi Arrow Keys
+## a) Fix vi Arrow Keys
 Copy file `.vimrc` to local `~/.vimrc`
-## c) Improve Shell Highlighting
+## b) Improve Shell Highlighting
 Copy file `.xprofile` to local `~/.xprofile` (this also does some other things, see below)
 and add the following to `.bash_aliases`:
 ```shell
@@ -107,11 +100,7 @@ alias ls='ls --color'
 LS_COLORS='di=36:ex=92'
 export LS_COLORS
 ```
-## d) Disable Screensave and Hibernate
+## c) Disable Screensave and Hibernate
 Copy files `.xprofile` and `.xscreensaver` to local `~/.xprofile` and `~/.xscreensaver`
-## e) Configure Multi Screen Setup
+## d) Configure Multi Screen Setup
 Edit `.xprofile`
-## f) Enable tree command
-```shell
-sudo apt-get install tree
-```
