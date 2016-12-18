@@ -6,7 +6,7 @@ Find the latest [MinimalCD](https://help.ubuntu.com/community/Installation/Minim
 
 Important: Ensure you allocate enough virtual machine memory, so that a decent amount of swap space is allocated.
 
-## b) Install XMonad
+## b) Install Xmonad
 ```shell
 sudo apt-get update
 sudo apt-get install xorg xinit
@@ -70,8 +70,8 @@ Dont forget to install [Adblock Plus](https://chrome.google.com/webstore/detail/
 
 Change download directory to `downloads` in settings.
 
-# 5) Install XMonad Configuration and XMobar
-## a) Download XMonad Config
+# 5) Install Xmonad Configuration and XMobar
+## a) Download Xmonad Config
 Download `config/.xmonad/xmonad.hs` and copy to `~/.xmonad/xmonad.hs` locally.
 ## b) Install XMobar
 - Search [Releases](http://projects.haskell.org/xmobar/releases.html)
@@ -84,7 +84,7 @@ sudo dpkg -i xmobar_x.xx.x-x_amd64.deb
 ## c) Install XMobar Config
 Copy file `config/.xmobarrc` to local `~/.xmobarrc`
 
-# 6) Autostart XMmonad
+# 6) Autostart Xmonad
 > [Reference](https://linuxexpresso.wordpress.com/2010/10/03/startx-automatically-on-login-ubuntu/)
 
 ```shell
