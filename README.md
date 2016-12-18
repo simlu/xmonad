@@ -111,6 +111,10 @@ export LS_COLORS
 Copy files `.xprofile` and `.xscreensaver` to local `~/.xprofile` and `~/.xscreensaver`
 ## e) Configure Multi Screen Setup
 Edit `.xprofile`
+## f) Enable tree command
+```shell
+sudo apt-get install tree
+```
 
 # 8) Install Java 8
 ## a) Add `apt-get-repository` command
