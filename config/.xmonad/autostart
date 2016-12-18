@@ -1,3 +1,5 @@
-if [ -x /usr/bin/vmware-user ]; then
+#!/bin/bash
+PROCESS_COUNT=$(ps -ef | grep "vmware-tools/sbin64/vmtoolsd" | grep -v "grep" | wc -l)
+if [ "${PROCESS_COUNT}" -eq 0 ]; then
    /usr/bin/vmware-user
 fi;
