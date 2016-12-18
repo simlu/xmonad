@@ -96,3 +96,6 @@ Downlaod .xmobarrc and copy to `~/.xmobarrc` locally.
 
 # 8) Fix vi navigation
 Create file `~/.vimrc` with content `set nocompatible`
+
+# 9) Fix remove shell highlighting
+Copy file `.xsession` to local `~/.xession`
