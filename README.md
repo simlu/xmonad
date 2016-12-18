@@ -100,7 +100,7 @@ sudo dpkg-reconfigure keyboard-configuration
 ## b) Fix vi navigation
 Copy file `.vimrc` to local `~/.vimrc`
 ## c) Improve Shell Highlighting
-Copy file `.xsession` to local `~/.xsession`
+Copy file `.xprofile` to local `~/.xprofile` (this also does some other things, see below)
 and add the following to `.bash_aliases`:
 ```shell
 alias ls='ls --color'
