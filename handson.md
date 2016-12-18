@@ -76,7 +76,7 @@ This will make sure that when we spawn vlc from the terminal it is started as a 
 Press escape to exit edit mode and save and close the file with `:wq`
 Now type close and re-open the terminal. Type `vlc` to run vlc on the computer
 
-# Remove a Package completely
+### Remove a Package completely
 ```shell
 sudo apt-get purge PACKAGE --auto-remove
 ```
