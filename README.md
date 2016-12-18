@@ -92,7 +92,7 @@ sudo apt-get install libiw20
 sudo dpkg -i xmobar_x.xx.x-x_amd64.deb
 ```
 ## c) Install XMobar Config
-Downlaod .xmobarrc and copy to `~/.xmobarrc` locally.
+Copy file `.xmobarrc` to local `~/.xmobarrc`
 
 # 8) Fix vi navigation
 Copy file `.vimrc` to local `~/.vimrc`
