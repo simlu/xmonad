@@ -1,10 +1,10 @@
 # 1) Ubuntu and Xmonad
-Reference: http://askubuntu.com/questions/142061/can-i-completely-remove-gnome-and-leave-xmonad
+> [Reference](http://askubuntu.com/questions/142061/can-i-completely-remove-gnome-and-leave-xmonad)
 
 ## a) Install MinimalCD version of Ubuntu
-> Link: [MinimalCD](https://help.ubuntu.com/community/Installation/MinimalCD)
+Find the latest [MinimalCD](https://help.ubuntu.com/community/Installation/MinimalCD) version for the Ubuntu you want to use, download and install with VMWare.
 
-Note: Ensure you allocate enough virtual machine memory, so that a decent amount of swap space is allocated.
+Important: Ensure you allocate enough virtual machine memory, so that a decent amount of swap space is allocated.
 
 ## b) Install XMonad
 ```shell
@@ -24,19 +24,32 @@ rm master.zip
 ```
 
 # 3) Install VMWare Tools
-## a) Install Package
-Reference: https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1022525
+> [Reference](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1022525)
+
+We are using the iso coming from VMWare as it includes the lastest VMWare Tools. Discussion can be found [here](http://superuser.com/questions/270112/open-vm-tools-vs-vmware-tools).
+## a) Mount CD
+* Add a CD Drive to the VM
+* Use `Install VM Tools`
+
+## b) Install VMWare
+Download `config/.update-vm-tools` and run it with 
 ```shell
-sudo apt-get install open-vm-tools-desktop
+. .update-vm-tools
 ```
-## b) Configure Autostart
+To confirm the installation worked correctly run
+```shell
+vmware-toolbox-cmd -v
+```
+
+## c) Configure Autostart
+> [Reference](http://askubuntu.com/questions/777839/fresh-ubuntu-16-04-install-broken-vmware-tools#answer-777922)
+
 To enable vm tools you need to run `/usr/bin/vmware-user-suid-wrapper`.
-Reference: http://askubuntu.com/questions/777839/fresh-ubuntu-16-04-install-broken-vmware-tools#answer-777922
 
 To enable this as autostart, copy `config/.xmonad/autostart` to `~/.xmonad/autostart`.
 
 # 4) Install Chrome
-Reference: http://askubuntu.com/questions/510056/how-to-install-google-chrome
+> [Reference](http://askubuntu.com/questions/510056/how-to-install-google-chrome)
 ```shell
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -71,7 +84,7 @@ sudo dpkg -i xmobar_x.xx.x-x_amd64.deb
 Copy file `config/.xmobarrc` to local `~/.xmobarrc`
 
 # 6) Autostart XMmonad
-> Reference: https://linuxexpresso.wordpress.com/2010/10/03/startx-automatically-on-login-ubuntu/
+> [Reference](https://linuxexpresso.wordpress.com/2010/10/03/startx-automatically-on-login-ubuntu/)
 
 ```shell
 cp /etc/skel/.profile ~/.profile
