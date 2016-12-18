@@ -32,9 +32,9 @@ We are using the iso coming from VMWare as it includes the lastest VMWare Tools.
 * Use `Install VM Tools`
 
 ## b) Install VMWare
-Download `config/.update-vm-tools` and run it with 
+Download `scripts/update-vm-tools` and run it with 
 ```shell
-. .update-vm-tools
+. update-vm-tools
 ```
 To confirm the installation worked correctly run
 ```shell
