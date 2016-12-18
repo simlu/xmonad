@@ -4,7 +4,7 @@
 <img src="http://i.imgur.com/VlUW1vQ.png" width="48">
 <img title='VMware' src="http://i.imgur.com/IsgiIUP.png" width="48">
 
-This is a guide on how to set up [Ubuntu](https://www.ubuntu.com/) and [Xmonad](http://xmonad.org/) with [VMware](http://www.vmware.com/). Only minimal changes should be necessary to use it with [VirtualBox](https://www.virtualbox.org/) or on actual hardware.
+This is a guide on how to set up [Ubuntu](https://www.ubuntu.com/), [Xmonad](http://xmonad.org/) and [Xmobar](http://projects.haskell.org/xmobar/) with [VMware](http://www.vmware.com/). Only minimal changes should be necessary to use it with [VirtualBox](https://www.virtualbox.org/) or on actual hardware.
 
 # 1) Ubuntu and Xmonad
 > [Reference](http://askubuntu.com/questions/142061/can-i-completely-remove-gnome-and-leave-xmonad)
@@ -131,3 +131,9 @@ It should be save to copy `config/*` to `~/.`. The included config files are des
 ## `.xmonad/autostart`
 * Sets default cursor to Left Pointing Arrow ([Reference](https://wiki.haskell.org/Xmonad/Frequently_asked_questions#Setting_the_X_cursor))
 * Starts VMware
+
+## `.xmobarrc`
+* Configuration for xmobar
+
+## `.xmonad/xmonad.hs`
+* Configurtation for xmonad
