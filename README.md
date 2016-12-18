@@ -125,4 +125,6 @@ export LS_COLORS
 ## c) Disable Screensave and Hibernate
 Copy files `config/.xprofile` and `config/.xscreensaver` to local `~/.xprofile` and `~/.xscreensaver`
 ## d) Use nice Mouse default cursor
+> [Reference](https://wiki.haskell.org/Xmonad/Frequently_asked_questions#Setting_the_X_cursor)
+
 Copy file `config/.xinitrc` to local `~/.xinitrc`
