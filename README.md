@@ -33,6 +33,10 @@ if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
  logout
 fi
 ```
+Recompile xmonad
+```shell
+xmonad --recompile && xmonad --restart
+```
 
 # 2) Configure Keyboard
 Reference: http://askubuntu.com/questions/342066/how-to-permanently-configure-keyboard
