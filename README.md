@@ -97,11 +97,29 @@ Copy file `.xmobarrc` to local `~/.xmobarrc`
 # 8) Fix vi navigation
 Copy file `.vimrc` to local `~/.vimrc`
 
-# 9) Fix remote shell highlighting
+# 9) Improve remote shells
 Copy file `.xsession` to local `~/.xession`
+and add the following to `.bash_aliases':
+```shell
+alias ls='ls --color'
+LS_COLORS='di=36:ex=92'
+export LS_COLORS
+```
 
 # 10) Disable Screensave and Hiberante
 Copy files `.xprofile` and `.xscreensaver` to local `~/.xprofile` and `~/.xscreensaver`
 
 # 11) Configure Multi Screen Setup
 Edit `.xprofile`
+
+# 12) Install IntelliJ Idea
+Install, Unzip and define in `.bash_aliases`:
+```shell
+alias idea='wmname LG3D && IDEA_JDK=/usr/lib/jvm/java-8-oracle ~/Program/IntellijIDEA/bin/idea.sh &> /dev/null &'
+```
+
+# 13) Install PyCharm
+Install, Unzip and define in `.bash_aliases`:
+```shell
+alias pycharm='wmname LG3D && PYCHARM_JDK=/usr/lib/jvm/java-8-oracle ~/Program/PyCharm/bin/pycharm.sh &> /dev/null &'
+```
