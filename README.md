@@ -127,4 +127,4 @@ Copy files `config/.xprofile` and `config/.xscreensaver` to local `~/.xprofile` 
 ## d) Use nice Mouse default cursor
 > [Reference](https://wiki.haskell.org/Xmonad/Frequently_asked_questions#Setting_the_X_cursor)
 
-Copy file `config/.xinitrc` to local `~/.xinitrc`
+Copy file `config/.xmonad/autostart` to local `~/.xmonad/autostart`
