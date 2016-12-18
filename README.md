@@ -99,7 +99,7 @@ Copy file `.vimrc` to local `~/.vimrc`
 
 # 9) Improve Shell Highlighting
 Copy file `.xsession` to local `~/.xsession`
-and add the following to `.bash_aliases':
+and add the following to `.bash_aliases`:
 ```shell
 alias ls='ls --color'
 LS_COLORS='di=36:ex=92'
