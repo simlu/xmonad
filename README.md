@@ -111,20 +111,22 @@ Recompile xmonad
 xmonad --recompile && xmonad --restart
 ```
 
-# 7) Compile Misc Configurations
-## a) Fix vi Arrow Keys
-Copy file `config/.vimrc` to local `~/.vimrc`
-## b) Improve Shell Highlighting
-Copy file `config/.xprofile` to local `~/.xprofile` (this also does some other things, see below)
-and add the following to `~/.bash_aliases`:
-```shell
-alias ls='ls --color'
-LS_COLORS='di=36:ex=92'
-export LS_COLORS
-```
-## c) Disable Screensave and Hibernate
-Copy files `config/.xprofile` and `config/.xscreensaver` to local `~/.xprofile` and `~/.xscreensaver`
-## d) Use nice Mouse default cursor
-> [Reference](https://wiki.haskell.org/Xmonad/Frequently_asked_questions#Setting_the_X_cursor)
+# 7) Config Files
+It should be save to copy `config/*` to `~/.`. The included config files are described in the following:
 
-Copy file `config/.xmonad/autostart` to local `~/.xmonad/autostart`
+## `.vimrc`
+* Fixes the Arrow Key behaviour when using `vi`
+
+## `.xprofile`
+* Improves remote shell highlighting
+* Disables screen saver and monitor sleep
+
+## `.bash_aliases`
+* Improves shell highlighting
+
+## `.xscreensaver`
+* Disables screen saver
+
+## `.xmonad/autostart`
+* Sets default cursor to Left Pointing Arrow ([Reference](https://wiki.haskell.org/Xmonad/Frequently_asked_questions#Setting_the_X_cursor))
+* Starts VMware
