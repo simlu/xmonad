@@ -14,7 +14,12 @@ sudo apt-get install xmonad
 ```
 Type `startx` to start xmonad.
 
-## c) Autstart XMonad
+## c) Download this Config
+```shell
+wget https://github.com/simlu/xmonad/archive/master.zip
+```
+
+## d) Autstart XMonad
 > Reference: https://linuxexpresso.wordpress.com/2010/10/03/startx-automatically-on-login-ubuntu/
 
 ```shell
