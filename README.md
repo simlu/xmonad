@@ -124,3 +124,5 @@ export LS_COLORS
 ```
 ## c) Disable Screensave and Hibernate
 Copy files `config/.xprofile` and `config/.xscreensaver` to local `~/.xprofile` and `~/.xscreensaver`
+## d) Use nice Mouse default cursor
+Copy file `config/.xinitrc` to local `~/.xinitrc`
