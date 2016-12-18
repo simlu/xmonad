@@ -72,6 +72,7 @@ Add a new line
 alias vlc='vlc &> /dev/null &'
 ```
 This will make sure that when we spawn vlc from the terminal it is started as a new process and error messages are not dumped to our terminal.
+
 Press escape to exit edit more and save and close the file with `:wq`
 Now type close and re-open the terminal. Type `vlc` to run vlc on the computer
 
