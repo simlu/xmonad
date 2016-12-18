@@ -1,4 +1,4 @@
-# Description of `config` files
+# Description of [config](config/) files
 
 ## `.xmonad/xmonad.hs`
 * Configurtation for xmonad
