@@ -74,4 +74,4 @@ sudo dpkg -i xmobar_x.xx.x-x_amd64.deb
 Downlaod .xmobarrc and copy to `~/.xmobarrc` locally.
 
 # 8) Fix vi navigation
-Create file `~/.vimrc` and enter `set nocompatible`
+Create file `~/.vimrc` with content `set nocompatible`
