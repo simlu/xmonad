@@ -3,3 +3,6 @@ PROCESS_COUNT=$(ps -ef | grep "vmware-tools/sbin64/vmtoolsd" | grep -v "grep" | 
 if [ "${PROCESS_COUNT}" -eq 0 ]; then
    /usr/bin/vmware-user
 fi;
+
+# Use nice mouse cursor as default
+xsetroot -cursor_name left_ptr
