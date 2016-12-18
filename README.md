@@ -122,7 +122,7 @@ Reference: http://askubuntu.com/questions/493460/how-to-install-add-apt-reposito
 ```shell
 sudo apt-get install software-properties-common
 ```
-## b) Add Repo, Install and set Env Variables
+## b) Add Repo, Install and Set Env Variables
 Reference: http://tecadmin.net/install-oracle-java-8-jdk-8-ubuntu-via-ppa/#
 ```shell
 sudo add-apt-repository ppa:webupd8team/java
