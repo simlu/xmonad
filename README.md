@@ -95,7 +95,7 @@ sudo dpkg -i xmobar_x.xx.x-x_amd64.deb
 Downlaod .xmobarrc and copy to `~/.xmobarrc` locally.
 
 # 8) Fix vi navigation
-Create file `~/.vimrc` with content `set nocompatible`
+Copy file `.vimrc` to local `~/.vimrc`
 
 # 9) Fix remove shell highlighting
 Copy file `.xsession` to local `~/.xession`
