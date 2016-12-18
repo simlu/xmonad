@@ -69,7 +69,7 @@ Then configure the alias `chrome`:
 ```shell
 vi .bash_aliases
 ```
-Then enter:
+Then add:
 ```shell
 alias chrome='/opt/google/chrome/google-chrome --enable-plugins &> /dev/null &'
 ```
