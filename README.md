@@ -107,7 +107,7 @@ alias ls='ls --color'
 LS_COLORS='di=36:ex=92'
 export LS_COLORS
 ```
-## d) Disable Screensave and Hiberante
+## d) Disable Screensave and Hibernate
 Copy files `.xprofile` and `.xscreensaver` to local `~/.xprofile` and `~/.xscreensaver`
 ## e) Configure Multi Screen Setup
 Edit `.xprofile`
