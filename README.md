@@ -115,6 +115,16 @@ xmonad --recompile && xmonad --restart
 # 7) Config Files
 It should be save to copy `config/*` to `~/.`. The included config files are described in the following:
 
+## `.xmonad/xmonad.hs`
+* Configurtation for xmonad
+
+## `.xmonad/autostart`
+* Sets default cursor to Left Pointing Arrow ([Reference](https://wiki.haskell.org/Xmonad/Frequently_asked_questions#Setting_the_X_cursor))
+* Starts VMware
+
+## `.xmobarrc`
+* Configuration for xmobar
+
 ## `.vimrc`
 * Fixes the Arrow Key behaviour when using `vi`
 
@@ -124,16 +134,7 @@ It should be save to copy `config/*` to `~/.`. The included config files are des
 
 ## `.bash_aliases`
 * Improves shell highlighting
+* Used to define terminal shortcuts
 
 ## `.xscreensaver`
 * Disables screen saver
-
-## `.xmonad/autostart`
-* Sets default cursor to Left Pointing Arrow ([Reference](https://wiki.haskell.org/Xmonad/Frequently_asked_questions#Setting_the_X_cursor))
-* Starts VMware
-
-## `.xmobarrc`
-* Configuration for xmobar
-
-## `.xmonad/xmonad.hs`
-* Configurtation for xmonad
