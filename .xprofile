@@ -1,3 +1,6 @@
+# remove shell highlighting
+eval `dbus-launch --auto-syntax`
+
 # disable screen saver & monitor sleep
 xset s off
 xset -display :0.0 -dpms
