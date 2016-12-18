@@ -1,5 +1,5 @@
 {- xmonad.hs
- - Author: Øyvind 'Mr.Elendig' Heggstad <mrelendig AT har-ikkje DOT net>
+ - Author: Ã˜yvind 'Mr.Elendig' Heggstad <mrelendig AT har-ikkje DOT net>
  - Version: 0.0.9
  - Modified version
  -}
@@ -12,7 +12,7 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import System.Exit
 import Graphics.X11.Xlib
-import System.IO (Handle, hPutStrLn) 
+import System.IO (Handle, hPutStrLn)
 import XMonad.Actions.CycleWS
 import XMonad.Actions.DynamicWorkspaces
 
@@ -31,7 +31,7 @@ import XMonad.Layout.ResizableTile
 -- Main --
 main = do
        h <- spawnPipe "xmobar"
-       xmonad $ defaultConfig 
+       xmonad $ defaultConfig
               { workspaces = workspaces'
               , modMask = modMask'
               , borderWidth = borderWidth'
@@ -39,10 +39,11 @@ main = do
               , focusedBorderColor = focusedBorderColor'
               , terminal = terminal'
               , keys = keys'
-              , logHook = logHook' h 
+              , logHook = logHook' h
               , layoutHook = layoutHook'
               , manageHook = manageHook'
-			  , focusFollowsMouse  = myFocusFollowsMouse
+              , focusFollowsMouse  = myFocusFollowsMouse
+              , startupHook = startupHook'
               }
 
 -------------------------------------------------------------------------------
@@ -55,6 +56,9 @@ logHook' :: Handle ->  X ()
 logHook' h = dynamicLogWithPP $ customPP { ppOutput = hPutStrLn h }
 
 layoutHook' = customLayout
+
+startupHook' :: X ()
+startupHook' = spawn ". ~/.xmonad/autostart"
 
 -------------------------------------------------------------------------------
 -- Looks --
@@ -104,8 +108,8 @@ modMask' = mod1Mask
 keys' :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launching and killing programs
-    [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf) 
-    , ((modMask,               xK_p     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"") 
+    [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    , ((modMask,               xK_p     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
     , ((modMask .|. shiftMask, xK_p     ), spawn "gmrun")
     , ((modMask .|. shiftMask, xK_c     ), kill)
     , ((modMask .|. shiftMask, xK_m     ), spawn "claws-mail")
@@ -120,9 +124,9 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- refresh
     , ((modMask,               xK_n     ), refresh)
-	
-	-- move focus between screens
-	, ((modMask .|. controlMask, xK_Right), prevScreen)
+
+        -- move focus between screens
+        , ((modMask .|. controlMask, xK_Right), prevScreen)
     , ((modMask .|. controlMask, xK_Left),  nextScreen)
     , ((modMask .|. controlMask, xK_o),  shiftNextScreen)
 
@@ -148,23 +152,23 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_l     ), sendMessage MirrorExpand)
 
     -- XF86AudioMute
-	, ((0 , 0x1008ff12), spawn "amixer -q set PCM toggle")
-	-- XF86AudioLowerVolume
-	, ((0 , 0x1008ff11), spawn "amixer -q set PCM 1- unmute")
-	-- XF86AudioRaiseVolume
-	, ((0 , 0x1008ff13), spawn "amixer -q set PCM 1+ unmute")
-	--XF86Launch1 :1008FF41
-	, ((0 , 0x1008FF41), windows $ W.greedyView "1-Main")
-	--XF86Launch2 :1008FF42
-	, ((0 , 0x1008FF42), windows $ W.greedyView "2-Temp")
-	--XF86Launch3 :1008FF43
-	, ((0 , 0x1008FF43), windows $ W.greedyView "3-Work")
-	--XF86Launch4 :1008FF44
-	, ((0 , 0x1008FF44), windows $ W.greedyView "4-Misc")
-	--XF86Launch5 :1008FF45
-	, ((0 , 0x1008FF45), windows $ W.greedyView "5-Msg")
-	--XF86Launch6 :1008FF46
-	, ((0 , 0x1008FF46), windows $ W.greedyView "6-Media")
+        , ((0 , 0x1008ff12), spawn "amixer -q set PCM toggle")
+        -- XF86AudioLowerVolume
+        , ((0 , 0x1008ff11), spawn "amixer -q set PCM 1- unmute")
+        -- XF86AudioRaiseVolume
+        , ((0 , 0x1008ff13), spawn "amixer -q set PCM 1+ unmute")
+        --XF86Launch1 :1008FF41
+        , ((0 , 0x1008FF41), windows $ W.greedyView "1-Main")
+        --XF86Launch2 :1008FF42
+        , ((0 , 0x1008FF42), windows $ W.greedyView "2-Temp")
+        --XF86Launch3 :1008FF43
+        , ((0 , 0x1008FF43), windows $ W.greedyView "3-Work")
+        --XF86Launch4 :1008FF44
+        , ((0 , 0x1008FF44), windows $ W.greedyView "4-Misc")
+        --XF86Launch5 :1008FF45
+        , ((0 , 0x1008FF45), windows $ W.greedyView "5-Msg")
+        --XF86Launch6 :1008FF46
+        , ((0 , 0x1008FF46), windows $ W.greedyView "6-Media")
 
 
     -- quit, or restart
