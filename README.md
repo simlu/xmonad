@@ -44,7 +44,7 @@ vmware-toolbox-cmd -v
 ## c) Configure Autostart
 > [Reference](http://askubuntu.com/questions/777839/fresh-ubuntu-16-04-install-broken-vmware-tools#answer-777922)
 
-To enable vm tools you need to run `/usr/bin/vmware-user-suid-wrapper`.
+To enable vm tools you need to run `/usr/bin/vmware-user`.
 
 To enable this as autostart, copy `config/.xmonad/autostart` to `~/.xmonad/autostart`.
 
