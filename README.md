@@ -69,12 +69,12 @@ sudo apt-get install oracle-java8-set-default
 ```
 
 # 6) Install VMWare Tools
-## a) Install the Package
+## a) Install Package
 Reference: https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1022525
 ```shell
 sudo apt-get install open-vm-tools-desktop
 ```
-## b) Configure the Autostart
+## b) Configure Autostart
 To enable vm tools you need to run `/usr/bin/vmware-user-suid-wrapper`.
 Reference: http://askubuntu.com/questions/777839/fresh-ubuntu-16-04-install-broken-vmware-tools#answer-777922
 
