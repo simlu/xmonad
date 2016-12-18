@@ -97,5 +97,11 @@ Copy file `.xmobarrc` to local `~/.xmobarrc`
 # 8) Fix vi navigation
 Copy file `.vimrc` to local `~/.vimrc`
 
-# 9) Fix remove shell highlighting
+# 9) Fix remote shell highlighting
 Copy file `.xsession` to local `~/.xession`
+
+# 10) Disable Screensave and Hiberante
+Copy files `.xprofile` and `.xscreensaver` to local `~/.xprofile` and `~/.xscreensaver`
+
+# 11) Configure Multi Screen Setup
+Edit `.xprofile`
