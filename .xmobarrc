@@ -1,4 +1,10 @@
 Config { font = "-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*"
+       , additionalFonts = []
+       , textOffset = -1
+       , iconOffset = -1
+       , pickBroadest = False,
+       , iconRoot = "."
+       , alpha = 255
        , bgColor = "black"
        , fgColor = "grey"
        , position = Top
@@ -15,7 +21,7 @@ Config { font = "-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*"
                     , Run StdinReader
                     , Run Com "dropbox" ["status"] "dropbox" 50
                     , Run Swap [] 10
-    		    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
