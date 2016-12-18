@@ -95,7 +95,7 @@ Download `.xmonad/xmonad.hs` and copy to `~/.xmonad/xmonad.hs` locally.
 - Find latest deb file here: https://pkgs.org/search/xmobar
 - Install deb file by using
 ```shell
-sudo apt-get install libiw20
+sudo apt-get install libiw30
 sudo dpkg -i xmobar_x.xx.x-x_amd64.deb
 ```
 ## c) Install XMobar Config
