@@ -27,7 +27,7 @@ fi
 ```
 If the file doesn't exist already we can copy it from `/etc/skel/.profile`.
 
-# 2) Update Keyboard if necessary
+# 2) Configure Keyboard
 Reference: http://askubuntu.com/questions/342066/how-to-permanently-configure-keyboard
 ```shell
 sudo dpkg-reconfigure keyboard-configuration
