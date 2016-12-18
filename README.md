@@ -40,6 +40,7 @@ To confirm the installation worked correctly run
 ```shell
 vmware-toolbox-cmd -v
 ```
+When done feel free to remove the cd drive again in VMWare.
 
 ## c) Configure Autostart
 > [Reference](http://askubuntu.com/questions/777839/fresh-ubuntu-16-04-install-broken-vmware-tools#answer-777922)
