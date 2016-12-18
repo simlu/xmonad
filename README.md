@@ -2,7 +2,7 @@
 > [Reference](http://askubuntu.com/questions/142061/can-i-completely-remove-gnome-and-leave-xmonad)
 
 ## a) Install MinimalCD version of Ubuntu
-Find the latest [MinimalCD](https://help.ubuntu.com/community/Installation/MinimalCD) version for the Ubuntu you want to use, download and install with VMWare.
+Find the latest [MinimalCD](https://help.ubuntu.com/community/Installation/MinimalCD) version for the Ubuntu you want to use, download and install with VMware.
 
 Important: Ensure you allocate enough virtual machine memory, so that a decent amount of swap space is allocated.
 
@@ -23,15 +23,15 @@ unzip master.zip
 rm master.zip
 ```
 
-# 3) Install VMWare Tools
+# 3) Install VMware Tools
 > [Reference](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1022525)
 
-We are using the iso coming from VMWare as it includes the lastest VMWare Tools. Most importantly it includes multi screen support. Discussion can be found [here](http://superuser.com/questions/270112/open-vm-tools-vs-vmware-tools).
+We are using the iso coming from VMware as it includes the lastest VMware Tools. Most importantly it includes multi screen support. Discussion can be found [here](http://superuser.com/questions/270112/open-vm-tools-vs-vmware-tools).
 ## a) Mount CD
 * Add a CD Drive to the VM
 * Use `Install VM Tools`
 
-## b) Install VMWare
+## b) Install VMware
 Download `scripts/update-vm-tools` and run it with 
 ```shell
 . update-vm-tools
