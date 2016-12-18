@@ -97,7 +97,7 @@ If you messed up your keyboard you can reconfigure it like this
 ```shell
 sudo dpkg-reconfigure keyboard-configuration
 ```
-## b) Fix vi navigation
+## b) Fix vi Arrow Keys
 Copy file `.vimrc` to local `~/.vimrc`
 ## c) Improve Shell Highlighting
 Copy file `.xprofile` to local `~/.xprofile` (this also does some other things, see below)
