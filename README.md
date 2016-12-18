@@ -97,7 +97,7 @@ Copy file `.xmobarrc` to local `~/.xmobarrc`
 # 8) Fix vi navigation
 Copy file `.vimrc` to local `~/.vimrc`
 
-# 9) Improve remote shells
+# 9) Improve Shell Highlighting
 Copy file `.xsession` to local `~/.xession`
 and add the following to `.bash_aliases':
 ```shell
