@@ -131,11 +131,11 @@ sudo apt-get install oracle-java8-set-default
 # 12) Install IntelliJ Idea
 Install, Unzip and define in `.bash_aliases`:
 ```shell
-alias idea='wmname LG3D && IDEA_JDK=/usr/lib/jvm/java-8-oracle ~/program/intellij/bin/idea.sh &> /dev/null &'
+alias idea='wmname LG3D && IDEA_JDK=/usr/lib/jvm/java-8-oracle ~/programs/intellij/bin/idea.sh &> /dev/null &'
 ```
 
 # 13) Install PyCharm
 Install, Unzip and define in `.bash_aliases`:
 ```shell
-alias pycharm='wmname LG3D && PYCHARM_JDK=/usr/lib/jvm/java-8-oracle ~/program/pycharm/bin/pycharm.sh &> /dev/null &'
+alias pycharm='wmname LG3D && PYCHARM_JDK=/usr/lib/jvm/java-8-oracle ~/programs/pycharm/bin/pycharm.sh &> /dev/null &'
 ```
