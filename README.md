@@ -26,7 +26,7 @@ rm master.zip
 # 3) Install VMWare Tools
 > [Reference](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1022525)
 
-We are using the iso coming from VMWare as it includes the lastest VMWare Tools. Discussion can be found [here](http://superuser.com/questions/270112/open-vm-tools-vs-vmware-tools).
+We are using the iso coming from VMWare as it includes the lastest VMWare Tools. Most importantly it includes multi screen support. Discussion can be found [here](http://superuser.com/questions/270112/open-vm-tools-vs-vmware-tools).
 ## a) Mount CD
 * Add a CD Drive to the VM
 * Use `Install VM Tools`
