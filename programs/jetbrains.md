@@ -1,5 +1,5 @@
 
-# 9) JetBrains IDE
+# JetBrains IDE
 
 ## a) Install wmname
 ```shell
