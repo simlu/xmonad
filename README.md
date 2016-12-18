@@ -98,7 +98,7 @@ Copy file `.xmobarrc` to local `~/.xmobarrc`
 Copy file `.vimrc` to local `~/.vimrc`
 
 # 9) Improve Shell Highlighting
-Copy file `.xsession` to local `~/.xession`
+Copy file `.xsession` to local `~/.xsession`
 and add the following to `.bash_aliases':
 ```shell
 alias ls='ls --color'
