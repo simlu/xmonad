@@ -12,3 +12,9 @@ This is a guide on how to set up [Ubuntu](https://www.ubuntu.com/), [Xmonad](htt
 
 
 **Important:** Please create an [Issue](../../issues) if you have any questions! [Pull requests](../../pulls) are welcome!
+
+<hr>
+
+*Pro / Con: VMware vs VirtualBox*
+* VMware has better Graphic Card support
+* VirtualBox is freeware 
