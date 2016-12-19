@@ -1,7 +1,7 @@
 
 # JetBrains IDE
 
-Requires [Java](utils/java.md)
+Requires [Java](utils/java.md).
 
 ## a) Install wmname
 ```shell
