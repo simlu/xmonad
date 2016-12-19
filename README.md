@@ -15,6 +15,8 @@ This is a guide on how to set up [Ubuntu](https://www.ubuntu.com/), [Xmonad](htt
 
 <hr>
 
-*VMware vs VirtualBox*
-- VMware has better Graphic Card support
-- VirtualBox is Open Source Software
+| | VMware | VirtualBox
+--- | :-: | :-:
+3D Support | :heavy_check_mark: | :white_check_mark:\*
+Free |   :white_large_square: | :heavy_check_mark:
+<sub>`* experimental`</sub>
