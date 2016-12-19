@@ -32,6 +32,13 @@ To check the status run
 /usr/bin/dropbox status
 ```
 
+## Autostart
+Edit `~/.xmonad/autostart` and add the lines
+```shell
+# start dropbox
+/usr/bin/dropbox start
+```
+
 ## Display in Xmobar
 Add the following to `~/.xmobarrc` under `commands`:
 ```haskell 
