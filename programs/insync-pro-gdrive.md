@@ -18,6 +18,13 @@ sudo apt-get update
 sudo apt-get install insync
 ```
 
+## Add to autostart
+Edit `~/.xmonad/autostart` and add the lines
+```shell
+# start insync
+/usr/bin/insync start
+```
+
 ## Display in Xmobar
 Add the following to `~/.xmobarrc` under `commands`:
 ```haskell 
