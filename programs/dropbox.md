@@ -52,3 +52,6 @@ Then run
 ```shell
 xmonad --recompile && xmonad --restart
 ```
+
+## Misc
+* Modify sync speed by using `dropbox throttle unlimited unlimited`
