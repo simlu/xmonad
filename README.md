@@ -19,4 +19,4 @@ This is a guide on how to set up [Ubuntu](https://www.ubuntu.com/), [Xmonad](htt
 --- | :-: | :-:
 3D Support | :heavy_check_mark: | :white_check_mark:\*
 Free |   :white_large_square: | :heavy_check_mark:
-<sub>`* experimental`</sub>
+<sub>* experimental</sub>
