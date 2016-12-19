@@ -14,7 +14,8 @@ sudo apt-get install xmonad
 ```
 Type `startx` to start xmonad.
 
-# 2) Download Configuration Package
+# 2) Configuration
+## a) Download Repo Content
 ```shell
 cd downloads
 wget https://github.com/simlu/xmonad/archive/master.zip
@@ -22,6 +23,8 @@ sudo apt-get install unzip
 unzip master.zip
 rm master.zip
 ```
+## b) Copy Configs
+It should be save to copy `config/*` to `~/.`. Details on what the different files are for can be found [here](config.md).
 
 # 3) Install VMware Tools
 > [Reference](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1022525)
@@ -84,6 +87,3 @@ Recompile xmonad
 ```shell
 xmonad --recompile && xmonad --restart
 ```
-
-# 7) Config Files
-It should be save to copy `config/*` to `~/.`. Details on what the different files are for can be found [here](config.md).
