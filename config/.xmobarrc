@@ -19,11 +19,10 @@ Config { font = "-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*"
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run StdinReader
-                    , Run Com "dropbox" ["status"] "dropbox" 50
                     , Run Swap [] 10
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %cpu% | %memory% * %swap% }{ %StdinReader% | %CYLW% | <fc=lightblue>%dropbox%</fc> | <fc=#ee9e00>%date%</fc> "
+       , template = " %cpu% | %memory% * %swap% }{ %StdinReader% | %CYLW% | <fc=#ee9e00>%date%</fc> "
        }
