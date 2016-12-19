@@ -1,3 +1,5 @@
+# Install VLC
+
 > [Reference](http://www.howopensource.com/2012/10/install-vlc-in-ubuntu-12-10-12-04/)
 
 ```shell
