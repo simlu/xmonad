@@ -1,6 +1,6 @@
 # Install Blender
 
-[Reference](http://ubuntuhandbook.org/index.php/2016/03/blender-2-77-released/)
+> [Reference](http://ubuntuhandbook.org/index.php/2016/03/blender-2-77-released/)
 
 Add repo and install with
 ```shell
