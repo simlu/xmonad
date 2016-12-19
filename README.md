@@ -13,4 +13,4 @@ This is a guide on how to set up [Ubuntu](https://www.ubuntu.com/), [Xmonad](htt
 **Important:** Please create an [Issue](../../issues) if you have any questions! [Pull requests](../../pulls) are welcome!
 
 
-> _Note:_ Only minimal changes should be necessary to use these instructions with [VirtualBox](https://www.virtualbox.org/) (install [VirtualBox Guest Additions](http://askubuntu.com/questions/792832/how-to-install-virtualbox-guest-additions-for-ubuntu-16-04) instead of [VMware Tools](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1022525) and remove the VMware Tools from the [autostart](config/.xmonad/autostart) file) or on actual hardware.</sub>
+> _Note:_ To use these instructions for [VirtualBox](https://www.virtualbox.org/) install [VirtualBox Guest Additions](http://askubuntu.com/questions/792832/how-to-install-virtualbox-guest-additions-for-ubuntu-16-04) instead of [VMware Tools](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1022525)
