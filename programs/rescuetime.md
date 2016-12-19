@@ -11,6 +11,8 @@ Install Dependencies
 sudo apt-get install sqlite3 gtk2-engines-pixbuf libqt4-sql-sqlite
 ```
 
+Install [Trayer](utils/trayer.md) (rescuetime unfortunately requires a tray bar).
+
 Download installer [here](https://www.rescuetime.com/setup/installer?os=amd64deb).
 
 Then run 
@@ -24,3 +26,16 @@ Run
 rescuetime
 ```
 and enter email and password.
+
+# Autostart
+Add the following to `~/.xmonad/autostart`. Note that [Trayer](utils/trayer.md) is required.
+```shell
+# start rescuetime
+if [ -z "$(pgrep -x rescuetime)" ] ; then
+    if [ -z "$(pgrep -x trayer)" ] ; then
+        (cd /home/vinc; trayer &> /dev/null &);
+    fi;
+    sleep 2 && (cd /home/vinc; rescuetime &> /dev/null &) && sleep 10;
+    kill $(pgrep -x trayer);
+fi
+```
