@@ -46,7 +46,7 @@ sudo dpkg -i xmobar_x.xx.x-x_amd64.deb
 ```
 > At time of writing the latest deb is [xmobar_0.24.3-2_amd64.deb](http://ftp.br.debian.org/debian/pool/main/x/xmobar/xmobar_0.24.3-2_amd64.deb) (Released Sep 5, 2016)
 
-## 6) Autostart XMonad
+# 6) Configure XMonad Autostart
 > [Reference](https://linuxexpresso.wordpress.com/2010/10/03/startx-automatically-on-login-ubuntu/)
 
 Copy skeleton `.profile` file into home.
