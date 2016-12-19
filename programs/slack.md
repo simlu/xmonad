@@ -2,15 +2,9 @@
 
 We don't use the official way to install Slack, since we want auto update.
 
-Create file
+Create Repository Link
 ```shell
-sudo vi /etc/apt/sources.list.d/slack.list
-```
-and add the content
-```
-### THIS FILE IS AUTOMATICALLY CONFIGURED ###
-# You may comment out this entry, but any other modifications may be lost.
-deb https://packagecloud.io/slacktechnologies/slack/debian/ stretch main
+sudo sh -c 'echo "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main" >> /etc/apt/sources.list.d/slack.list' 
 ```
 
 Then run
