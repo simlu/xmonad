@@ -16,5 +16,18 @@ Then add:
 alias chrome='/opt/google/chrome/google-chrome --enable-plugins &> /dev/null &'
 ```
 
+## Define Quick Show
+To view any file in Chrome, add the following at the top of `~/.bashrc`:
+```shell
+# open in browser
+function show () {
+  google-chrome "$*" &> /dev/null &
+}
+
+# --------------------------
+# Beginning or Original File
+# --------------------------
+```
+
 ## Misc
 * Dont forget to install [Adblock Plus](https://chrome.google.com/webstore/detail/adblock-plus/cfhdojbkjhnklbpkdaibdccddilifddb).
