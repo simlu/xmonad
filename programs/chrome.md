@@ -13,7 +13,7 @@ sudo apt-get install google-chrome-stable
 Add the following at the top of `~/.bashrc`:
 ```shell
 # open in browser
-function show () {
+function chrome () {
   /opt/google/chrome/google-chrome --enable-plugins "$*" &> /dev/null &
 }
 
