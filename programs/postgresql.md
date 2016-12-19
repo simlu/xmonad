@@ -35,3 +35,5 @@ Then create an alias in `~/.bash_aliases` by adding:
 ```shell
 alias pgadmin='pgadmin3 &> /dev/null &'
 ```
+
+Note that server configuration files are stored under `~/.pgadmin3` ([Reference](http://dba.stackexchange.com/questions/53634/save-export-pgadmin-server-list-configuration-settings))
