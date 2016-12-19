@@ -13,14 +13,12 @@ sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ xenial main" >> /etc/apt/
 ```
 
 ## c) Install
-Then run
 ```shell
 sudo apt-get update
 sudo apt-get install dropbox
 ```
 
 ## d) Setup
-Run
 ```shell
 /usr/bin/dropbox start
 ```
