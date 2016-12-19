@@ -18,4 +18,3 @@ alias chrome='/opt/google/chrome/google-chrome --enable-plugins &> /dev/null &'
 
 ## Misc
 * Dont forget to install [Adblock Plus](https://chrome.google.com/webstore/detail/adblock-plus/cfhdojbkjhnklbpkdaibdccddilifddb).
-* Change download directory from `Downloads` to `downloads` in settings.
