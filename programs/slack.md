@@ -10,11 +10,12 @@ This requires [curl](utils/curl.md).
 curl -L https://packagecloud.io/slacktechnologies/slack/gpgkey | sudo apt-key add -
 ```
 
-Create Repository Link
+## b) Create Repository Link
 ```shell
 sudo sh -c 'echo "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main" >> /etc/apt/sources.list.d/slack.list' 
 ```
 
+## c) Install and Alias
 Then run
 ```shell
 sudo apt-get update
