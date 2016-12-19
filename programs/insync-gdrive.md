@@ -1,4 +1,4 @@
-# Install Google Drive Sync
+# Install InSync for Google Drive
 
 ## Add Repo Key
 ```shell
