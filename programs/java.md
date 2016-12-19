@@ -1,11 +1,7 @@
 # Install Java
-## a) Add `apt-get-repository` command
-Reference: http://askubuntu.com/questions/493460/how-to-install-add-apt-repository-using-the-terminal
-```shell
-sudo apt-get install software-properties-common
-```
-## b) Add Repo, Install and Set Env Variables
-Reference: http://tecadmin.net/install-oracle-java-8-jdk-8-ubuntu-via-ppa/#
+[Reference](http://tecadmin.net/install-oracle-java-8-jdk-8-ubuntu-via-ppa/#)
+
+Add Repo, Install and Set Env Variables
 ```shell
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
