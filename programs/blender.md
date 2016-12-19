@@ -10,3 +10,8 @@ sudo add-apt-repository ppa:thomas-schiex/blender
 sudo apt-get update
 sudo apt-get install blender
 ```
+
+Add to `.bash_aliases`:
+```shell
+alias blender='blender &> /dev/null &'
+```
