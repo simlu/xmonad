@@ -20,6 +20,5 @@ This is a guide on how to set up [Ubuntu](https://www.ubuntu.com/), [Xmonad](htt
 | 3D Support | :heavy_check_mark: | :heavy_check_mark: | :white_check_mark:<sub>(1)</sub> |
 | Free |   :white_large_square: | :white_check_mark:<sub>(2)</sub> | :heavy_check_mark: |
 | Snapshots |   :heavy_check_mark: | :white_large_square: | :heavy_check_mark: |
-<sub>(1) experimental support, coudn't get it to work for this setup</sub>
-
+<sub>(1) experimental support, coudn't get it to work for this setup</sub> 
 <sub>(2) non-commercial, personal and home use</sub>
