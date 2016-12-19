@@ -5,7 +5,7 @@
 
 ## `.xmonad/autostart`
 * Sets default cursor to Left Pointing Arrow ([Reference](https://wiki.haskell.org/Xmonad/Frequently_asked_questions#Setting_the_X_cursor))
-* Starts VMware
+* Autostarts VMware Tools if they are installed
 
 ## `.xmobarrc`
 * Configuration for xmobar
