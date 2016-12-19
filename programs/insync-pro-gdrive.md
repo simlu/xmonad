@@ -18,7 +18,7 @@ sudo apt-get update
 sudo apt-get install insync
 ```
 
-## Add to autostart
+## Autostart
 Edit `~/.xmonad/autostart` and add the lines
 ```shell
 # start insync
