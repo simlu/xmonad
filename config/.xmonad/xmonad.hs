@@ -15,6 +15,8 @@ import Graphics.X11.Xlib
 import System.IO (Handle, hPutStrLn)
 import XMonad.Actions.CycleWS
 import XMonad.Actions.DynamicWorkspaces
+import XMonad.Actions.SpawnOn
+import XMonad.Hooks.EwmhDesktops
 
 -- utils
 import XMonad.Util.Run (spawnPipe)
@@ -31,7 +33,7 @@ import XMonad.Layout.ResizableTile
 -- Main --
 main = do
        h <- spawnPipe "xmobar"
-       xmonad $ defaultConfig
+       xmonad $ ewmh defaultConfig
               { workspaces = workspaces'
               , modMask = modMask'
               , borderWidth = borderWidth'
@@ -44,6 +46,7 @@ main = do
               , manageHook = manageHook'
               , focusFollowsMouse  = myFocusFollowsMouse
               , startupHook = startupHook'
+              , handleEventHook = handleEventHook defaultConfig <+> fullscreenEventHook
               }
 
 -------------------------------------------------------------------------------
@@ -172,12 +175,12 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 
     -- quit, or restart
-    , ((modMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
+    -- , ((modMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
     , ((modMask              , xK_q     ), restart "xmonad" True)
     ]
     ++
-    -- mod-[1..i9] %! Switch to workspace N
-    -- mod-shift-[1..9] %! Move client to workspace N
+    -- mod-[1..9, 0] %! Switch to workspace N
+    -- mod-shift-[1..9, 0] %! Move client to workspace N
     [((m .|. modMask, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7, xK_8, xK_9, xK_0]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
