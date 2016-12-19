@@ -24,16 +24,19 @@ unzip master.zip
 rm master.zip
 ```
 ## b) Copy Configs
-It should be save to copy `config/*` to `~/.`. Details on what the different files are for can be found [here](config.md).
+Is should now be save to copy the configurations:
+```shell
+mv -v ~/xmonad-master/config/* ~/
+```
+Details on what the different files are for can be found [here](config.md).
 
 # 3) Install VMware Tools
-Instuctions [here](programs/vmware-tools.md).
+Instuctions [here](programs/vmware-tools.md). If you are using VirtualBox, you need to install [VirtualBox Guest Additions](http://askubuntu.com/questions/792832/how-to-install-virtualbox-guest-additions-for-ubuntu-16-04) instead.
 
 # 4) Install Chrome
-Instructions [here](programs/chrome.md).
+Instructions [here](programs/chrome.md). Feel free to install another browser like [Firefox](https://help.ubuntu.com/community/FirefoxNewVersion) instead.
 
-# 5) Xmobar
-## a) Install
+# 5) Install Xmobar
 - Search [Releases](http://projects.haskell.org/xmobar/releases.html)
 - Find latest deb file here: https://pkgs.org/search/xmobar
 - Install deb file by using
@@ -43,14 +46,14 @@ sudo dpkg -i xmobar_x.xx.x-x_amd64.deb
 ```
 > At time of writing the latest deb is [xmobar_0.24.3-2_amd64.deb](http://ftp.br.debian.org/debian/pool/main/x/xmobar/xmobar_0.24.3-2_amd64.deb) (Released Sep 5, 2016)
 
-## b) Autostart
+## 6) Autostart XMonad
 > [Reference](https://linuxexpresso.wordpress.com/2010/10/03/startx-automatically-on-login-ubuntu/)
 
-First we copy the skeleton `.profile` file into our home.
+Copy skeleton `.profile` file into home.
 ```shell
 cp /etc/skel/.profile ~/.profile
 ```
-Then we append the following to `~/.profile`:
+Append the following to `~/.profile`:
 ```shell
 # start xmonad on login
 if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
@@ -62,4 +65,7 @@ Recompile xmonad
 ```shell
 xmonad --recompile && xmonad --restart
 ```
-and restart.
+and restart
+```shell
+sudo reboot -h now
+```
