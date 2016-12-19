@@ -15,6 +15,6 @@ This is a guide on how to set up [Ubuntu](https://www.ubuntu.com/), [Xmonad](htt
 
 <hr>
 
-*Pro / Con: VMware vs VirtualBox*
-* VMware has better Graphic Card support
-* VirtualBox is freeware 
+*VMware vs VirtualBox*
+- VMware has better Graphic Card support
+- VirtualBox is Open Source Software
