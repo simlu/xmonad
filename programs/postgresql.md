@@ -26,7 +26,7 @@ sudo -u postgres psql
 ```
 Then in postgres
 ```SQL
-ALTER USER postgres password 'password';
+ALTER USER postgres PASSWORD 'password';
 ```
 And type `\q` to exit.
 
