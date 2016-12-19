@@ -1,5 +1,8 @@
 # Configure Multi Screen Setup
 
+## Harware
+Compare instructions below for VirtualBox
+
 ## VMWare
 VMWare seems to work fine without any custom configuration.
 
@@ -22,6 +25,3 @@ Write the commands as found above into `~/.xprofile`. They will be run on each s
 xrandr --output VGA-0 --auto --left-of VGA-2
 xrandr --output VGA-1 --auto --left-of VGA-0
 ```
-
-## Harware
-- tbd
