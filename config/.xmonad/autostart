@@ -1,9 +1,12 @@
 #!/bin/bash
 
-# start vmware tools
-PROCESS_COUNT=$(ps -ef | grep "vmware-tools/sbin64/vmtoolsd" | grep -v "grep" | wc -l)
-if [ "${PROCESS_COUNT}" -eq 0 ]; then
-   /usr/bin/vmware-user
+# start vmware tools if appropriate (installed and not running yet)
+if [ -e "/etc/init.d/vmware-tools" ] && [ -e "/usr/bin/vmware-user" ]; then
+  if [ $(/etc/init.d/vmware-tools status | grep 'vmtoolsd is running' -c) -eq 1 ]; then
+    if [ $(ps -ef | grep "vmware-tools/sbin64/vmtoolsd" | grep -v "grep" | wc -l) -eq 0 ]; then
+      /usr/bin/vmware-user
+    fi;
+  fi;
 fi;
 
 # Use nice mouse cursor as default
