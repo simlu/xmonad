@@ -2,6 +2,14 @@
 
 We don't use the official way to install Slack, since we want auto update.
 
+## a) Add Repo Key
+> [Reference](https://packagecloud.io/app/slacktechnologies/slack/gpg#gpg-apt)
+
+This requires [curl](utils/curl.md).
+```shell
+curl -L https://packagecloud.io/slacktechnologies/slack/gpgkey | sudo apt-key add -
+```
+
 Create Repository Link
 ```shell
 sudo sh -c 'echo "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main" >> /etc/apt/sources.list.d/slack.list' 
