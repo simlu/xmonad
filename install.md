@@ -69,3 +69,6 @@ and restart
 ```shell
 sudo reboot -h now
 ```
+
+# 7) Install other Programs
+Install instructions for some selected programs can be found [here](programs/).
