@@ -27,3 +27,7 @@ And then reference it below in `template` as
 ```haskell
 | <fc=lightblue>%insync%</fc> 
 ```
+Then run
+```shell
+xmonad --recompile && xmonad --restart
+```
