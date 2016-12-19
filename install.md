@@ -41,13 +41,16 @@ Instructions [here](programs/chrome.md).
 sudo apt-get install libiw30
 sudo dpkg -i xmobar_x.xx.x-x_amd64.deb
 ```
+> At time of writing the latest deb is [xmobar_0.24.3-2_amd64.deb](http://ftp.br.debian.org/debian/pool/main/x/xmobar/xmobar_0.24.3-2_amd64.deb) (Released Sep 5, 2016)
+
 ## b) Autostart
 > [Reference](https://linuxexpresso.wordpress.com/2010/10/03/startx-automatically-on-login-ubuntu/)
 
+First we copy the skeleton `.profile` file into our home.
 ```shell
 cp /etc/skel/.profile ~/.profile
 ```
-Append the following to `~/.profile`
+Then we append the following to `~/.profile`:
 ```shell
 # start xmonad on login
 if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
@@ -59,3 +62,4 @@ Recompile xmonad
 ```shell
 xmonad --recompile && xmonad --restart
 ```
+and restart.
