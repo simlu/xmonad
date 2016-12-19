@@ -17,6 +17,6 @@ This is a guide on how to set up [Ubuntu](https://www.ubuntu.com/), [Xmonad](htt
 
 | | VMware | VirtualBox
 --- | :-: | :-:
-3D Support | :heavy_check_mark: | :white_check_mark:\*
+3D Support | :heavy_check_mark: | :white_large_square:\*
 Free |   :white_large_square: | :heavy_check_mark:
-<sub>* experimental, coudn't get it to work</sub>
+<sub>* experimental support, coudn't get it to work for this setup</sub>
