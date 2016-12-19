@@ -23,9 +23,17 @@ sudo dpkg -i rescutime_curent_amd64.deb
 ## Configuration
 Run
 ```shell
+trayer
+```
+and then in a separate shell run
+```shell
 rescuetime
 ```
 and enter email and password.
+
+## Misc
+* To check on status click the status icon in trayer.
+* Note that you can also close trayer once rescuetime is running.
 
 ## Configure Autostart
 Add the following to `~/.xmonad/autostart`. Note that [Trayer](utils/trayer.md) is required.
