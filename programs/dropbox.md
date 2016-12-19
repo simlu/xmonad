@@ -2,32 +2,46 @@
 
 > [Reference](www.ubuntuupdates.org/ppa/dropbox)
 
-## a) Install Dependencies
+## Install Dependencies
 ```shell
 sudo apt-get install libxslt1.1
 ```
 
-## b) Add Repo Key
+## Add Repo Key
 ```shell
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 ```
 
-## c) Add repo
+## Add repo
 ```shell
 sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ xenial main" >> /etc/apt/sources.list.d/dropbox.list' 
 ```
 
-## d) Install
+## Install
 ```shell
 sudo apt-get update
 sudo apt-get install dropbox
 ```
 
-## e) Setup
+## Setup
 ```shell
 /usr/bin/dropbox start -i
 ```
 To check the status run
 ```shell
 /usr/bin/dropbox status
+```
+
+## Display in Xmobar
+Add the following to `~/.xmobarrc` under `commands`:
+```haskell 
+, Run Com "dropbox" ["status"] "dropbox" 50
+```
+And then reference it below in `template` as
+```haskell
+| <fc=lightblue>%dropbox%</fc>
+```
+Then run
+```shell
+xmonad --recompile && xmonad --restart
 ```
