@@ -12,8 +12,18 @@ wget -qO - https://d2t3ff60b2tol4.cloudfront.net/services@insynchq.com.gpg.key |
 sudo sh -c 'echo "deb http://apt.insynchq.com/ubuntu trusty non-free" >> /etc/apt/sources.list.d/insync.list' 
 ```
 
-# Install
+## Install
 ```shell
 sudo apt-get update
 sudo apt-get install insync
+```
+
+## Display in Xmobar
+Add the following to `~/.xmobarrc` under `commands`:
+```haskell 
+, Run Com "insync" ["get_sync_progress"] "insync" 50
+```
+And then reference it below in `template` as
+```haskell
+| <fc=lightblue>%insync%</fc> 
 ```
