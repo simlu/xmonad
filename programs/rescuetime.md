@@ -5,7 +5,7 @@
 ## Install Browser Extension
 Can be found [here](https://chrome.google.com/webstore/detail/rescuetime-for-chrome-chr/bdakmnplckeopfghnlpocafcepegjeap).
 
-## Install Software
+## Install Package
 Install Dependencies
 ```shell
 sudo apt-get install sqlite3 gtk2-engines-pixbuf libqt4-sql-sqlite
@@ -27,7 +27,7 @@ rescuetime
 ```
 and enter email and password.
 
-# Autostart
+## Configure Autostart
 Add the following to `~/.xmonad/autostart`. Note that [Trayer](utils/trayer.md) is required.
 ```shell
 # start rescuetime
