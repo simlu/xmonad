@@ -4,7 +4,3 @@ eval `dbus-launch --auto-syntax`
 # disable screen saver & monitor sleep
 xset s off
 xset -display :0.0 -dpms
-
-# set up screen alignment
-#xrandr --output VGA-0 --auto --left-of VGA-2
-#xrandr --output VGA-1 --auto --left-of VGA-0
