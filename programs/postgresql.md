@@ -1,4 +1,4 @@
-# Install Postgresql and PostGIS
+# Install Postgresql, PostGIS and PGAdmin3
 
 > [Reference](http://tecadmin.net/install-postgresql-server-on-ubuntu/)
 
@@ -26,3 +26,12 @@ sudo apt-get install -y postgresql-9.5-postgis-2.2
 ```
 
 Version support information for PostGIS on [AWS RDS](https://aws.amazon.com/rds/postgresql/) can be found [here](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html).
+
+## Install PGAdmin3
+```shell
+sudo apt-get install pgadmin3
+```
+Then create an alias in `~/.bash_aliases` by adding:
+```shell
+alias pgadmin='pgadmin3 &> /dev/null &'
+```
