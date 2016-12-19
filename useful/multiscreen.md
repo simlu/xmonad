@@ -4,13 +4,19 @@
 VMWare seems to work fine without any custom configuration.
 
 ## VirtualBox
-* run `xrandr`
-* identify the monitors
-* run `xrandr --output VBOX1 --auto --left-of VBOX2` for the different monitors until the alignment is correct
+### Identify Monitors
+```shell
+xrandr
+```
+### Align Monitors
+Run the following for the different monitors until the alignment is correct:
+```shell
+xrandr --output VBOX1 --auto --left-of VBOX2
+```
+### Automation
+Write the commands as found above into `~/.xprofile`. They will be run on each startup.
 
-To do this automatically edit `~/.xprofile` and paste commands in there (they will be run on each startup)
-
-### Example
+#### Example
 ```shell
 # set up screen alignment
 xrandr --output VGA-0 --auto --left-of VGA-2
