@@ -32,10 +32,8 @@ Instuctions [here](programs/vmware-tools.md).
 # 4) Install Chrome
 Instructions [here](programs/chrome.md).
 
-# 5) Install Xmonad Configuration and XMobar
-## a) Download Xmonad Config
-Download `config/.xmonad/xmonad.hs` and copy to `~/.xmonad/xmonad.hs` locally.
-## b) Install XMobar
+# 5) Xmobar
+## a) Install Xmobar
 - Search [Releases](http://projects.haskell.org/xmobar/releases.html)
 - Find latest deb file here: https://pkgs.org/search/xmobar
 - Install deb file by using
@@ -43,10 +41,7 @@ Download `config/.xmonad/xmonad.hs` and copy to `~/.xmonad/xmonad.hs` locally.
 sudo apt-get install libiw30
 sudo dpkg -i xmobar_x.xx.x-x_amd64.deb
 ```
-## c) Install XMobar Config
-Copy file `config/.xmobarrc` to local `~/.xmobarrc`
-
-# 6) Autostart Xmonad
+## b) Autostart Xmonad
 > [Reference](https://linuxexpresso.wordpress.com/2010/10/03/startx-automatically-on-login-ubuntu/)
 
 ```shell
