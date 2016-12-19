@@ -15,8 +15,11 @@ This is a guide on how to set up [Ubuntu](https://www.ubuntu.com/), [Xmonad](htt
 
 <hr>
 
-| | VMware | VirtualBox
---- | :-: | :-:
-3D Support | :heavy_check_mark: | :white_check_mark:\*
-Free |   :white_large_square: | :heavy_check_mark:
-<sub>* experimental support, coudn't get it to work for this setup</sub>
+| | [VMware Workstation Pro](http://www.vmware.com/products/workstation.html) | [VMWare Workstation Player](http://www.vmware.com/products/player/playerpro-evaluation.html) | [VirtualBox](https://www.virtualbox.org/) |
+| --- | :-: | :-: | :-: |
+| 3D Support | :heavy_check_mark: | :heavy_check_mark: | :white_check_mark:<sub>♢</sub> |
+| Free |   :white_large_square: | :white_check_mark:<sub>☆</sub> | :heavy_check_mark: |
+| Snapshots |   :heavy_check_mark: | :white_large_square: | :heavy_check_mark: |
+<sub>♢ experimental support, coudn't get it to work for this setup</sub>
+
+<sub>☆ non-commercial, personal and home use</sub>
