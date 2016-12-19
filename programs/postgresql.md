@@ -20,6 +20,16 @@ sudo apt-get install postgresql-9.5 postgresql-contrib-9.5
 sudo apt-get install libpq-dev
 ```
 
+### Set password for user postgres
+```shell
+sudo -u postgres psql
+```
+Then in postgres
+```SQL
+ALTER USER postgres password 'password';
+```
+And type `\q` to exit.
+
 ## Install PostGIS
 ```shell
 sudo apt-get install -y postgresql-9.5-postgis-2.2
