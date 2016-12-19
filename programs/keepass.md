@@ -2,6 +2,8 @@
 
 > [Reference](http://www.howtogeek.com/93798/install-keepass-password-safe-on-your-ubuntu-or-debian-based-linux-system/)
 
+Requires [apt-get-repository](utils/apt-get-repository.md).
+
 ## Add Repo
 ```shell
 sudo apt-add-repository ppa:jtaylor/keepass
