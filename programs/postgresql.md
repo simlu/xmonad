@@ -25,4 +25,4 @@ sudo apt-get install libpq-dev
 sudo apt-get install -y postgresql-9.5-postgis-2.2
 ```
 
-Version support information for PostGIS on AWS RDS can be found [here](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html).
+Version support information for PostGIS on [AWS RDS](https://aws.amazon.com/rds/postgresql/) can be found [here](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html).
