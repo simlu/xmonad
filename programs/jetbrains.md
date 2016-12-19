@@ -1,6 +1,8 @@
 
 # JetBrains IDE
 
+Requires [Java](programs/utils/java.md)
+
 ## a) Install wmname
 ```shell
 sudo apt install suckless-tools
