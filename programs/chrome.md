@@ -23,5 +23,11 @@ function show () {
 ```
 We are defining this in `~/.bashrc` and not in `~/.bash_aliases` so that we can open files using chrome.
 
+E.g. you can run
+```shell
+chrome some_image.png
+```
+To open an image in the browser. This also works with urls.
+
 ## Misc
 * Dont forget to install [Adblock Plus](https://chrome.google.com/webstore/detail/adblock-plus/cfhdojbkjhnklbpkdaibdccddilifddb).
