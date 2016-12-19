@@ -10,7 +10,7 @@ and add the content
 ```
 ### THIS FILE IS AUTOMATICALLY CONFIGURED ###
 # You may comment out this entry, but any other modifications may be lost.
-deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main
+deb https://packagecloud.io/slacktechnologies/slack/debian/ stretch main
 ```
 
 Then run
