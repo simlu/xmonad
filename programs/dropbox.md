@@ -27,3 +27,7 @@ sudo apt-get install dropbox
 ```shell
 /usr/bin/dropbox start -i
 ```
+To check the status run
+```shell
+/usr/bin/dropbox status
+```
