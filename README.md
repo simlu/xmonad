@@ -21,4 +21,4 @@ This is a guide on how to set up [Ubuntu](https://www.ubuntu.com/), [Xmonad](htt
 | Free |    :x: | :white_check_mark:<sub>*(2)*</sub> | :heavy_check_mark: |
 | Snapshots |   :heavy_check_mark: |  :x: | :heavy_check_mark: |
 <sub>*(1)* experimental support, coudn't get it to work for this setup</sub> 
-<sub>*(2)* non-commercial, personal and home use</sub>
+<sub>*(2)* for non-commercial, personal and home use</sub>
