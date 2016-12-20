@@ -4,7 +4,7 @@
 VMWare seems to work fine without any custom configuration.
 
 ## VirtualBox
-VirtualBox seems to work fine without any custom configuration.
+VirtualBox seems to work fine without any custom configuration. You might need to move the screen around until they align correctly. You can test this by dragging frames with `ctrl`.
 
 ## Harware
 
