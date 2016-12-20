@@ -28,4 +28,7 @@ alias chat='slack &> /dev/null &'
 ```
 
 ## Misc
-- Config can be transfered between computers by zipping `~/.config/Slack`.
+### Transfere Config
+```shell
+(cd ~/.config/Slack && zip -r ~/Slack.zip .)
+```
