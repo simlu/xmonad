@@ -17,3 +17,5 @@ Download [scripts/update-vb-guest-additons.sh](/scripts/update-vb-guest-additons
 sudo bash update-vb-guest-additons.sh
 ```
 and restart.
+
+Feel free to remove the CD Drive again.
