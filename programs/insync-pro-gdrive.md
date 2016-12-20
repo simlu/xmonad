@@ -38,3 +38,7 @@ Then run
 ```shell
 xmonad --recompile && xmonad --restart
 ```
+
+## Misc
+* Run `insync get_sync_progress` to get more detailed sync information
+* Run `insync help` to list available commands
