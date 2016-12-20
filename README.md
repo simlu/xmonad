@@ -5,13 +5,15 @@
 [<img title='VMware' src="http://i.imgur.com/IsgiIUP.png" width="48">](http://www.vmware.com/)
 [<img title='VirtualBox' src="http://i.imgur.com/y3MsSVq.png" width="48">](https://www.virtualbox.org/)
 
-This is a guide on how to set up [Ubuntu](https://www.ubuntu.com/), [Xmonad](http://xmonad.org/) and [Xmobar](http://projects.haskell.org/xmobar/) on Hardware or with [VMware](http://www.vmware.com/) or [VirtualBox](https://www.virtualbox.org/).
+This is a guide on how to set up [Ubuntu](https://www.ubuntu.com/)*, [Xmonad](http://xmonad.org/) and [Xmobar](http://projects.haskell.org/xmobar/) on Hardware or with [VMware](http://www.vmware.com/) or [VirtualBox](https://www.virtualbox.org/).<br \>
 
 * [Install Instructions](install.md)
 * [Basic Hands On](handson.md)
 
 
 **Important:** Please create an [Issue](../../issues) if you have any questions! [Pull requests](../../pulls) are welcome!
+
+<sub>* Tested with Ubuntu 16.04 64bit</sub>
 
 <hr>
 
