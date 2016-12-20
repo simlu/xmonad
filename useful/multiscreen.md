@@ -1,5 +1,9 @@
 # Configure Multi Screen Setup
 
+## Xmobar
+
+If you want to spawn xmobar a different screen that is not your primary screen, you can edit `~/.xmonad/xmonad.hs` and change `"xmobar"` to `"xmobar -x 1"` where `1` is your second screen (`0` is default).
+
 ## VMWare
 VMWare seems to work fine without any custom configuration.
 
