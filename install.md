@@ -31,7 +31,9 @@ mv -v ~/xmonad-master/config/* ~/
 Details on what the different files are for can be found [here](config.md).
 
 # 3) VMware Tools or VirtualBox Guest Additions
-Instuctions for VMware Tools [here](programs/vmware-tools.md). If you are using VirtualBox, you need to install [VirtualBox Guest Additions](http://askubuntu.com/questions/792832/how-to-install-virtualbox-guest-additions-for-ubuntu-16-04) instead. If you are installing on physical hardware you can skip this step.
+* Instuctions for VMware Tools [here](programs/vmware-tools.md)
+* Instructions for VirtualBox Guest Additions [here](programs/virtualbox-guest-additions.md)
+* If you are using physical hardware you can skip this step
 
 # 4) Install Chrome
 Instructions [here](programs/chrome.md). Feel free to install another browser like [Firefox](https://help.ubuntu.com/community/FirefoxNewVersion) instead.
