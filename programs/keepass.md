@@ -20,3 +20,9 @@ Add the following to `~/.bash_aliases`:
 ```shell
 alias keepass='/usr/bin/keepass2 &> /dev/null &'
 ```
+
+## Misc
+### Transfere Config
+```shell
+(cd ~/.config/KeePass && zip -r ~/KeePass.zip .)
+```
