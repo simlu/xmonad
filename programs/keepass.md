@@ -24,5 +24,5 @@ alias keepass='/usr/bin/keepass2 &> /dev/null &'
 ## Misc
 ### Transfere Config
 ```shell
-(cd ~/.config/KeePass && zip -r ~/KeePass.zip .)
+(cd ~/.config && zip -r ~/KeePass.zip KeePass)
 ```
