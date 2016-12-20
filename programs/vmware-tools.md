@@ -6,7 +6,7 @@ We are using the iso coming from VMware as it includes the lastest VMware Tools.
 * Add a CD Drive to the VM
 * Use `Install VM Tools`
 
-## Install VMware
+## Install
 Download [scripts/update-vmware-tools.sh](/scripts/update-vmware-tools.sh) and run it with 
 ```shell
 sudo bash update-vm-tools.sh
