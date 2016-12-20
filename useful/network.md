@@ -1,5 +1,7 @@
 # Network
 
+## Issues
+
 If you have network issues run:
 ```shell
 ifconfig -a
@@ -17,5 +19,5 @@ Finally restart your network by running
 sudo /etc/init.d/networking restart
 ```
 
-## Misc
+### Other
 * Try restarting your host
