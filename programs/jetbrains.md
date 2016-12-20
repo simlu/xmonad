@@ -9,7 +9,7 @@ sudo apt install suckless-tools
 ```
 
 ## Settings
-Can be found in `~/.<PRODUCT><VERSION>`. E.g. to save PyCharm Settings run
+Can be found in `~/.<PRODUCT><VERSION>` ([Reference](https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs)). E.g. to save PyCharm Settings run
 ```shell
 zip -r ~/tmp-pycharm.zip .PyCharm2016.2
 ```
