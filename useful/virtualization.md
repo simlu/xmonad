@@ -1,0 +1,8 @@
+# General
+* Not use virtual cores for the amount of cores to assign to the VM ([Reference](http://wahlnetwork.com/2013/09/30/hyper-threading-gotcha-virtual-machine-vcpu-sizing/))
+
+# VMware
+
+## Settings
+* Under `Preferences > Display` disable the option `Show toolbar edge when unpinned in full screen`
+* Under `Preferences > Hot Keys` set the hot key to your preference (e.g. `SHIFT + ALT + WIN`)
