@@ -30,5 +30,5 @@ alias chat='slack &> /dev/null &'
 ## Misc
 ### Transfere Config
 ```shell
-(cd ~/.config/Slack && zip -r ~/Slack.zip .)
+(cd ~/.config && zip -r ~/Slack.zip Slack)
 ```
