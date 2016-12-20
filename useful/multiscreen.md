@@ -1,12 +1,13 @@
 # Configure Multi Screen Setup
 
-## Harware
-Compare instructions below for VirtualBox
-
 ## VMWare
 VMWare seems to work fine without any custom configuration.
 
 ## VirtualBox
+VirtualBox seems to work fine without any custom configuration.
+
+## Harware
+
 ### Identify Monitors
 ```shell
 xrandr
