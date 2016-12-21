@@ -44,7 +44,8 @@ main = do
               , logHook = logHook' h
               , layoutHook = layoutHook'
               , manageHook = manageHook'
-              , focusFollowsMouse  = myFocusFollowsMouse
+              , focusFollowsMouse = myFocusFollowsMouse
+              , clickJustFocuses = myClickJustFocuses
               , startupHook = startupHook'
               , handleEventHook = handleEventHook defaultConfig <+> fullscreenEventHook
               }
@@ -78,6 +79,10 @@ customPP = defaultPP { ppCurrent = xmobarColor "#AFAF87" "" . wrap "[" "]"
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = False
+
+-- | Whether a mouse click select the focus or is just passed to the window
+myClickJustFocuses :: Bool
+myClickJustFocuses = False
 
 -- borders
 borderWidth' :: Dimension
