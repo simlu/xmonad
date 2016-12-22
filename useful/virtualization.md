@@ -15,4 +15,4 @@
 * Under `Preferences > Display` disable the option `Show toolbar edge when unpinned in full screen`
 * Under `Preferences > Hot Keys` set the hot key to your preference (e.g. `SHIFT + ALT + WIN`)
 * Make sure the amount of processors and cores per processors is reflected correctly
-* Start VM in full screen and close after shutting down under `Settings > Options > Power` ([Reference](http://www.tomshardware.com/faq/id-1943720/configure-vmware-workstation-open-virtual-machines-full-screen-powered.html))
+* Start VM in full screen under `Settings > Options > Power` ([Reference](http://www.tomshardware.com/faq/id-1943720/configure-vmware-workstation-open-virtual-machines-full-screen-powered.html))
