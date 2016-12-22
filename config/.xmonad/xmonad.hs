@@ -41,6 +41,7 @@ main = do
               , focusedBorderColor = focusedBorderColor'
               , terminal = terminal'
               , keys = keys'
+              , mouseBindings = myMouseBindings
               , logHook = logHook' h
               , layoutHook = layoutHook'
               , manageHook = manageHook'
@@ -80,7 +81,7 @@ customPP = defaultPP { ppCurrent = xmobarColor "#AFAF87" "" . wrap "[" "]"
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = False
 
--- | Whether a mouse click select the focus or is just passed to the window
+-- Whether a mouse click select the focus or is just passed to the window
 myClickJustFocuses :: Bool
 myClickJustFocuses = False
 
@@ -105,6 +106,22 @@ customLayout = avoidStruts $ smartBorders tiled ||| smartBorders (Mirror tiled) 
 -- Terminal --
 terminal' :: String
 terminal' = "xterm"
+
+-------------------------------------------------------------------------------
+-- Mouse bindings: default actions bound to mouse events
+
+myMouseBindings :: XConfig Layout -> M.Map (KeyMask, Button) (Window -> X ())
+myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList
+    -- mod-button1 %! Set the window to floating mode and move by dragging
+    [ ((modMask, button1), \w -> focus w >> mouseMoveWindow w
+                                          >> windows W.shiftMaster)
+    -- mod-button2 %! Raise the window to the top of the stack
+    , ((modMask, button2), windows . (W.shiftMaster .) . W.focusWindow)
+    -- mod-button3 %! Set the window to floating mode and resize by dragging
+    , ((modMask, button3), \w -> focus w >> mouseResizeWindow w
+                                         >> windows W.shiftMaster)
+    -- you may also bind events to the mouse scroll wheel (button4 and button5)
+    ]
 
 -------------------------------------------------------------------------------
 -- Keys/Button bindings --
