@@ -109,7 +109,6 @@ terminal' = "xterm"
 
 -------------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
-
 myMouseBindings :: XConfig Layout -> M.Map (KeyMask, Button) (Window -> X ())
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList
     -- mod-button1 %! Set the window to floating mode and move by dragging
