@@ -29,5 +29,4 @@ This is a guide on how to set up [Ubuntu](https://www.ubuntu.com/)*, [Xmonad](ht
 
 [<img title="Terminal forever <3" width="400" src="http://i.imgur.com/kbUboza.jpg">](http://www.commitstrip.com/en/2016/12/22/terminal-forever/?)
 
-
 [<sub>*Terminal forever &lt;3*</sub>](http://www.commitstrip.com/en/2016/12/22/terminal-forever/?)
