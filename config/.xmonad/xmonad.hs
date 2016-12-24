@@ -145,12 +145,14 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- floating layer stuff
     , ((modMask,               xK_t     ), withFocused $ windows . W.sink)
+    , ((modMask,               xK_f     ), withFocused $ windows . (flip W.float $ W.RationalRect 0 0 1 1))
+    , ((modMask .|. controlMask, xK_f     ), withFocused $ windows . (flip W.float $ W.RationalRect 0.1 0.1 0.8 0.8))
 
     -- refresh
     , ((modMask,               xK_n     ), refresh)
 
-        -- move focus between screens
-        , ((modMask .|. controlMask, xK_Right), prevScreen)
+    -- move focus between screens
+    , ((modMask .|. controlMask, xK_Right), prevScreen)
     , ((modMask .|. controlMask, xK_Left),  nextScreen)
     , ((modMask .|. controlMask, xK_o),  shiftNextScreen)
 
@@ -176,23 +178,23 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_l     ), sendMessage MirrorExpand)
 
     -- XF86AudioMute
-        , ((0 , 0x1008ff12), spawn "amixer -q set PCM toggle")
-        -- XF86AudioLowerVolume
-        , ((0 , 0x1008ff11), spawn "amixer -q set PCM 1- unmute")
-        -- XF86AudioRaiseVolume
-        , ((0 , 0x1008ff13), spawn "amixer -q set PCM 1+ unmute")
-        --XF86Launch1 :1008FF41
-        , ((0 , 0x1008FF41), windows $ W.greedyView "1-Main")
-        --XF86Launch2 :1008FF42
-        , ((0 , 0x1008FF42), windows $ W.greedyView "2-Temp")
-        --XF86Launch3 :1008FF43
-        , ((0 , 0x1008FF43), windows $ W.greedyView "3-Work")
-        --XF86Launch4 :1008FF44
-        , ((0 , 0x1008FF44), windows $ W.greedyView "4-Misc")
-        --XF86Launch5 :1008FF45
-        , ((0 , 0x1008FF45), windows $ W.greedyView "5-Msg")
-        --XF86Launch6 :1008FF46
-        , ((0 , 0x1008FF46), windows $ W.greedyView "6-Media")
+    , ((0 , 0x1008ff12), spawn "amixer -q set PCM toggle")
+    -- XF86AudioLowerVolume
+    , ((0 , 0x1008ff11), spawn "amixer -q set PCM 1- unmute")
+    -- XF86AudioRaiseVolume
+    , ((0 , 0x1008ff13), spawn "amixer -q set PCM 1+ unmute")
+    --XF86Launch1 :1008FF41
+    , ((0 , 0x1008FF41), windows $ W.greedyView "1-Main")
+    --XF86Launch2 :1008FF42
+    , ((0 , 0x1008FF42), windows $ W.greedyView "2-Temp")
+    --XF86Launch3 :1008FF43
+    , ((0 , 0x1008FF43), windows $ W.greedyView "3-Work")
+    --XF86Launch4 :1008FF44
+    , ((0 , 0x1008FF44), windows $ W.greedyView "4-Misc")
+    --XF86Launch5 :1008FF45
+    , ((0 , 0x1008FF45), windows $ W.greedyView "5-Msg")
+    --XF86Launch6 :1008FF46
+    , ((0 , 0x1008FF46), windows $ W.greedyView "6-Media")
 
 
     -- quit, or restart
