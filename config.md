@@ -4,6 +4,7 @@
 * Configurtation for xmonad
 
 ## `.xmonad/autostart`
+* Remaps caps lock to shift key
 * Sets default cursor to Left Pointing Arrow ([Reference](https://wiki.haskell.org/Xmonad/Frequently_asked_questions#Setting_the_X_cursor))
 * Autostarts VMware Tools if they are installed
 
