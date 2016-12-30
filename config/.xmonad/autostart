@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# map caps lock to shift key
+xmodmap -e "keycode 66 = Shift_L NoSymbol Shift_L"
+
 # start vmware tools if appropriate (installed and not running yet)
 if [ -e "/etc/init.d/vmware-tools" ] && [ -e "/usr/bin/vmware-user" ]; then
   if [ $(/etc/init.d/vmware-tools status | grep 'vmtoolsd is running' -c) -eq 1 ]; then
