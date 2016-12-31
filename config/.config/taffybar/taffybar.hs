@@ -29,8 +29,8 @@ formatPercent = printf "%.0f"
 
 --------------------------------------------------
 -- CPU Monitor Related
-textCpuMonitorNew :: String -- ^ Format. You can use variables: $total$, $user$, $system$
-                  -> Double -- ^ Polling period (in seconds)
+textCpuMonitorNew :: String
+                  -> Double
                   -> IO Gtk.Widget
 textCpuMonitorNew fmt period = do
   label <- pollingLabelNew fmt period callback
@@ -40,8 +40,9 @@ textCpuMonitorNew fmt period = do
     callback = do
       (userLoad, systemLoad, totalLoad) <- cpuLoad
       let load = formatPercent (totalLoad * 100)
+      let color = if totalLoad < 0.5 then "#00ff00" else "#ff0000"
       let template = ST.newSTMP fmt
-      let template' = ST.setManyAttrib [("total", "<span fgcolor='" ++ (if totalLoad < 0.5 then "#00ff00" else "#ff0000") ++ "'>" ++ load ++ "</span>")] template
+      let template' = ST.setManyAttrib [("total", "<span fgcolor='" ++ color ++ "'>" ++ load ++ "</span>")] template
       return $ ST.render template'     
 
 --------------------------------------------------
