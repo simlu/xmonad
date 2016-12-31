@@ -39,12 +39,10 @@ textCpuMonitorNew fmt period = do
   where
     callback = do
       (userLoad, systemLoad, totalLoad) <- cpuLoad
-      let [userLoad', systemLoad', totalLoad'] = map (formatPercent.(*100)) [userLoad, systemLoad, totalLoad]
+      let load = formatPercent (totalLoad * 100)
       let template = ST.newSTMP fmt
-      let template' = ST.setManyAttrib [ ("user", userLoad'),
-                                         ("system", systemLoad'),
-                                         ("total", "<span fgcolor='" ++ (if totalLoad < 0.5 then "#00ff00" else "#ff0000") ++ "'>" ++ totalLoad' ++ "</span>") ] template
-      return $ ST.render template'
+      let template' = ST.setManyAttrib [("total", "<span fgcolor='" ++ (if totalLoad < 0.5 then "#00ff00" else "#ff0000") ++ "'>" ++ load ++ "</span>")] template
+      return $ ST.render template'     
 
 --------------------------------------------------
 -- Mem Monitor Related
@@ -52,16 +50,16 @@ textMemoryMonitorNew :: String
                      -> Double 
                      -> IO Gtk.Widget
 textMemoryMonitorNew fmt period = do
-    label <- pollingLabelNew fmt period callback
-    Gtk.widgetShowAll label
-    return label
-    where
-      callback = do
-        info <- parseMeminfo
-        let template = ST.newSTMP fmt
-        let ratio = memoryUsedRatio info
-        let template' = ST.setManyAttrib [("perc", formatPercent (ratio * 100))] template
-        return $ ST.render template'
+  label <- pollingLabelNew fmt period callback
+  Gtk.widgetShowAll label
+  return label
+  where
+    callback = do
+      info <- parseMeminfo
+      let template = ST.newSTMP fmt
+      let ratio = memoryUsedRatio info
+      let template' = ST.setManyAttrib [("perc", formatPercent (ratio * 100))] template
+      return $ ST.render template'
 
 ---------------------------------------------------
 
