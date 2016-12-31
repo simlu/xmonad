@@ -23,6 +23,11 @@ import qualified Graphics.UI.Gtk as Gtk
 import System.Information.Memory
 
 --------------------------------------------------
+-- Helper
+formatPercent :: Double -> String
+formatPercent = printf "%.0f"
+
+--------------------------------------------------
 -- CPU Monitor Related
 textCpuMonitorNew :: String -- ^ Format. You can use variables: $total$, $user$, $system$
                   -> Double -- ^ Polling period (in seconds)
@@ -41,9 +46,8 @@ textCpuMonitorNew fmt period = do
                                          ("total", "<span fgcolor='" ++ (if totalLoad < 0.5 then "#00ff00" else "#ff0000") ++ "'>" ++ totalLoad' ++ "</span>") ] template
       return $ ST.render template'
 
-formatPercent :: Double -> String
-formatPercent = printf "%.0f"
----------------------------------------------------
+--------------------------------------------------
+-- Mem Monitor Related
 textMemoryMonitorNew :: String 
                      -> Double 
                      -> IO Gtk.Widget
@@ -56,12 +60,11 @@ textMemoryMonitorNew fmt period = do
         info <- parseMeminfo
         let template = ST.newSTMP fmt
         let labels = ["perc"]
-        let actions = [memoryUsed, memoryTotal]
+        let actions = [memoryUsedRatio]
             actions' = map ((show) .) actions
         let stats = [f info | f <- actions']
-        let used = read (stats !! 0) :: Double
-        let total = read (stats !! 1) :: Double
-        let template' = ST.setManyAttrib [("perc", formatPercent (100 * used / total))] template
+        let ratio = read (stats!!0) :: Double
+        let template' = ST.setManyAttrib [("perc", formatPercent (ratio * 100))] template
         return $ ST.render template'
 
 ---------------------------------------------------
