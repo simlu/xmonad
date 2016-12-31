@@ -59,11 +59,7 @@ textMemoryMonitorNew fmt period = do
       callback = do
         info <- parseMeminfo
         let template = ST.newSTMP fmt
-        let labels = ["perc"]
-        let actions = [memoryUsedRatio]
-            actions' = map ((show) .) actions
-        let stats = [f info | f <- actions']
-        let ratio = read (stats!!0) :: Double
+        let ratio = memoryUsedRatio info
         let template' = ST.setManyAttrib [("perc", formatPercent (ratio * 100))] template
         return $ ST.render template'
 
