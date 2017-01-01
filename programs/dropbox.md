@@ -39,20 +39,6 @@ Edit `~/.xmonad/autostart` and add the lines
 /usr/bin/dropbox start
 ```
 
-## Display in Xmobar
-Add the following to `~/.xmobarrc` under `commands`:
-```haskell 
-, Run Com "dropbox" ["status"] "dropbox" 50
-```
-And then reference it below in `template` as
-```haskell
-| <fc=lightblue>%dropbox%</fc>
-```
-Then run
-```shell
-xmonad --recompile && xmonad --restart
-```
-
 ## Misc
 * Modify sync speed by using 
 
