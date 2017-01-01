@@ -4,7 +4,6 @@ import System.Taffybar.WorkspaceSwitcher
 import System.Taffybar.WindowSwitcher
 import System.Taffybar.LayoutSwitcher
 
-import System.Taffybar.Systray
 import System.Taffybar.Pager
 import System.Taffybar.SimpleClock
 import System.Taffybar.FreedesktopNotifications
@@ -22,6 +21,11 @@ import System.Taffybar.Widgets.PollingLabel ( pollingLabelNew )
 import qualified Graphics.UI.Gtk as Gtk
 import System.Information.Memory
 import qualified Data.ByteString.Lazy.Char8 as B
+
+import Graphics.UI.Gtk.General.RcStyle (rcParseString)
+
+import Graphics.UI.Gtk.Misc.TrayManager
+
 
 --------------------------------------------------
 -- Helper
@@ -97,11 +101,32 @@ textSwapMonitorNew fmt period = do
       let template' = ST.setManyAttrib [("perc", formatPercent (((tot - free) / tot) * 100))] template
       return $ ST.render template'
 ---------------------------------------------------
+-- Tray Related
+systrayNew :: IO Gtk.Widget
+systrayNew = do
+  box <- Gtk.hBoxNew True 1 
+
+  trayManager <- trayManagerNew
+  Just screen <- Gtk.screenGetDefault
+  _ <- trayManagerManageScreen trayManager screen
+
+  _ <- Gtk.on trayManager trayIconAdded $ \w -> do
+    Gtk.widgetShowAll w
+    Gtk.boxPackStart box w Gtk.PackNatural 0
+
+  _ <- Gtk.on trayManager trayIconRemoved $ \_ -> do
+    putStrLn "Tray icon removed"
+
+  Gtk.widgetShowAll box
+  return (Gtk.toWidget box)
+
+--------------------------------------------------
+
 
 main = do
-  let cfg = defaultTaffybarConfig { barHeight = 25
+  let cfg = defaultTaffybarConfig { barHeight = 15
                                   , barPosition = Top
-                                  , widgetSpacing = 8
+                                  , widgetSpacing = 4 
   }
 
   pager <- pagerNew defaultPagerConfig 
@@ -125,6 +150,15 @@ main = do
       swap = textSwapMonitorNew "Swap: $perc$%" 5
       mem = textMemoryMonitorNew "Mem: $perc$%" 5
       cpu = textCpuMonitorNew "Cpu: $total$%" 5
+      
+      font = "Ubuntu Mono 9"
+
+  rcParseString $ ""
+    ++ "style \"default\" {"
+    ++ "  font_name = \"" ++ font ++ "\""
+    ++ "}"
+
+
   defaultTaffybar cfg { startWidgets = [ cpu, mem, swap ]
                                         , endWidgets = [ clock, tray, wea, note, wss, los, wnd ]
 }
