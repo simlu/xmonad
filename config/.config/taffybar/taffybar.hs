@@ -25,7 +25,9 @@ import qualified Data.ByteString.Lazy.Char8 as B
 import Graphics.UI.Gtk.General.RcStyle (rcParseString)
 
 import Graphics.UI.Gtk.Misc.TrayManager
+import Data.IORef
 
+import System.Information.Network (getNetInfo)
 
 --------------------------------------------------
 -- Helper
@@ -44,6 +46,43 @@ textWidgetNew str = do
   Gtk.boxPackStart box label Gtk.PackNatural 0
   Gtk.widgetShowAll box
   return $ Gtk.toWidget box
+
+--------------------------------------------------
+-- Net
+
+downNetMonitorNew :: Double -> String -> IO Gtk.Widget
+downNetMonitorNew interval interface = do
+  sample <- newIORef 0
+  label <- pollingLabelNew "" interval $ getNetDown sample interval interface
+  Gtk.widgetShowAll label
+  return $ Gtk.toWidget label
+
+upNetMonitorNew :: Double -> String -> IO Gtk.Widget
+upNetMonitorNew interval interface = do
+  sample <- newIORef 0
+  label <- pollingLabelNew "" interval $ getNetUp sample interval interface
+  Gtk.widgetShowAll label
+  return $ Gtk.toWidget label
+
+getNetDown :: IORef Integer -> Double -> String -> IO String
+getNetDown sample interval interface = do
+  Just [new, _] <- getNetInfo interface
+  old <- readIORef sample
+  writeIORef sample new
+  let delta = new - old
+      incoming = fromIntegral delta/(interval*1e3)
+  if old == 0 then return $ "…………" ++ colorize "#586E75" "" "KB/s"
+  else return $ "Down: " ++ (take 4 $ printf "%.2f" incoming) ++ colorize "#586E75" "" "KB/s"
+
+getNetUp :: IORef Integer -> Double -> String -> IO String
+getNetUp sample interval interface = do
+  Just [_, new] <- getNetInfo interface
+  old <- readIORef sample
+  writeIORef sample new
+  let delta = new - old
+      outgoing = fromIntegral delta/(interval*1e3)
+  if old == 0 then return $ "…………" ++ colorize "#586E75" "" "KB/s"
+  else return $ "Up: " ++ (take 4 $ printf "%.2f" outgoing) ++ colorize "#586E75" "" "KB/s"
 
 --------------------------------------------------
 -- CPU Monitor Related
@@ -155,9 +194,12 @@ main = do
       note = notifyAreaNew defaultNotificationConfig
       wea = weatherNew (defaultWeatherConfig "CYLW") 10
       tray = systrayNew
-      swap = textSwapMonitorNew "Swap: $perc$%" 1
-      mem = textMemoryMonitorNew "Mem: $perc$%" 1
-      cpu = textCpuMonitorNew "Cpu: $total$%" 1
+      swap = textSwapMonitorNew ("Swap: $perc$" ++ colorize "#586E75" "" "%") 1
+      mem = textMemoryMonitorNew ("Mem: $perc$" ++ colorize "#586E75" "" "%") 1
+      cpu = textCpuMonitorNew ("Cpu: $total$" ++ colorize "#586E75" "" "%") 1
+
+      netDown = downNetMonitorNew 1 "ens33"
+      netUp = upNetMonitorNew 1 "ens33"
 
       sep = textWidgetNew " | "
       sepL = textWidgetNew "| "
@@ -172,6 +214,6 @@ main = do
     ++ "}"
 
 
-  defaultTaffybar cfg { startWidgets = [ cpu, sep, mem, sep, swap, note ]
+  defaultTaffybar cfg { startWidgets = [ cpu, sep, mem, sep, swap, sep, netUp, sep, netDown, note ]
                                         , endWidgets = [ clock, sepL, tray, sepR, wea, sep, wss, sepAlt, los, sepAlt, wnd ]
 }
