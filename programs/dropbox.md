@@ -36,7 +36,9 @@ To check the status run
 Edit `~/.xmonad/autostart` and add the lines
 ```shell
 # start dropbox
-/usr/bin/dropbox start
+if [ -z "$(pgrep -x dropbox)" ] ; then
+  /usr/bin/dropbox start
+fi
 ```
 
 ## Misc
