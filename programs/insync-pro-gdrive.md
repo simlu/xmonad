@@ -25,20 +25,6 @@ Edit `~/.xmonad/autostart` and add the lines
 /usr/bin/insync start
 ```
 
-## Display in Xmobar
-Add the following to `~/.xmobarrc` under `commands`:
-```haskell 
-, Run Com "insync" ["get_sync_progress"] "insync" 50
-```
-And then reference it below in `template` as
-```haskell
-| <fc=lightblue>%insync%</fc> 
-```
-Then run
-```shell
-xmonad --recompile && xmonad --restart
-```
-
 ## Misc
 * Run `insync get_sync_progress` to get more detailed sync information
 * Run `insync help` to list available commands
