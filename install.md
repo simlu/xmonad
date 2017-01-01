@@ -38,15 +38,11 @@ Details on what the different files are for can be found [here](config.md).
 # 4) Install Chrome
 Instructions [here](programs/chrome.md). Feel free to install another browser like [Firefox](https://help.ubuntu.com/community/FirefoxNewVersion) instead.
 
-# 5) Install Xmobar
-- Search [Releases](http://projects.haskell.org/xmobar/releases.html)
-- Find latest deb file [here](https://pkgs.org/search/xmobar) or [here](http://ftp.br.debian.org/debian/pool/main/x/xmobar/).
-- Install deb file by using
+# 5) Install Taffybar
 ```shell
 sudo apt-get install libiw30
-sudo dpkg -i xmobar_x.xx.x-x_amd64.deb
+sudo apt-get install taffybar
 ```
-> Latest at time of writing is [xmobar_0.24.3-2_amd64.deb](http://ftp.br.debian.org/debian/pool/main/x/xmobar/xmobar_0.24.3-2_amd64.deb) (Released Sep 5, 2016)
 
 # 6) Configure XMonad Autostart
 > [Reference](https://linuxexpresso.wordpress.com/2010/10/03/startx-automatically-on-login-ubuntu/)
