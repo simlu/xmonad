@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # start taffybar
-taffybar &
+if [ -z "$(pgrep -f taffybar-linux)" ] ; then
+  taffybar &
+fi
 
 # map caps lock to shift key
 xmodmap -e "keycode 66 = Shift_L NoSymbol Shift_L"
