@@ -1,7 +1,13 @@
 #!/bin/bash
 
+# start taffybar
+taffybar &
+
 # map caps lock to shift key
 xmodmap -e "keycode 66 = Shift_L NoSymbol Shift_L"
+
+# Use nice mouse cursor as default
+xsetroot -cursor_name left_ptr
 
 # start vmware tools if appropriate (installed and not running yet)
 if [ -e "/etc/init.d/vmware-tools" ] && [ -e "/usr/bin/vmware-user" ]; then
@@ -11,6 +17,3 @@ if [ -e "/etc/init.d/vmware-tools" ] && [ -e "/usr/bin/vmware-user" ]; then
     fi;
   fi;
 fi;
-
-# Use nice mouse cursor as default
-xsetroot -cursor_name left_ptr
