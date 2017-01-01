@@ -22,7 +22,9 @@ sudo apt-get install insync
 Edit `~/.xmonad/autostart` and add the lines
 ```shell
 # start insync
-/usr/bin/insync start
+if [ -z "$(pgrep -x insync)" ] ; then
+  /usr/bin/insync start
+fi
 ```
 
 ## Misc
