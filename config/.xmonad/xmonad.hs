@@ -29,11 +29,13 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
 
+-- taffybar
+import System.Taffybar.Hooks.PagerHints (pagerHints)
+
 -------------------------------------------------------------------------------
 -- Main --
 main = do
-       h <- spawnPipe "xmobar"
-       xmonad $ ewmh defaultConfig
+       xmonad $ ewmh $ pagerHints $ defaultConfig
               { workspaces = workspaces'
               , modMask = modMask'
               , borderWidth = borderWidth'
@@ -42,7 +44,6 @@ main = do
               , terminal = terminal'
               , keys = keys'
               , mouseBindings = myMouseBindings
-              , logHook = logHook' h
               , layoutHook = layoutHook'
               , manageHook = manageHook'
               , focusFollowsMouse = myFocusFollowsMouse
@@ -57,26 +58,12 @@ main = do
 manageHook' :: ManageHook
 manageHook' = manageHook defaultConfig <+> manageDocks
 
-logHook' :: Handle ->  X ()
-logHook' h = dynamicLogWithPP $ customPP { ppOutput = hPutStrLn h }
-
 layoutHook' = customLayout
 
 startupHook' :: X ()
 startupHook' = spawn ". ~/.xmonad/autostart"
 
 -------------------------------------------------------------------------------
--- Looks --
--- bar
-customPP :: PP
-customPP = defaultPP { ppCurrent = xmobarColor "#AFAF87" "" . wrap "[" "]"
-                     , ppTitle =  shorten 80
-                     , ppSep =  "<fc=#AFAF87> :: </fc>"
-                     , ppHiddenNoWindows = xmobarColor "#404040" ""
-                     , ppUrgent = xmobarColor "#ff0000" "" . wrap "!" "!"
-                     , ppOrder = reverse
-                     }
-
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = False
