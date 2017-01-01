@@ -16,7 +16,6 @@ import System.Taffybar.Widgets.PollingGraph
 
 import Text.Printf ( printf )
 import qualified Text.StringTemplate as ST
-import System.Information.CPU
 import System.Taffybar.Widgets.PollingLabel ( pollingLabelNew )
 import qualified Graphics.UI.Gtk as Gtk
 import System.Information.Memory
