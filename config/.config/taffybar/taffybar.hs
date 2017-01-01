@@ -37,6 +37,14 @@ getColor value
   | value < 0.67 = "#FFD700"
   | otherwise = "#FF0000"
 
+textWidgetNew :: String -> IO Gtk.Widget
+textWidgetNew str = do
+  box <- Gtk.hBoxNew False 0
+  label <- Gtk.labelNew $ Just str
+  Gtk.boxPackStart box label Gtk.PackNatural 0
+  Gtk.widgetShowAll box
+  return $ Gtk.toWidget box
+
 --------------------------------------------------
 -- CPU Monitor Related
 textCpuMonitorNew :: String
@@ -147,10 +155,15 @@ main = do
       note = notifyAreaNew defaultNotificationConfig
       wea = weatherNew (defaultWeatherConfig "CYLW") 10
       tray = systrayNew
-      swap = textSwapMonitorNew "Swap: $perc$%" 5
-      mem = textMemoryMonitorNew "Mem: $perc$%" 5
-      cpu = textCpuMonitorNew "Cpu: $total$%" 5
-      
+      swap = textSwapMonitorNew "Swap: $perc$%" 1
+      mem = textMemoryMonitorNew "Mem: $perc$%" 1
+      cpu = textCpuMonitorNew "Cpu: $total$%" 1
+
+      sep = textWidgetNew " | "
+      sepL = textWidgetNew "| "
+      sepR = textWidgetNew " |"
+      sepAlt = textWidgetNew ":" 
+ 
       font = "Ubuntu Mono 9"
 
   rcParseString $ ""
@@ -159,6 +172,6 @@ main = do
     ++ "}"
 
 
-  defaultTaffybar cfg { startWidgets = [ cpu, mem, swap ]
-                                        , endWidgets = [ clock, tray, wea, note, wss, los, wnd ]
+  defaultTaffybar cfg { startWidgets = [ cpu, sep, mem, sep, swap, note ]
+                                        , endWidgets = [ clock, sepL, tray, sepR, wea, sep, wss, sepAlt, los, sepAlt, wnd ]
 }
