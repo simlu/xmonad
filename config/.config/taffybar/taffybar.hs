@@ -27,6 +27,11 @@ import System.Information.Memory
 formatPercent :: Double -> String
 formatPercent = printf "%.0f"
 
+getColor value 
+  | value < 0.33 = "#00FF00"
+  | value < 0.67 = "#FFD700"
+  | otherwise = "#FF0000"
+
 --------------------------------------------------
 -- CPU Monitor Related
 textCpuMonitorNew :: String
@@ -40,7 +45,7 @@ textCpuMonitorNew fmt period = do
     callback = do
       (_, _, totalLoad) <- cpuLoad
       let load = formatPercent (totalLoad * 100)
-      let color = if totalLoad < 0.5 then "#00ff00" else "#ff0000"
+      let color = getColor totalLoad
       let template = ST.newSTMP fmt
       let template' = ST.setManyAttrib [("total", "<span fgcolor='" ++ color ++ "'>" ++ load ++ "</span>")] template
       return $ ST.render template'     
