@@ -1,8 +1,9 @@
 # Configure Multi Screen Setup
 
-## Xmobar
+## Taffybar
 
-If you want to spawn xmobar a different screen that is not your primary screen, you can edit `~/.xmonad/xmonad.hs` and change `"xmobar"` to `"xmobar -x 1"` where `1` is your second screen (`0` is default).
+If you want to spawn taffybar on a different screen that is not your primary screen, you can edit `~/.config/taffybar/taffybar.hs` and set the Monitor Number `monitorNumber :: Int -- ^ The xinerama/xrandr monitor number to put the bar on (default: 0)
+` ([Reference](https://github.com/travitch/taffybar/blob/master/src/System/Taffybar.hs#L164)).
 
 ## VMWare
 VMWare seems to work fine without any custom configuration.
