@@ -38,7 +38,7 @@ textCpuMonitorNew fmt period = do
   return label
   where
     callback = do
-      (userLoad, systemLoad, totalLoad) <- cpuLoad
+      (_, _, totalLoad) <- cpuLoad
       let load = formatPercent (totalLoad * 100)
       let color = if totalLoad < 0.5 then "#00ff00" else "#ff0000"
       let template = ST.newSTMP fmt
