@@ -21,6 +21,7 @@ import System.Information.CPU
 import System.Taffybar.Widgets.PollingLabel ( pollingLabelNew )
 import qualified Graphics.UI.Gtk as Gtk
 import System.Information.Memory
+import qualified Data.ByteString.Lazy.Char8 as B
 
 --------------------------------------------------
 -- Helper
@@ -68,6 +69,34 @@ textMemoryMonitorNew fmt period = do
       return $ ST.render template'
 
 ---------------------------------------------------
+-- Swap Monitor Related
+fileMEM :: IO B.ByteString
+fileMEM = B.readFile "/proc/meminfo"
+
+textSwapMonitorNew :: String
+                   -> Double
+                   -> IO Gtk.Widget
+textSwapMonitorNew fmt period = do
+  label <- pollingLabelNew fmt period callback
+  Gtk.widgetShowAll label
+  return label
+  where
+    callback = do
+      file <- fileMEM
+      let li i l
+            | l /= [] = head l !! i
+            | otherwise = B.empty
+          fs s l
+            | null l    = False
+            | otherwise = head l == B.pack s
+          get_data s = flip (/) 1024 . read . B.unpack . li 1 . filter (fs s)
+          st   = map B.words . B.lines $ file
+          tot  = get_data "SwapTotal:" st
+          free = get_data "SwapFree:" st
+      let template = ST.newSTMP fmt
+      let template' = ST.setManyAttrib [("perc", formatPercent (((tot - free) / tot) * 100))] template
+      return $ ST.render template'
+---------------------------------------------------
 
 main = do
   let cfg = defaultTaffybarConfig { barHeight = 25
@@ -93,8 +122,9 @@ main = do
       note = notifyAreaNew defaultNotificationConfig
       wea = weatherNew (defaultWeatherConfig "CYLW") 10
       tray = systrayNew
+      swap = textSwapMonitorNew "Swap: $perc$%" 5
       mem = textMemoryMonitorNew "Mem: $perc$%" 5
       cpu = textCpuMonitorNew "Cpu: $total$%" 5
-  defaultTaffybar cfg { startWidgets = [ cpu, mem ]
+  defaultTaffybar cfg { startWidgets = [ cpu, mem, swap ]
                                         , endWidgets = [ clock, tray, wea, note, wss, los, wnd ]
 }
