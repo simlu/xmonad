@@ -86,16 +86,34 @@ getNetUp sample interval interface = do
 
 --------------------------------------------------
 -- CPU Monitor Related
+cpuData :: IO [Int]
+cpuData = cpuParser `fmap` B.readFile "/proc/stat"
+
+cpuParser :: B.ByteString -> [Int]
+cpuParser = map (read . B.unpack) . tail . B.words . head . B.lines
+
+parseCpu :: IORef [Int] -> IO [Double]
+parseCpu cref =
+    do a <- readIORef cref
+       b <- cpuData
+       writeIORef cref b
+       let dif = zipWith (-) b a
+           tot = fromIntegral $ sum dif
+           percent = map ((/ tot) . fromIntegral) dif
+       return percent
+
 textCpuMonitorNew :: String
                   -> Double
                   -> IO Gtk.Widget
 textCpuMonitorNew fmt period = do
-  label <- pollingLabelNew fmt period callback
+  cref <- newIORef []
+  label <- pollingLabelNew fmt period (callback cref)
   Gtk.widgetShowAll label
   return label
   where
-    callback = do
-      (_, _, totalLoad) <- cpuLoad
+    callback cref = do
+      c <- parseCpu cref
+      let totalLoad = sum $ take 3 c
       let load = formatPercent (totalLoad * 100)
       let color = getColor totalLoad
       let template = ST.newSTMP fmt
