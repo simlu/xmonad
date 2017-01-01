@@ -30,14 +30,10 @@ and enter email and password.
 * Taffybar can be closed once rescuetime is running, but it needs to be running when rescuetime is started.
 
 ## Configure Autostart
-Add the following to `~/.xmonad/autostart`. Note that [Trayer](utils/trayer.md) is required.
+Add the following to `~/.xmonad/autostart`.
 ```shell
 # start rescuetime
 if [ -z "$(pgrep -x rescuetime)" ] ; then
-    if [ -z "$(pgrep -x trayer)" ] ; then
-        (cd /home/vinc; trayer &> /dev/null &);
-    fi;
-    sleep 2 && (cd /home/vinc; rescuetime &> /dev/null &) && sleep 10;
-    kill $(pgrep -x trayer);
+    (cd /home/vinc; rescuetime &> /dev/null &);
 fi
 ```
