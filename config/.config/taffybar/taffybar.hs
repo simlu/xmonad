@@ -151,7 +151,6 @@ textWeatherNew fmt station period = do
 
 --------------------------------------------------
 -- Net
-
 getNetworkAdapter :: IO String
 getNetworkAdapter = do
   routeRaw <- readProcess "route" [] ""
