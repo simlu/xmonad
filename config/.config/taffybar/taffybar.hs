@@ -94,17 +94,16 @@ nonEmpty x = case x of
 
 pagerCallback :: PagerConfig -> Gtk.Label -> Event -> IO ()
 pagerCallback cfg label _ = do
-  Gtk.postGUIAsync $ do
-    title <- withDefaultCtx getActiveWindowTitle
-    let decorate = activeWindow cfg
-    Gtk.labelSetMarkup label (decorate $ nonEmpty title)
+  title <- withDefaultCtx getActiveWindowTitle
+  let decorate = activeWindow cfg
+  Gtk.postGUIAsync $ Gtk.labelSetMarkup label (decorate $ nonEmpty title)
 
 textActiveWindowNew :: Pager -> IO Gtk.Widget
 textActiveWindowNew pager = do
   label <- Gtk.labelNew $ Just "label"
 
   let cfg = config pager
-  let callback = pagerCallback cfg label
+      callback = pagerCallback cfg label
   subscribe pager callback "_NET_ACTIVE_WINDOW"
 
   box <- Gtk.hBoxNew False 0
