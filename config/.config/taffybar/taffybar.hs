@@ -28,6 +28,7 @@ import Data.IORef
 import System.Information.Memory
 import System.Information.Network (getNetInfo)
 import System.Process (readProcess)
+
 --------------------------------------------------
 -- Main
 main = do
@@ -82,8 +83,8 @@ main = do
 
 --------------------------------------------------
 -- Helper
-formatPercent :: Double -> String
-formatPercent = printf "%.0f"
+roundDbl :: Double -> Integer -> String
+roundDbl value digits = printf ("%." ++ (show digits) ++ "f") value
 
 getColor :: Double -> String
 getColor value 
@@ -196,7 +197,7 @@ textCpuMonitorNew fmt period = do
     callback cref = do
       c <- parseCpu cref
       let totalLoad = sum $ take 3 c
-      let load = formatPercent (totalLoad * 100)
+      let load = roundDbl (totalLoad * 100) 0
       let color = getColor totalLoad
       let template = ST.newSTMP fmt
       let template' = ST.setManyAttrib [("total", "<span fgcolor='" ++ color ++ "'>" ++ load ++ "</span>")] template
@@ -216,7 +217,7 @@ textMemoryMonitorNew fmt period = do
       info <- parseMeminfo
       let template = ST.newSTMP fmt
       let ratio = memoryUsedRatio info
-      let template' = ST.setManyAttrib [("perc", formatPercent (ratio * 100))] template
+      let template' = ST.setManyAttrib [("perc", roundDbl (ratio * 100) 0)] template
       return $ ST.render template'
 
 ---------------------------------------------------
@@ -245,7 +246,7 @@ textSwapMonitorNew fmt period = do
           tot  = get_data "SwapTotal:" st
           free = get_data "SwapFree:" st
       let template = ST.newSTMP fmt
-      let template' = ST.setManyAttrib [("perc", formatPercent (((tot - free) / tot) * 100))] template
+      let template' = ST.setManyAttrib [("perc", roundDbl (((tot - free) / tot) * 100) 0)] template
       return $ ST.render template'
 ---------------------------------------------------
 -- Tray Related
