@@ -21,7 +21,6 @@ import qualified Graphics.UI.Gtk as Gtk
 import qualified Data.ByteString.Lazy.Char8 as B
 import Data.Char (isSpace)
 
-import Graphics.UI.Gtk.General.RcStyle (rcParseString)
 import Graphics.UI.Gtk.Misc.TrayManager
 import Data.IORef
 
@@ -68,14 +67,6 @@ main = do
       sepL = textWidgetNew "| "
       sepR = textWidgetNew " |"
       sepAlt = textWidgetNew ":"
-
-      font = "Ubuntu Mono 9"
-
-  rcParseString $ ""
-    ++ "style \"default\" {"
-    ++ "  font_name = \"" ++ font ++ "\""
-    ++ "}"
-
 
   defaultTaffybar cfg { startWidgets = [ cpu, sep, mem, sep, swap, sep, netUp, sep, netDown, note ]
                                         , endWidgets = [ clock, sepL, tray, sepR, wea, sep, wss, sepAlt, los, sepAlt, wnd ]
