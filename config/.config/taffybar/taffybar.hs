@@ -27,7 +27,9 @@ import Graphics.UI.Gtk.Misc.TrayManager
 import Data.IORef
 
 import System.Information.Network (getNetInfo)
+import System.Process (readProcess)
 
+import Data.Char (isSpace)
 --------------------------------------------------
 -- Helper
 formatPercent :: Double -> String
@@ -45,6 +47,8 @@ textWidgetNew str = do
   Gtk.boxPackStart box label Gtk.PackNatural 0
   Gtk.widgetShowAll box
   return $ Gtk.toWidget box
+
+strip = reverse . dropWhile isSpace . reverse . dropWhile isSpace
 
 --------------------------------------------------
 -- Net
@@ -203,6 +207,10 @@ main = do
                   , urgentWorkspace  = colorize "red" "yellow" . escape
                   , widgetSep        = " : "
   }
+  routeRaw <- readProcess "route" [] ""
+  defaultLine <- readProcess "grep" ["^default"] routeRaw
+  netAdapterRaw <- readProcess "grep" ["-o", "-P", "\\s\\w+$"] defaultLine
+  let netAdapter = strip netAdapterRaw
 
   let clock = textClockNew Nothing "<span fgcolor='orange'>%a %b %_d %Y %H:%M:%S</span>" 1
       wss = wspaceSwitcherNew pager
@@ -215,8 +223,8 @@ main = do
       mem = textMemoryMonitorNew ("Mem: $perc$" ++ colorize "#586E75" "" "%") 1
       cpu = textCpuMonitorNew ("Cpu: $total$" ++ colorize "#586E75" "" "%") 1
 
-      netDown = downNetMonitorNew 1 "ens33"
-      netUp = upNetMonitorNew 1 "ens33"
+      netDown = downNetMonitorNew 1 netAdapter
+      netUp = upNetMonitorNew 1 netAdapter
 
       sep = textWidgetNew " | "
       sepL = textWidgetNew "| "
