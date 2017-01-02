@@ -1,7 +1,6 @@
 import System.Taffybar
 
 import System.Taffybar.WorkspaceSwitcher
-import System.Taffybar.WindowSwitcher
 import System.Taffybar.LayoutSwitcher
 
 import System.Taffybar.Pager
@@ -19,12 +18,14 @@ import qualified Text.StringTemplate as ST
 import qualified Graphics.UI.Gtk as Gtk
 import qualified Data.ByteString.Lazy.Char8 as B
 import Data.Char (isSpace)
+import Graphics.X11.Xlib.Extras (Event)
 
 import Data.IORef
 import Graphics.UI.Gtk.Misc.TrayManager
 import Network.HTTP
 import Data.Time
 
+import System.Information.EWMHDesktopInfo
 import System.Information.Memory
 import System.Information.Network (getNetInfo)
 import System.Process (readProcess)
@@ -50,10 +51,10 @@ main = do
                   , widgetSep        = " : "
   }
 
-  let clock = textClockNew Nothing "<span fgcolor='orange'>%a %b %_d %Y %H:%M:%S</span>" 1
+  let clock = textClockNew Nothing (colorize "orange" "" "%a %b %_d %Y %H:%M:%S") 1
       wss = wspaceSwitcherNew pager
       los = layoutSwitcherNew pager
-      wnd = windowSwitcherNew pager
+      wnd = textActiveWindowNew pager
       note = notifyAreaNew defaultNotificationConfig
       wea = textWeatherNew ("$name$: $tempC$" ++ colorize "#586E75" "" "C") "CYLW" 60
       tray = systrayNew
@@ -83,6 +84,31 @@ strip = reverse . dropWhile isSpace . reverse . dropWhile isSpace
 
 getUrl :: String -> IO String
 getUrl url = simpleHTTP (getRequest url) >>= getResponseBody
+
+--------------------------------------------------
+-- Active Window
+textActiveWindowNew :: Pager -> IO Gtk.Widget
+textActiveWindowNew pager = do
+  label <- Gtk.labelNew $ Just "label"
+
+  let cfg = config pager
+  let callback = pagerCallback cfg label
+  subscribe pager callback "_NET_ACTIVE_WINDOW"
+
+  box <- Gtk.hBoxNew False 0
+  Gtk.boxPackStart box label Gtk.PackNatural 0
+  Gtk.widgetShowAll box
+  return $ Gtk.toWidget box
+  where
+    nonEmpty :: String -> String
+    nonEmpty x = case x of
+      [] -> "(nameless window)"
+      _  -> x
+    pagerCallback :: PagerConfig -> Gtk.Label -> Event -> IO ()
+    pagerCallback cfg label _ = do
+      title <- withDefaultCtx getActiveWindowTitle
+      let decorate = activeWindow cfg
+      Gtk.postGUIAsync $ Gtk.labelSetMarkup label (decorate $ nonEmpty title)
 
 --------------------------------------------------
 -- Text Widget
