@@ -2,7 +2,8 @@
 
 # start taffybar
 if [ -z "$(pgrep -f taffybar-linux)" ] ; then
-  taffybar &
+  echo "----------------" > ~/.config/taffybar/debug.log &
+  taffybar > ~/.config/taffybar/debug.log &
 fi
 
 # map caps lock to shift key
