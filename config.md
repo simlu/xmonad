@@ -11,6 +11,9 @@
 ## `.config/taffybar/taffybar.hs`
 * Configuration for taffybar
 
+## `.config/taffybar/taffybar.rc`
+* Style information for taffybar
+
 ## `.vimrc`
 * Fixes the Arrow Key behaviour when using `vi`
 
