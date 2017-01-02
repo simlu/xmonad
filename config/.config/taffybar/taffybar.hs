@@ -86,12 +86,6 @@ main = do
 roundDbl :: Double -> Integer -> String
 roundDbl value digits = printf ("%." ++ (show digits) ++ "f") value
 
-getColor :: Double -> String
-getColor value 
-  | value < 0.33 = "#00FF00"
-  | value < 0.67 = "#FFD700"
-  | otherwise = "#FF0000"
-
 strip :: String -> String
 strip = reverse . dropWhile isSpace . reverse . dropWhile isSpace
 
@@ -185,6 +179,12 @@ parseCpu cref =
            percent = map ((/ tot) . fromIntegral) dif
        return percent
 
+getCpuTextColor :: Double -> String
+getCpuTextColor value
+  | value < 0.33 = "#00FF00"
+  | value < 0.67 = "#FFD700"
+  | otherwise = "#FF0000"
+
 textCpuMonitorNew :: String
                   -> Double
                   -> IO Gtk.Widget
@@ -198,7 +198,7 @@ textCpuMonitorNew fmt period = do
       c <- parseCpu cref
       let totalLoad = sum $ take 3 c
       let load = roundDbl (totalLoad * 100) 0
-      let color = getColor totalLoad
+      let color = getCpuTextColor totalLoad
       let template = ST.newSTMP fmt
       let template' = ST.setManyAttrib [("total", "<span fgcolor='" ++ color ++ "'>" ++ load ++ "</span>")] template
       return $ ST.render template'     
