@@ -13,33 +13,89 @@ import System.Taffybar.Battery
 
 import System.Taffybar.Widgets.PollingBar
 import System.Taffybar.Widgets.PollingGraph
+import System.Taffybar.Widgets.PollingLabel ( pollingLabelNew )
 
 import Text.Printf ( printf )
 import qualified Text.StringTemplate as ST
-import System.Taffybar.Widgets.PollingLabel ( pollingLabelNew )
 import qualified Graphics.UI.Gtk as Gtk
-import System.Information.Memory
 import qualified Data.ByteString.Lazy.Char8 as B
+import Data.Char (isSpace)
 
 import Graphics.UI.Gtk.General.RcStyle (rcParseString)
-
 import Graphics.UI.Gtk.Misc.TrayManager
 import Data.IORef
 
+import System.Information.Memory
 import System.Information.Network (getNetInfo)
 import System.Process (readProcess)
+--------------------------------------------------
+-- Main
+main = do
+  let cfg = defaultTaffybarConfig { barHeight = 15
+                                  , barPosition = Top
+                                  , widgetSpacing = 4
+                                  , screenNumber = 0
+                                  , monitorNumber = 1
+  }
 
-import Data.Char (isSpace)
+  pager <- pagerNew defaultPagerConfig
+                  { activeWindow     = colorize "#ffca00" "" . escape . shorten 40
+                  , activeLayout     = escape
+                  , activeWorkspace  = colorize "#ffca00" "" . escape . wrap "[" "]"
+                  , hiddenWorkspace  = colorize "#aaaaaa" "" . escape
+                  , emptyWorkspace   = colorize "#666666" "" . escape
+                  , visibleWorkspace = colorize "#a88500" "" . escape
+                  , urgentWorkspace  = colorize "red" "yellow" . escape
+                  , widgetSep        = " : "
+  }
+
+  let clock = textClockNew Nothing "<span fgcolor='orange'>%a %b %_d %Y %H:%M:%S</span>" 1
+      wss = wspaceSwitcherNew pager
+      los = layoutSwitcherNew pager
+      wnd = windowSwitcherNew pager
+      note = notifyAreaNew defaultNotificationConfig
+      wea = weatherNew (defaultWeatherConfig "CYLW") 10
+      tray = systrayNew
+      swap = textSwapMonitorNew ("Swap: $perc$" ++ colorize "#586E75" "" "%") 1
+      mem = textMemoryMonitorNew ("Mem: $perc$" ++ colorize "#586E75" "" "%") 1
+      cpu = textCpuMonitorNew ("Cpu: $total$" ++ colorize "#586E75" "" "%") 1
+
+      netDown = downNetMonitorNew ("Down: $rate$" ++ colorize "#586E75" "" "KB/s") 1
+      netUp = upNetMonitorNew ("Up: $rate$" ++ colorize "#586E75" "" "KB/s") 1
+
+      sep = textWidgetNew " | "
+      sepL = textWidgetNew "| "
+      sepR = textWidgetNew " |"
+      sepAlt = textWidgetNew ":"
+
+      font = "Ubuntu Mono 9"
+
+  rcParseString $ ""
+    ++ "style \"default\" {"
+    ++ "  font_name = \"" ++ font ++ "\""
+    ++ "}"
+
+
+  defaultTaffybar cfg { startWidgets = [ cpu, sep, mem, sep, swap, sep, netUp, sep, netDown, note ]
+                                        , endWidgets = [ clock, sepL, tray, sepR, wea, sep, wss, sepAlt, los, sepAlt, wnd ]
+}
+
 --------------------------------------------------
 -- Helper
 formatPercent :: Double -> String
 formatPercent = printf "%.0f"
 
+getColor :: Double -> String
 getColor value 
   | value < 0.33 = "#00FF00"
   | value < 0.67 = "#FFD700"
   | otherwise = "#FF0000"
 
+strip :: String -> String
+strip = reverse . dropWhile isSpace . reverse . dropWhile isSpace
+
+--------------------------------------------------
+-- Text Widget
 textWidgetNew :: String -> IO Gtk.Widget
 textWidgetNew str = do
   box <- Gtk.hBoxNew False 0
@@ -48,24 +104,47 @@ textWidgetNew str = do
   Gtk.widgetShowAll box
   return $ Gtk.toWidget box
 
-strip = reverse . dropWhile isSpace . reverse . dropWhile isSpace
-
 --------------------------------------------------
 -- Net
 
-downNetMonitorNew :: Double -> String -> IO Gtk.Widget
-downNetMonitorNew interval interface = do
-  sample <- newIORef 0
-  label <- pollingLabelNew "" interval $ getNetDown sample interval interface
-  Gtk.widgetShowAll label
-  return $ Gtk.toWidget label
+getNetworkAdapter :: IO String
+getNetworkAdapter = do
+  routeRaw <- readProcess "route" [] ""
+  defaultLine <- readProcess "grep" ["^default"] routeRaw
+  netAdapterRaw <- readProcess "grep" ["-o", "-P", "\\s\\w+$"] defaultLine
+  return (strip netAdapterRaw)
 
-upNetMonitorNew :: Double -> String -> IO Gtk.Widget
-upNetMonitorNew interval interface = do
+downNetMonitorNew :: String
+                  -> Double
+                  -> IO Gtk.Widget
+downNetMonitorNew fmt period = do
+  interface <- getNetworkAdapter
   sample <- newIORef 0
-  label <- pollingLabelNew "" interval $ getNetUp sample interval interface
+  label <- pollingLabelNew fmt period (callback sample period interface)
   Gtk.widgetShowAll label
-  return $ Gtk.toWidget label
+  return label
+  where
+    callback sample period interface = do
+      rate <- getNetDown sample period interface
+      let template = ST.newSTMP fmt
+      let template' = ST.setManyAttrib [("rate", rate)] template
+      return $ ST.render template'
+
+upNetMonitorNew :: String
+                  -> Double
+                  -> IO Gtk.Widget
+upNetMonitorNew fmt period = do
+  interface <- getNetworkAdapter
+  sample <- newIORef 0
+  label <- pollingLabelNew fmt period (callback sample period interface)
+  Gtk.widgetShowAll label
+  return label
+  where
+    callback sample period interface = do
+      rate <- getNetUp sample period interface
+      let template = ST.newSTMP fmt
+      let template' = ST.setManyAttrib [("rate", rate)] template
+      return $ ST.render template'
 
 getNetDown :: IORef Integer -> Double -> String -> IO String
 getNetDown sample interval interface = do
@@ -74,8 +153,8 @@ getNetDown sample interval interface = do
   writeIORef sample new
   let delta = new - old
       incoming = fromIntegral delta/(interval*1e3)
-  if old == 0 then return $ "…………" ++ colorize "#586E75" "" "KB/s"
-  else return $ "Down: " ++ (take 4 $ printf "%.2f" incoming) ++ colorize "#586E75" "" "KB/s"
+  if old == 0 then return $ "…………"
+  else return $ (take 4 $ printf "%.2f" incoming)
 
 getNetUp :: IORef Integer -> Double -> String -> IO String
 getNetUp sample interval interface = do
@@ -84,8 +163,8 @@ getNetUp sample interval interface = do
   writeIORef sample new
   let delta = new - old
       outgoing = fromIntegral delta/(interval*1e3)
-  if old == 0 then return $ "…………" ++ colorize "#586E75" "" "KB/s"
-  else return $ "Up: " ++ (take 4 $ printf "%.2f" outgoing) ++ colorize "#586E75" "" "KB/s"
+  if old == 0 then return $ "…………"
+  else return $ (take 4 $ printf "%.2f" outgoing)
 
 --------------------------------------------------
 -- CPU Monitor Related
@@ -189,58 +268,3 @@ systrayNew = do
   return (Gtk.toWidget box)
 
 --------------------------------------------------
-
-
-main = do
-  let cfg = defaultTaffybarConfig { barHeight = 15
-                                  , barPosition = Top
-                                  , widgetSpacing = 4
-                                  , screenNumber = 0
-                                  , monitorNumber = 1 
-  }
-
-  pager <- pagerNew defaultPagerConfig 
-                  { activeWindow     = colorize "#ffca00" "" . escape . shorten 40
-                  , activeLayout     = escape
-                  , activeWorkspace  = colorize "#ffca00" "" . escape . wrap "[" "]"
-                  , hiddenWorkspace  = colorize "#aaaaaa" "" . escape
-                  , emptyWorkspace   = colorize "#666666" "" . escape
-                  , visibleWorkspace = colorize "#a88500" "" . escape
-                  , urgentWorkspace  = colorize "red" "yellow" . escape
-                  , widgetSep        = " : "
-  }
-  routeRaw <- readProcess "route" [] ""
-  defaultLine <- readProcess "grep" ["^default"] routeRaw
-  netAdapterRaw <- readProcess "grep" ["-o", "-P", "\\s\\w+$"] defaultLine
-  let netAdapter = strip netAdapterRaw
-
-  let clock = textClockNew Nothing "<span fgcolor='orange'>%a %b %_d %Y %H:%M:%S</span>" 1
-      wss = wspaceSwitcherNew pager
-      los = layoutSwitcherNew pager
-      wnd = windowSwitcherNew pager
-      note = notifyAreaNew defaultNotificationConfig
-      wea = weatherNew (defaultWeatherConfig "CYLW") 10
-      tray = systrayNew
-      swap = textSwapMonitorNew ("Swap: $perc$" ++ colorize "#586E75" "" "%") 1
-      mem = textMemoryMonitorNew ("Mem: $perc$" ++ colorize "#586E75" "" "%") 1
-      cpu = textCpuMonitorNew ("Cpu: $total$" ++ colorize "#586E75" "" "%") 1
-
-      netDown = downNetMonitorNew 1 netAdapter
-      netUp = upNetMonitorNew 1 netAdapter
-
-      sep = textWidgetNew " | "
-      sepL = textWidgetNew "| "
-      sepR = textWidgetNew " |"
-      sepAlt = textWidgetNew ":" 
- 
-      font = "Ubuntu Mono 9"
-
-  rcParseString $ ""
-    ++ "style \"default\" {"
-    ++ "  font_name = \"" ++ font ++ "\""
-    ++ "}"
-
-
-  defaultTaffybar cfg { startWidgets = [ cpu, sep, mem, sep, swap, sep, netUp, sep, netDown, note ]
-                                        , endWidgets = [ clock, sepL, tray, sepR, wea, sep, wss, sepAlt, los, sepAlt, wnd ]
-}
