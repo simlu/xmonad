@@ -140,7 +140,7 @@ getNetDown sample interval interface = do
   let delta = new - old
       incoming = fromIntegral delta/(interval*1e3)
   if old == 0 then return $ "…………"
-  else return $ (take 4 $ printf "%.2f" incoming)
+  else return $ (take 4 $ roundDbl incoming 2)
 
 getNetUp :: IORef Integer -> Double -> String -> IO String
 getNetUp sample interval interface = do
@@ -150,7 +150,7 @@ getNetUp sample interval interface = do
   let delta = new - old
       outgoing = fromIntegral delta/(interval*1e3)
   if old == 0 then return $ "…………"
-  else return $ (take 4 $ printf "%.2f" outgoing)
+  else return $ (take 4 $ roundDbl outgoing 2)
 
 --------------------------------------------------
 -- CPU Monitor Related
