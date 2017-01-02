@@ -194,7 +194,9 @@ systrayNew = do
 main = do
   let cfg = defaultTaffybarConfig { barHeight = 15
                                   , barPosition = Top
-                                  , widgetSpacing = 4 
+                                  , widgetSpacing = 4
+                                  , screenNumber = 0
+                                  , monitorNumber = 1 
   }
 
   pager <- pagerNew defaultPagerConfig 
