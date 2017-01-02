@@ -7,7 +7,6 @@ import System.Taffybar.LayoutSwitcher
 import System.Taffybar.Pager
 import System.Taffybar.SimpleClock
 import System.Taffybar.FreedesktopNotifications
-import System.Taffybar.Weather
 import System.Taffybar.MPRIS
 import System.Taffybar.Battery
 
@@ -21,8 +20,9 @@ import qualified Graphics.UI.Gtk as Gtk
 import qualified Data.ByteString.Lazy.Char8 as B
 import Data.Char (isSpace)
 
-import Graphics.UI.Gtk.Misc.TrayManager
 import Data.IORef
+import Graphics.UI.Gtk.Misc.TrayManager
+import Network.HTTP
 
 import System.Information.Memory
 import System.Information.Network (getNetInfo)
@@ -54,7 +54,7 @@ main = do
       los = layoutSwitcherNew pager
       wnd = windowSwitcherNew pager
       note = notifyAreaNew defaultNotificationConfig
-      wea = weatherNew (defaultWeatherConfig "CYLW") 10
+      wea = textWeatherNew ("$name$: $tempC$" ++ colorize "#586E75" "" "C") "CYLW" 10
       tray = systrayNew
       swap = textSwapMonitorNew ("Swap: $perc$" ++ colorize "#586E75" "" "%") 1
       mem = textMemoryMonitorNew ("Mem: $perc$" ++ colorize "#586E75" "" "%") 1
@@ -80,6 +80,9 @@ roundDbl value digits = printf ("%." ++ (show digits) ++ "f") value
 strip :: String -> String
 strip = reverse . dropWhile isSpace . reverse . dropWhile isSpace
 
+getUrl :: String -> IO String
+getUrl url = simpleHTTP (getRequest url) >>= getResponseBody
+
 --------------------------------------------------
 -- Text Widget
 textWidgetNew :: String -> IO Gtk.Widget
@@ -89,6 +92,28 @@ textWidgetNew str = do
   Gtk.boxPackStart box label Gtk.PackNatural 0
   Gtk.widgetShowAll box
   return $ Gtk.toWidget box
+
+--------------------------------------------------
+-- Weather
+textWeatherNew :: String
+               -> String
+               -> Double
+               -> IO Gtk.Widget
+textWeatherNew fmt station period = do
+  label <- pollingLabelNew fmt period (callback station)
+  Gtk.widgetShowAll label
+  return label
+  where
+    callback station = do
+      body <- getUrl ("http://tgftp.nws.noaa.gov/data/observations/metar/decoded/" ++ station ++ ".TXT")
+      name <- readProcess "grep" ["-o", "-P", "^.*(?=,.*\\(" ++ station ++ "\\))"] body
+
+      tempLine <- readProcess "grep" ["-o", "-P", "(?<=Temperature:).*$"] body
+      temp <- readProcess "grep" ["-o", "-P", "(?<=\\().*?(?= C\\))"] tempLine
+
+      let template = ST.newSTMP fmt
+      let template' = ST.setManyAttrib [ ("name", strip name), ("tempC", strip temp) ] template
+      return $ ST.render template'
 
 --------------------------------------------------
 -- Net
