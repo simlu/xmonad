@@ -23,6 +23,7 @@ import Data.Char (isSpace)
 import Data.IORef
 import Graphics.UI.Gtk.Misc.TrayManager
 import Network.HTTP
+import Data.Time
 
 import System.Information.Memory
 import System.Information.Network (getNetInfo)
@@ -100,20 +101,26 @@ textWeatherNew :: String
                -> Double
                -> IO Gtk.Widget
 textWeatherNew fmt station period = do
-  label <- pollingLabelNew fmt period (callback station)
+  initTime <- getCurrentTime
+  label <- pollingLabelNew fmt period (callback station initTime)
   Gtk.widgetShowAll label
   return label
   where
-    callback station = do
-      body <- getUrl ("http://tgftp.nws.noaa.gov/data/observations/metar/decoded/" ++ station ++ ".TXT")
-      name <- readProcess "grep" ["-o", "-P", "^.*(?=,.*\\(" ++ station ++ "\\))"] body
+    callback station initTime = do
+      currentTime <- getCurrentTime
+      -- start with delay (speed up when no network)
+      if (diffUTCTime currentTime initTime) < 30 then
+        return "Pending..."
+      else do
+        body <- getUrl ("http://tgftp.nws.noaa.gov/data/observations/metar/decoded/" ++ station ++ ".TXT")
+        name <- readProcess "grep" ["-o", "-P", "^.*(?=,.*\\(" ++ station ++ "\\))"] body
 
-      tempLine <- readProcess "grep" ["-o", "-P", "(?<=Temperature:).*$"] body
-      temp <- readProcess "grep" ["-o", "-P", "(?<=\\().*?(?= C\\))"] tempLine
+        tempLine <- readProcess "grep" ["-o", "-P", "(?<=Temperature:).*$"] body
+        temp <- readProcess "grep" ["-o", "-P", "(?<=\\().*?(?= C\\))"] tempLine
 
-      let template = ST.newSTMP fmt
-      let template' = ST.setManyAttrib [ ("name", strip name), ("tempC", strip temp) ] template
-      return $ ST.render template'
+        let template = ST.newSTMP fmt
+        let template' = ST.setManyAttrib [ ("name", strip name), ("tempC", strip temp) ] template
+        return $ ST.render template'
 
 --------------------------------------------------
 -- Net
