@@ -39,10 +39,22 @@ Details on what the different files are for can be found [here](config.md).
 Instructions [here](programs/chrome.md). Feel free to install another browser like [Firefox](https://help.ubuntu.com/community/FirefoxNewVersion) instead.
 
 # 5) Install Taffybar
+
+## Install Dependency
 ```shell
 sudo apt-get install libiw30
-sudo apt-get install taffybar
 ```
+
+## Install Latest Deb
+* Search [Releases](https://github.com/travitch/taffybar/releases)
+* Find latest deb file [here](https://pkgs.org/download/taffybar)
+* Install deb file by using
+
+```shell
+sudo dpkg -i taffybar_x.x.x-x_amd64.deb
+```
+> Latest at time of writing is [taffybar_0.4.6-3_amd64.deb](http://archive.ubuntu.com/ubuntu/pool/universe/t/taffybar/taffybar_0.4.6-3_amd64.deb) (Released Jan 11, 2016)
+
 
 # 6) Configure XMonad Autostart
 > [Reference](https://linuxexpresso.wordpress.com/2010/10/03/startx-automatically-on-login-ubuntu/)
