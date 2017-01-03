@@ -29,6 +29,7 @@ import System.Information.EWMHDesktopInfo
 import System.Information.Memory
 import System.Information.Network (getNetInfo)
 import System.Process (readProcess)
+import Control.Exception
 
 --------------------------------------------------
 -- Main
@@ -85,6 +86,8 @@ strip = reverse . dropWhile isSpace . reverse . dropWhile isSpace
 getUrl :: String -> IO String
 getUrl url = simpleHTTP (getRequest url) >>= getResponseBody
 
+catchAny :: IO a -> (SomeException -> IO a) -> IO a
+catchAny = Control.Exception.catch
 --------------------------------------------------
 -- Active Window
 nonEmpty :: String -> String
@@ -94,9 +97,14 @@ nonEmpty x = case x of
 
 pagerCallback :: PagerConfig -> Gtk.Label -> Event -> IO ()
 pagerCallback cfg label _ = do
-  title <- withDefaultCtx getActiveWindowTitle
-  let decorate = activeWindow cfg
-  Gtk.postGUIAsync $ Gtk.labelSetMarkup label (decorate $ nonEmpty title)
+  catchAny $ do
+    title <- withDefaultCtx getActiveWindowTitle
+    let decorate = activeWindow cfg
+    Gtk.postGUIAsync $ Gtk.labelSetMarkup label (decorate $ nonEmpty title)
+  $ \e -> do
+    -- Exceptions are expected here and are entirely ignored
+    -- Reference: https://github.com/travitch/taffybar/issues/105
+    putStrLn ("Caught an exception: " ++ show e)
 
 textActiveWindowNew :: Pager -> IO Gtk.Widget
 textActiveWindowNew pager = do
@@ -250,12 +258,12 @@ textCpuMonitorNew fmt period = do
       let color = getCpuTextColor totalLoad
       let template = ST.newSTMP fmt
       let template' = ST.setManyAttrib [("total", "<span fgcolor='" ++ color ++ "'>" ++ load ++ "</span>")] template
-      return $ ST.render template'     
+      return $ ST.render template'
 
 --------------------------------------------------
 -- Mem Monitor Related
-textMemoryMonitorNew :: String 
-                     -> Double 
+textMemoryMonitorNew :: String
+                     -> Double
                      -> IO Gtk.Widget
 textMemoryMonitorNew fmt period = do
   label <- pollingLabelNew fmt period callback
@@ -301,7 +309,7 @@ textSwapMonitorNew fmt period = do
 -- Tray Related
 systrayNew :: IO Gtk.Widget
 systrayNew = do
-  box <- Gtk.hBoxNew True 1 
+  box <- Gtk.hBoxNew True 1
 
   trayManager <- trayManagerNew
   Just screen <- Gtk.screenGetDefault
