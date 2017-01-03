@@ -1,16 +1,9 @@
 import System.Taffybar
 
-import System.Taffybar.WorkspaceSwitcher
-import System.Taffybar.LayoutSwitcher
-
 import System.Taffybar.Pager
 import System.Taffybar.SimpleClock
 import System.Taffybar.FreedesktopNotifications
-import System.Taffybar.MPRIS
-import System.Taffybar.Battery
 
-import System.Taffybar.Widgets.PollingBar
-import System.Taffybar.Widgets.PollingGraph
 import System.Taffybar.Widgets.PollingLabel ( pollingLabelNew )
 
 import Text.Printf ( printf )
