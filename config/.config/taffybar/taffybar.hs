@@ -90,22 +90,6 @@ catchAny :: IO a -> (SomeException -> IO a) -> IO a
 catchAny = Control.Exception.catch
 --------------------------------------------------
 -- Active Window
-nonEmpty :: String -> String
-nonEmpty x = case x of
-  [] -> "(nameless window)"
-  _  -> x
-
-pagerCallback :: PagerConfig -> Gtk.Label -> Event -> IO ()
-pagerCallback cfg label _ = do
-  catchAny $ do
-    title <- withDefaultCtx getActiveWindowTitle
-    let decorate = activeWindow cfg
-    Gtk.postGUIAsync $ Gtk.labelSetMarkup label (decorate $ nonEmpty title)
-  $ \e -> do
-    -- Exceptions are expected here and are entirely ignored
-    -- Reference: https://github.com/travitch/taffybar/issues/105
-    putStrLn ("Caught an exception: " ++ show e)
-
 textActiveWindowNew :: Pager -> IO Gtk.Widget
 textActiveWindowNew pager = do
   label <- Gtk.labelNew $ Just "label"
@@ -118,6 +102,21 @@ textActiveWindowNew pager = do
   Gtk.boxPackStart box label Gtk.PackNatural 0
   Gtk.widgetShowAll box
   return $ Gtk.toWidget box
+  where
+    nonEmpty :: String -> String
+    nonEmpty x = case x of
+      [] -> "(nameless window)"
+      _  -> x
+    pagerCallback :: PagerConfig -> Gtk.Label -> Event -> IO ()
+    pagerCallback cfg label _ = do
+      catchAny $ do
+        title <- withDefaultCtx getActiveWindowTitle
+        let decorate = activeWindow cfg
+        Gtk.postGUIAsync $ Gtk.labelSetMarkup label (decorate $ nonEmpty title)
+      $ \e -> do
+        -- Exceptions are expected here and are entirely ignored
+        -- Reference: https://github.com/travitch/taffybar/issues/105
+        putStrLn ("Caught an exception: " ++ show e)
 
 --------------------------------------------------
 -- Text Widget
