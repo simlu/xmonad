@@ -24,6 +24,7 @@ import Data.IORef
 import Graphics.UI.Gtk.Misc.TrayManager
 import Network.HTTP
 import Data.Time
+import Data.List
 
 import System.Information.X11DesktopInfo
 import System.Information.EWMHDesktopInfo
@@ -54,7 +55,7 @@ main = do
   }
 
   let clock = textClockNew Nothing (colorize "orange" "" "%a %b %_d %Y %H:%M:%S") 1
-      -- wss = wspaceSwitcherNew pager
+      wsm = textWorkspaceMonitorNew pager
       los = textActiveLayoutNew pager
       wnd = textActiveWindowNew pager
       note = notifyAreaNew defaultNotificationConfig
@@ -73,7 +74,7 @@ main = do
       sepAlt = textWidgetNew ":"
 
   defaultTaffybar cfg { startWidgets = [ cpu, sep, mem, sep, swap, sep, netUp, sep, netDown, note ]
-                                        , endWidgets = [ clock, sepL, tray, sepR, wea, sep, los, sepAlt, wnd ]
+                                        , endWidgets = [ clock, sepL, tray, sepR, wea, sep, wsm, sepAlt, los, sepAlt, wnd ]
 }
 
 --------------------------------------------------
@@ -97,6 +98,38 @@ wrapLabel label = do
   Gtk.widgetShowAll box
   return $ Gtk.toWidget box
 --------------------------------------------------
+-- Workspace Monitor
+textWorkspaceMonitorNew :: Pager -> IO Gtk.Widget
+textWorkspaceMonitorNew pager = do
+  label <- Gtk.labelNew $ Just "label"
+  let cfg = config pager
+      callback = pagerCallback cfg label
+  subscribe pager callback "_NET_DESKTOP_NAMES"
+  subscribe pager callback "_NET_NUMBER_OF_DESKTOPS"
+  wrapLabel label
+  where
+    pagerCallback :: PagerConfig -> Gtk.Label -> Event -> IO ()
+    pagerCallback cfg label _ = do
+      catchAny $ do
+        wsNames <- withDefaultCtx getWorkspaceNames
+        wsNonEmpty <- withDefaultCtx $ mapM getWorkspace =<< getWindows
+        wsVisible <- withDefaultCtx getVisibleWorkspaces
+        wsCurrent <- withDefaultCtx getVisibleWorkspaces
+        let fkt = \x -> if (elem x wsCurrent)
+            then (activeWorkspace cfg) (wsNames!!x)
+            else if (elem x wsVisible)
+              then (visibleWorkspace cfg) (wsNames!!x)
+              else if (elem x wsNonEmpty)
+                then (hiddenWorkspace cfg) (wsNames!!x)
+                else (emptyWorkspace cfg) (wsNames!!x)
+        let result = map fkt [0 .. length wsNames - 1]
+        Gtk.postGUIAsync $ Gtk.labelSetMarkup label (intercalate " " result)
+      $ \e -> do
+        -- Exceptions are expected here and are entirely ignored
+        -- Reference: https://github.com/travitch/taffybar/issues/105
+        putStrLn ("Caught an exception: " ++ show e)
+
+--------------------------------------------------
 -- Active Layout
 textActiveLayoutNew :: Pager -> IO Gtk.Widget
 textActiveLayoutNew pager = do
@@ -111,7 +144,7 @@ textActiveLayoutNew pager = do
       catchAny $ do
         layout <- withDefaultCtx $ readAsString Nothing "_XMONAD_CURRENT_LAYOUT"
         let decorate = activeLayout cfg
-        Gtk.labelSetMarkup label (decorate layout)
+        Gtk.postGUIAsync $ Gtk.labelSetMarkup label (decorate layout)
       $ \e -> do
         -- Exceptions are expected here and are entirely ignored
         -- Reference: https://github.com/travitch/taffybar/issues/105
