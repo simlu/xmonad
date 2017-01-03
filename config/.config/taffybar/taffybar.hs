@@ -25,6 +25,7 @@ import Graphics.UI.Gtk.Misc.TrayManager
 import Network.HTTP
 import Data.Time
 
+import System.Information.X11DesktopInfo
 import System.Information.EWMHDesktopInfo
 import System.Information.Memory
 import System.Information.Network (getNetInfo)
@@ -53,8 +54,8 @@ main = do
   }
 
   let clock = textClockNew Nothing (colorize "orange" "" "%a %b %_d %Y %H:%M:%S") 1
-      wss = wspaceSwitcherNew pager
-      los = layoutSwitcherNew pager
+      -- wss = wspaceSwitcherNew pager
+      los = textActiveLayoutNew pager
       wnd = textActiveWindowNew pager
       note = notifyAreaNew defaultNotificationConfig
       wea = textWeatherNew ("$name$: $tempC$" ++ colorize "#586E75" "" "C") "CYLW" 60
@@ -72,7 +73,7 @@ main = do
       sepAlt = textWidgetNew ":"
 
   defaultTaffybar cfg { startWidgets = [ cpu, sep, mem, sep, swap, sep, netUp, sep, netDown, note ]
-                                        , endWidgets = [ clock, sepL, tray, sepR, wea, sep, wss, sepAlt, los, sepAlt, wnd ]
+                                        , endWidgets = [ clock, sepL, tray, sepR, wea, sep, los, sepAlt, wnd ]
 }
 
 --------------------------------------------------
@@ -88,20 +89,43 @@ getUrl url = simpleHTTP (getRequest url) >>= getResponseBody
 
 catchAny :: IO a -> (SomeException -> IO a) -> IO a
 catchAny = Control.Exception.catch
+
+wrapLabel :: Gtk.Label -> IO Gtk.Widget
+wrapLabel label = do
+  box <- Gtk.hBoxNew False 0
+  Gtk.boxPackStart box label Gtk.PackNatural 0
+  Gtk.widgetShowAll box
+  return $ Gtk.toWidget box
+--------------------------------------------------
+-- Active Layout
+textActiveLayoutNew :: Pager -> IO Gtk.Widget
+textActiveLayoutNew pager = do
+  label <- Gtk.labelNew $ Just "label"
+  let cfg = config pager
+      callback = pagerCallback cfg label
+  subscribe pager callback "_XMONAD_CURRENT_LAYOUT"
+  wrapLabel label
+  where
+    pagerCallback :: PagerConfig -> Gtk.Label -> Event -> IO ()
+    pagerCallback cfg label _ = do
+      catchAny $ do
+        layout <- withDefaultCtx $ readAsString Nothing "_XMONAD_CURRENT_LAYOUT"
+        let decorate = activeLayout cfg
+        Gtk.labelSetMarkup label (decorate layout)
+      $ \e -> do
+        -- Exceptions are expected here and are entirely ignored
+        -- Reference: https://github.com/travitch/taffybar/issues/105
+        putStrLn ("Caught an exception: " ++ show e)
+
 --------------------------------------------------
 -- Active Window
 textActiveWindowNew :: Pager -> IO Gtk.Widget
 textActiveWindowNew pager = do
   label <- Gtk.labelNew $ Just "label"
-
   let cfg = config pager
       callback = pagerCallback cfg label
   subscribe pager callback "_NET_ACTIVE_WINDOW"
-
-  box <- Gtk.hBoxNew False 0
-  Gtk.boxPackStart box label Gtk.PackNatural 0
-  Gtk.widgetShowAll box
-  return $ Gtk.toWidget box
+  wrapLabel label
   where
     nonEmpty :: String -> String
     nonEmpty x = case x of
@@ -122,11 +146,8 @@ textActiveWindowNew pager = do
 -- Text Widget
 textWidgetNew :: String -> IO Gtk.Widget
 textWidgetNew str = do
-  box <- Gtk.hBoxNew False 0
   label <- Gtk.labelNew $ Just str
-  Gtk.boxPackStart box label Gtk.PackNatural 0
-  Gtk.widgetShowAll box
-  return $ Gtk.toWidget box
+  wrapLabel label
 
 --------------------------------------------------
 -- Weather
