@@ -25,6 +25,7 @@ import System.Information.Memory
 import System.Information.Network (getNetInfo)
 import System.Process (readProcess)
 import Control.Exception
+import Control.Exception.Enclosed (catchAny)
 
 --------------------------------------------------
 -- Main
@@ -81,8 +82,8 @@ strip = reverse . dropWhile isSpace . reverse . dropWhile isSpace
 getUrl :: String -> IO String
 getUrl url = simpleHTTP (getRequest url) >>= getResponseBody
 
-catchAny :: IO a -> (SomeException -> IO a) -> IO a
-catchAny = Control.Exception.catch
+ignoreException :: SomeException -> IO ()
+ignoreException _ = return ()
 
 wrapLabel :: Gtk.Label -> IO Gtk.Widget
 wrapLabel label = do
@@ -116,11 +117,11 @@ textWorkspaceMonitorNew pager = do
                 then (hiddenWorkspace cfg) (wsNames!!x)
                 else (emptyWorkspace cfg) (wsNames!!x)
         let result = map fkt [0 .. length wsNames - 1]
-        Gtk.postGUIAsync $ Gtk.labelSetMarkup label (intercalate " " result)
-      $ \e -> do
-        -- Exceptions are expected here and are entirely ignored
-        -- Reference: https://github.com/travitch/taffybar/issues/105
-        putStrLn ("Caught an exception: " ++ show e)
+        Gtk.postGUIAsync $ do
+          catchAny $ do
+            Gtk.labelSetMarkup label (intercalate " " result)
+          $ ignoreException
+      $ ignoreException
 
 --------------------------------------------------
 -- Active Layout
@@ -137,11 +138,11 @@ textActiveLayoutNew pager = do
       catchAny $ do
         layout <- withDefaultCtx $ readAsString Nothing "_XMONAD_CURRENT_LAYOUT"
         let decorate = activeLayout cfg
-        Gtk.postGUIAsync $ Gtk.labelSetMarkup label (decorate layout)
-      $ \e -> do
-        -- Exceptions are expected here and are entirely ignored
-        -- Reference: https://github.com/travitch/taffybar/issues/105
-        putStrLn ("Caught an exception: " ++ show e)
+        Gtk.postGUIAsync $ do
+          catchAny $ do
+            Gtk.labelSetMarkup label (decorate layout)
+          $ ignoreException
+      $ ignoreException
 
 --------------------------------------------------
 -- Active Window
@@ -162,11 +163,11 @@ textActiveWindowNew pager = do
       catchAny $ do
         title <- withDefaultCtx getActiveWindowTitle
         let decorate = activeWindow cfg
-        Gtk.postGUIAsync $ Gtk.labelSetMarkup label (decorate $ nonEmpty title)
-      $ \e -> do
-        -- Exceptions are expected here and are entirely ignored
-        -- Reference: https://github.com/travitch/taffybar/issues/105
-        putStrLn ("Caught an exception: " ++ show e)
+        Gtk.postGUIAsync $ do
+         catchAny $ do
+           Gtk.labelSetMarkup label (decorate $ nonEmpty title)
+         $ ignoreException
+      $ ignoreException
 
 --------------------------------------------------
 -- Text Widget
