@@ -109,13 +109,11 @@ textWorkspaceMonitorNew pager = do
         wsNonEmpty <- withDefaultCtx $ mapM getWorkspace =<< getWindows
         wsVisible <- withDefaultCtx getVisibleWorkspaces
         wsCurrent <- withDefaultCtx getVisibleWorkspaces
-        let fkt = \x -> if (elem x wsCurrent)
-            then (activeWorkspace cfg) (wsNames!!x)
-            else if (elem x wsVisible)
-              then (visibleWorkspace cfg) (wsNames!!x)
-              else if (elem x wsNonEmpty)
-                then (hiddenWorkspace cfg) (wsNames!!x)
-                else (emptyWorkspace cfg) (wsNames!!x)
+        let fkt = \x -> case () of
+                        _ | elem x wsCurrent  -> (activeWorkspace cfg) (wsNames!!x)
+                          | elem x wsVisible  -> (visibleWorkspace cfg) (wsNames!!x)
+                          | elem x wsNonEmpty -> (hiddenWorkspace cfg) (wsNames!!x)
+                          | otherwise         -> (emptyWorkspace cfg) (wsNames!!x)
         let result = map fkt [0 .. length wsNames - 1]
         Gtk.postGUIAsync $ do
           catchAny $ do
