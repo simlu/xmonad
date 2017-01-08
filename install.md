@@ -67,6 +67,7 @@ Append the following to `~/.profile`:
 ```shell
 # start xmonad on login
 if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
+ eval 'dbus-launch --auto-syntax'  # comment out if you're not using taffybar
  . startx
  logout
 fi
