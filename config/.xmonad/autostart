@@ -1,11 +1,7 @@
 #!/bin/bash
 
-# start taffybar
-if [ -z "$(pgrep -f taffybar-linux)" ] ; then
-  echo "----------------" >> ~/.config/taffybar/debug.log &
-  echo "$(date)" >> ~/.config/taffybar/debug.log &
-  taffybar &>> ~/.config/taffybar/debug.log &
-fi
+# ensure taffybar keeps running
+watch --interval 2 ~/.config/taffybar/start.sh &> /dev/null &
 
 # map caps lock to shift key
 xmodmap -e "keycode 66 = Shift_L NoSymbol Shift_L"
