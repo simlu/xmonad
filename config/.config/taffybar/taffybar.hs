@@ -18,6 +18,7 @@ import Graphics.UI.Gtk.Misc.TrayManager
 import Network.HTTP
 import Data.Time
 import Data.List
+import Data.Map (fromList, findWithDefault)
 
 import System.Information.X11DesktopInfo
 import System.Information.EWMHDesktopInfo
@@ -109,12 +110,14 @@ textWorkspaceMonitorNew pager = do
         wsNonEmpty <- withDefaultCtx $ mapM getWorkspace =<< getWindows
         wsVisible <- withDefaultCtx getVisibleWorkspaces
         wsCurrent <- withDefaultCtx getVisibleWorkspaces
-        let fkt = \x -> case () of
-                        _ | elem x wsCurrent  -> (activeWorkspace cfg) (wsNames!!x)
-                          | elem x wsVisible  -> (visibleWorkspace cfg) (wsNames!!x)
-                          | elem x wsNonEmpty -> (hiddenWorkspace cfg) (wsNames!!x)
-                          | otherwise         -> (emptyWorkspace cfg) (wsNames!!x)
-        let result = map fkt [0 .. length wsNames - 1]
+        let wsIds = [0 .. length wsNames - 1]
+            wsIdToName = fromList (zip wsIds wsNames)
+            fkt = \x -> case () of
+              _ | elem x wsCurrent  -> (activeWorkspace cfg)  $ findWithDefault "???" x wsIdToName
+                | elem x wsVisible  -> (visibleWorkspace cfg) $ findWithDefault "???" x wsIdToName
+                | elem x wsNonEmpty -> (hiddenWorkspace cfg)  $ findWithDefault "???" x wsIdToName
+                | otherwise         -> (emptyWorkspace cfg)   $ findWithDefault "???" x wsIdToName
+        let result = map fkt wsIds
         Gtk.postGUIAsync $ do
           catchAny $ do
             Gtk.labelSetMarkup label (intercalate " " result)
