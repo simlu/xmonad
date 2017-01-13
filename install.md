@@ -24,7 +24,11 @@ unzip master.zip
 rm master.zip
 ```
 ## b) Copy Configs
-Is should now be save to copy the configurations:
+Ensure dotglob is enabled by running
+```shell
+shopt -s dotglob
+```
+It should now be save to copy the configurations:
 ```shell
 mv -v ~/Downloads/xmonad-master/config/* ~/
 ```
