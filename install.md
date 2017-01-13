@@ -17,7 +17,7 @@ Type `startx` to start xmonad.
 # 2) Configuration
 ## a) Download Repo Content
 ```shell
-cd downloads
+cd ~/Downloads
 wget https://github.com/simlu/xmonad/archive/master.zip
 sudo apt-get install unzip
 unzip master.zip
@@ -26,7 +26,7 @@ rm master.zip
 ## b) Copy Configs
 Is should now be save to copy the configurations:
 ```shell
-mv -v ~/xmonad-master/config/* ~/
+mv -v ~/Downloads/xmonad-master/config/* ~/
 ```
 Details on what the different files are for can be found [here](config.md).
 
