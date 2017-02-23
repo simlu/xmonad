@@ -3,6 +3,13 @@
 
 Requires [Java](utils/java.md).
 
+## Important: Possible Clipboard Issue
+There might be a problem with the clipboard in the latest Ubuntu 16.04.2 release. Possibly able to fix it with
+```shell
+sudo apt-get remove xsel
+```
+Reference: https://youtrack.jetbrains.com/issue/IDEA-78729
+
 ## Install wmname
 ```shell
 sudo apt install suckless-tools
