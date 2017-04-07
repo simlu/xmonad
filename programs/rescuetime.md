@@ -15,7 +15,7 @@ Download installer [here](https://www.rescuetime.com/setup/installer?os=amd64deb
 
 Then run 
 ```shell
-sudo dpkg -i rescutime_curent_amd64.deb
+sudo dpkg -i rescutime_current_amd64.deb
 ```
 
 ## Configuration
