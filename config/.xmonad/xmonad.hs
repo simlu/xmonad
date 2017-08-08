@@ -118,8 +118,11 @@ modMask' = mod1Mask
 -- keys
 keys' :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
+    -- print screen
+    [ ((modMask .|. controlMask, xK_p   ), spawn "sleep 0.2; import ~/screenshot.png")
+
     -- launching and killing programs
-    [ ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    , ((modMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
     , ((modMask,               xK_p     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
     , ((modMask .|. shiftMask, xK_p     ), spawn "gmrun")
     , ((modMask .|. shiftMask, xK_c     ), kill)
@@ -133,7 +136,7 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- floating layer stuff
     , ((modMask,               xK_t     ), withFocused $ windows . W.sink)
     , ((modMask,               xK_f     ), withFocused $ windows . (flip W.float $ W.RationalRect 0 0 1 1))
-    , ((modMask .|. controlMask, xK_f     ), withFocused $ windows . (flip W.float $ W.RationalRect 0.1 0.1 0.8 0.8))
+    , ((modMask .|. controlMask, xK_f   ), withFocused $ windows . (flip W.float $ W.RationalRect 0.1 0.1 0.8 0.8))
 
     -- refresh
     , ((modMask,               xK_n     ), refresh)
