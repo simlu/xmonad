@@ -1,5 +1,9 @@
 # Description of [config](config/) files
 
+## `.bashrc`
+* Additional terminal command
+- **Important:** You might need to prepend the changes to the file instead of overwriting
+
 ## `.xmonad/xmonad.hs`
 * Configurtation for xmonad
 
