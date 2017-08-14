@@ -25,6 +25,11 @@ function chrome () {
   /opt/google/chrome/google-chrome --enable-plugins "$*" &> /dev/null &
 }
 
+# list storage usage per folder
+function storage () {
+  du -hx -d1 
+}
+
 # --------------------------
 # Beginning of Original File
 # --------------------------
