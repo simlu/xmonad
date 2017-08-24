@@ -9,6 +9,8 @@ sudo apt-get install firefox-trunk
 ```
 
 ## Configure Alias `firefox`:
+[Reference](https://www.cyberciti.biz/faq/howto-run-firefox-from-the-command-line/)
+
 Add the following at the top of `~/.bashrc`:
 ```shell
 # open in firefox
