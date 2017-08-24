@@ -26,3 +26,4 @@ function firefox () {
 
 ## Misc / Extensions
 * Dont forget to install [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
+(scroll down to the bottom and use the developer version)
