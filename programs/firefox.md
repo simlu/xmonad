@@ -8,6 +8,9 @@ sudo apt-get update
 sudo apt-get install firefox-trunk 
 ```
 
+## Prevent "Click selects All"
+Go to `about:config` and then set `browser.urlbar.doubleClickSelectsAll` to false
+
 ## Configure Alias `firefox`:
 [Reference](https://www.cyberciti.biz/faq/howto-run-firefox-from-the-command-line/)
 
