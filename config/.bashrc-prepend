@@ -11,6 +11,11 @@ function g() {
   esac
 }
 
+# open a python file
+function py () {
+  wmname LG3D && PYCHARM_JDK=/usr/lib/jvm/java-8-oracle ~/Programs/pycharm/bin/pycharm.sh --line 1 $1 &> /dev/null &
+}
+
 # copy file to clipboard
 function copy () {
   cat "$*" | xclip -i
