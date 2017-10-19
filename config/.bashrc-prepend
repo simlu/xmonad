@@ -38,7 +38,7 @@ function firefox () {
 
 # list storage usage per folder
 function storage () {
-  du -hx -d1 
+  du -hx -d1 | sort -h
 }
 
 # --------------------------
