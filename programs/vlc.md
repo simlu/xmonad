@@ -5,7 +5,10 @@
 ```shell
 sudo apt-get install vlc
 ```
-Add to `.bash_aliases`:
+Add to `.bashrc`:
 ```shell
-alias vlc='vlc &> /dev/null &'
+# open file with vlc
+function vlc () {
+  /usr/bin/vlc $1 &> /dev/null &
+}
 ```
