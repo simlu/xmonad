@@ -21,6 +21,16 @@ function copy () {
   cat "$*" | xclip -i
 }
 
+# open file with vlc
+function vlc () {
+  /usr/bin/vlc $1 &> /dev/null &
+}
+
+# record screen
+function record () {
+  ffmpeg -follow_mouse 100 -f x11grab -framerate 25 -r 100 -s 600x480 -i :0.0 -b 3000k $1
+}
+
 # open search text in chrome
 function google () {
   /opt/google/chrome/google-chrome --enable-plugins "https://www.google.com/search?q=$*" &> /dev/null &
