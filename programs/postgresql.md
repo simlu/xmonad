@@ -16,7 +16,7 @@ sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`
 Change the version to the appropritate PostgreSQL version.
 ```shell
 sudo apt-get update
-sudo apt-get install postgresql-9.5 postgresql-contrib-9.5
+sudo apt-get install postgresql-9.6 postgresql-contrib-9.6
 sudo apt-get install libpq-dev
 ```
 
@@ -32,7 +32,7 @@ And type `\q` to exit.
 
 ## Install PostGIS
 ```shell
-sudo apt-get install -y postgresql-9.5-postgis-2.2
+sudo apt-get install -y postgresql-9.6-postgis-2.3
 ```
 
 Version support information for PostGIS on [AWS RDS](https://aws.amazon.com/rds/postgresql/) can be found [here](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html).
