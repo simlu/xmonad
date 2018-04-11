@@ -17,6 +17,7 @@ Type `startx` to start xmonad.
 # 2) Configuration
 ## a) Download Repo Content
 ```shell
+mkdir ~/Downloads
 cd ~/Downloads
 wget https://github.com/simlu/xmonad/archive/master.zip
 sudo apt-get install unzip
