@@ -30,7 +30,7 @@ shopt -s dotglob
 ```
 It should now be save to copy the configurations:
 ```shell
-mv -v ~/Downloads/xmonad-master/config/* ~/
+mv -v ~/Downloads/xmonad-master/config/* ~/xmonad
 ```
 Details on what the different files are for can be found [here](config.md).
 
