@@ -1,5 +1,7 @@
 # Description of [config](config/) files
 
+> Note that some files need to be merged with existing files (!)
+
 ## `.bashrc`
 * Additional terminal command
 - **Important:** You might need to prepend the changes to the file instead of overwriting
@@ -28,6 +30,9 @@
 ## `.bash_aliases`
 * Improves shell highlighting
 * Used to define terminal shortcuts
+
+## `.bashrc-prepend`
+* Needs to be prepended to `.bashrc`
 
 ## `.xscreensaver`
 * Disables screen saver
