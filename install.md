@@ -45,9 +45,17 @@ shopt -s dotglob
 ```
 It should now be safe to copy the configurations:
 ```shell
-mv -v ~/Downloads/xmonad-master/config/* ~/
+cp -a ~/Downloads/xmonad-master/config/. ~/
 ```
-Details on what the different files are for can be found [here](config.md).
+Details on what the different files are for can be found [here](config.md). 
+
+Some files need to be merged after copying them. So we need to run for all prepend files, e.g.
+```
+cat ~/.bashrc >> ~/.bashrc-prepend
+mv --force ~/.bashrc-prepend ~/.bashrc
+```
+
+Then restart.
 
 # 3) VMware Tools or VirtualBox Guest Additions
 * Instuctions for VMware Tools [here](programs/vmware-tools.md)
