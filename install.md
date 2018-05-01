@@ -55,8 +55,6 @@ cat ~/.bashrc >> ~/.bashrc-prepend
 mv --force ~/.bashrc-prepend ~/.bashrc
 ```
 
-Then restart.
-
 # 3) VMware Tools or VirtualBox Guest Additions
 * Instuctions for VMware Tools [here](programs/vmware-tools.md)
 * Instructions for VirtualBox Guest Additions [here](programs/virtualbox-guest-additions.md)
