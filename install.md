@@ -4,6 +4,8 @@
 ## a) Install MinimalCD version of Ubuntu
 Find the latest [MinimalCD](https://help.ubuntu.com/community/Installation/MinimalCD) version for the Ubuntu you want to use, download and install with VMware.
 
+> Tested with [Ubuntu 18.04 LTS](http://archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/current/images/netboot/mini.iso)
+
 **Important:** Ensure you allocate enough virtual machine memory, so that a decent amount of swap space is allocated.
 
 ## b) Install Xmonad
