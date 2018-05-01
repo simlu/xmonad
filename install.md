@@ -14,6 +14,18 @@ sudo apt-get update
 sudo apt-get install xorg xinit
 sudo apt-get install xmonad
 ```
+
+We need to disable super keys to allow xmonad shortcuts to work.
+
+Install
+```shell
+sudo apt-get install gconf2
+```
+
+and run `gconftool-2 --set "/apps/compiz-1/plugins/unityshell/screen0/options/show_launcher" --type string ""`
+
+Now restart the OS so the settings are loaded.
+
 Type `startx` to start xmonad.
 
 # 2) Configuration
