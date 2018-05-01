@@ -12,5 +12,5 @@ fi
 mkdir ~/tmp-mnt-cdrom
 sudo mount /dev/cdrom ~/tmp-mnt-cdrom
 sudo ~/tmp-mnt-cdrom/VBoxLinuxAdditions.run
-sudo umount ~/tmp-mnt-cdrom
+sudo umount ~/tmp-mnt-cdrom || /bin/true
 rm -rf ~/tmp-mnt-cdrom
