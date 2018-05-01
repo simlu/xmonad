@@ -13,7 +13,7 @@ mkdir ~/tmp-mnt-cdrom
 sudo mount /dev/cdrom ~/tmp-mnt-cdrom
 mkdir ~/tmp-vmware-tools-install
 tar -xzvf ~/tmp-mnt-cdrom/VMwareTools-*.tar.gz -C ~/tmp-vmware-tools-install
-(cd ~/tmp-vmware-tools-install/vmware-tools-distrib/ && sudo ./vmware-install.pl -d)
+(cd ~/tmp-vmware-tools-install/vmware-tools-distrib/ && sudo ./vmware-install.pl -f -d)
 rmdir ~/tmp-mnt-cdrom
 rm -rf ~/tmp-vmware-tools-install/vmware-tools-distrib/
 rmdir ~/tmp-vmware-tools-install
