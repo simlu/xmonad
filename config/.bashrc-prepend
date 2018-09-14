@@ -21,6 +21,14 @@ function copy () {
   cat "$*" | xclip -i
 }
 
+# copy things to clipboard
+function clip() {
+  case "$1" in
+    "unix") date +%s | xclip -i ;;
+    "uuid") uuidgen | xclip -i ;;
+  esac
+}
+
 # open file with vlc
 function vlc () {
   /usr/bin/vlc $1 &> /dev/null &
