@@ -29,6 +29,10 @@ chrome some_image.png
 ```
 To open an image in the browser. This also works with urls.
 
+## Download Folder
+
+Change download folder as desired, i.e. to `downloads` (lower case)
+
 ## Misc / Extensions
 * Dont forget to install [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en)
 * [Session Buddy](https://chrome.google.com/webstore/detail/session-buddy/edacconmaakjimmfgnblocblbcdcpbko?hl=en) is great for managing your tabs
