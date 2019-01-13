@@ -22,7 +22,7 @@ When done feel free to remove the cd drive again in VMware.
 
 To enable vm tools you need to run `/usr/bin/vmware-user`.
 
-To enable this as autostart, copy `config/.xmonad/autostart` to `~/.xmonad/autostart`. The `autostart` file is safe to keep around, as it will only fire when VMware Tools are installed.
+Autostart is automatically enabled through the `config/.xmonad/autostart` file (as per install instructions). The `autostart` file is safe to keep around, as it will only fire when VMware Tools are installed.
 
 ## Uninstall
 If you want to uninstall VMware Tools again, run:
