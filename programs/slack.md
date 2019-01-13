@@ -12,7 +12,7 @@ curl -L https://packagecloud.io/slacktechnologies/slack/gpgkey | sudo apt-key ad
 
 ## Create Repository Link
 ```shell
-sudo sh -c 'echo "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main" >> /etc/apt/sources.list.d/slack.list' 
+sudo sh -c 'echo "deb https://packagecloud.io/slacktechnologies/slack/debian/ buster main" >> /etc/apt/sources.list.d/slack.list' 
 ```
 
 ## Install and Alias
