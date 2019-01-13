@@ -15,12 +15,12 @@ Switch between workspaces: `ALT + 0-9`
 Kill a Program: `ALT + SHIFT + C`
 Key combinations can be found [here](https://wiki.haskell.org/wikiupload/b/b8/Xmbindings.png).
 
-### Taffybar
-Taffybar is the status bar at the top. To customize it use
+### Xmobar
+Xmobar is the status bar at the top. To customize it use
 ```shell
-vi .config/taffybar/taffybar.hs
+vi .config/.xmobarrc
 ```
-To update changes you need to restart taffybar.
+To update changes you need to restart xmobar.
 
 ### Start Browser
 Type `chrome` into the terminal.
