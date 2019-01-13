@@ -29,13 +29,10 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
 
--- taffybar
-import System.Taffybar.Hooks.PagerHints (pagerHints)
-
 -------------------------------------------------------------------------------
 -- Main --
 main = do
-       xmonad $ ewmh $ pagerHints $ defaultConfig
+       xmonad $ ewmh $ def
               { workspaces = workspaces'
               , modMask = modMask'
               , borderWidth = borderWidth'
@@ -49,14 +46,14 @@ main = do
               , focusFollowsMouse = myFocusFollowsMouse
               , clickJustFocuses = myClickJustFocuses
               , startupHook = startupHook'
-              , handleEventHook = handleEventHook defaultConfig <+> fullscreenEventHook
+              , handleEventHook = handleEventHook def <+> fullscreenEventHook
               }
 
 -------------------------------------------------------------------------------
 -- Hooks --
 
 manageHook' :: ManageHook
-manageHook' = manageHook defaultConfig <+> manageDocks
+manageHook' = manageHook def <+> manageDocks
 
 layoutHook' = customLayout
 
