@@ -20,7 +20,7 @@ Xmobar is the status bar at the top. To customize it use
 ```shell
 vi .config/.xmobarrc
 ```
-To update changes you need to restart xmobar.
+To update changes you need to recompile & restart xmonad.
 
 ### Start Browser
 Type `chrome` into the terminal.
