@@ -10,6 +10,9 @@ sudo apt-get install google-chrome-stable
 ```
 
 ## Configure Alias `chrome`:
+
+> **Important**: Should already be present if you followed instructions
+
 Add the following at the top of `~/.bashrc`:
 ```shell
 # open in browser
@@ -21,6 +24,7 @@ function chrome () {
 # Beginning or Original File
 # --------------------------
 ```
+
 We are defining this in `~/.bashrc` and not in `~/.bash_aliases` so that we can open files using chrome.
 
 E.g. you can run
