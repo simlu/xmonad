@@ -9,7 +9,7 @@ We are using the iso coming from VMware as it includes the lastest VMware Tools.
 ## Install
 Download [scripts/update-vmware-tools.sh](/scripts/update-vmware-tools.sh) and run it with 
 ```shell
-sudo bash update-vm-tools.sh
+sudo bash update-vmware-tools.sh
 ```
 To confirm the installation worked correctly run
 ```shell
