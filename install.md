@@ -44,7 +44,7 @@ shopt -s dotglob
 ```
 It should now be safe to copy the configurations:
 ```shell
-cp -a ~/downloads/xmonad-master/config/. ~/
+cp -a ~/Downloads/xmonad-master/config/. ~/
 ```
 Details on what the different files are for can be found [here](config.md). 
 
