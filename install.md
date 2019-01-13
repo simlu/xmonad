@@ -1,3 +1,5 @@
+> **Hint**: You can use "Edit > Paste" in VMWare to paste commands until the shared clipboard is operational.
+
 # 1) Ubuntu and Xmonad
 > [Reference](http://askubuntu.com/questions/142061/can-i-completely-remove-gnome-and-leave-xmonad)
 
@@ -24,8 +26,6 @@ sudo apt-get install gconf2
 and run `gconftool-2 --set "/apps/compiz-1/plugins/unityshell/screen0/options/show_launcher" --type string ""`
 
 Now restart the OS so the settings are loaded.
-
-Type `startx` to start xmonad.
 
 # 2) Configuration
 ## a) Download Repo Content
