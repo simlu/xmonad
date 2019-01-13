@@ -54,6 +54,10 @@ cat ~/.bashrc >> ~/.bashrc-prepend
 mv --force ~/.bashrc-prepend ~/.bashrc
 ```
 
+## c) Start Xmonad
+
+You should be good to start xmonad now using `startx`.
+
 # 3) VMware Tools or VirtualBox Guest Additions
 * Instuctions for VMware Tools [here](programs/vmware-tools.md)
 * Instructions for VirtualBox Guest Additions [here](programs/virtualbox-guest-additions.md)
