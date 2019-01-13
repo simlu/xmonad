@@ -48,7 +48,7 @@ main = do
               , clickJustFocuses = myClickJustFocuses
               , startupHook = startupHook'
               , handleEventHook = handleEventHook def <+> docksEventHook <+> fullscreenEventHook
-              , logHook = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn h }
+              , logHook = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn h, ppOrder = reverse }
               }
 
 -------------------------------------------------------------------------------
