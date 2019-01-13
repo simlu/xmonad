@@ -8,11 +8,11 @@ Find the latest [MinimalCD](https://help.ubuntu.com/community/Installation/Minim
 
 **Important:** Ensure you allocate enough virtual machine memory, so that a decent amount of swap space is allocated.
 
-## b) Install Xmonad
+## b) Install Xmonad and Xmobar
 ```shell
 sudo apt-get update
-sudo apt-get install xorg xinit
-sudo apt-get install xmonad
+sudo apt-get install xterm xorg xinit
+sudo apt-get install xmonad xmobar
 ```
 
 We need to disable super keys to allow xmonad shortcuts to work.
@@ -63,25 +63,7 @@ mv --force ~/.bashrc-prepend ~/.bashrc
 # 4) Install Chrome
 Instructions [here](programs/chrome.md). Feel free to install another browser like [Firefox](https://help.ubuntu.com/community/FirefoxNewVersion) instead.
 
-# 5) Install Taffybar
-
-## Install Dependency
-```shell
-sudo apt-get install libiw30
-```
-
-## Install Latest Deb
-* Search [Releases](https://github.com/travitch/taffybar/releases)
-* Find latest deb file [here](https://pkgs.org/download/taffybar)
-* Install deb file by using
-
-```shell
-sudo dpkg -i taffybar_x.x.x-x_amd64.deb
-```
-> Latest at time of writing is [taffybar_0.4.6-3_amd64.deb](http://archive.ubuntu.com/ubuntu/pool/universe/t/taffybar/taffybar_0.4.6-3_amd64.deb) (Released Jan 11, 2016)
-
-
-# 6) Configure XMonad Autostart
+# 5) Configure XMonad Autostart
 > [Reference](https://linuxexpresso.wordpress.com/2010/10/03/startx-automatically-on-login-ubuntu/)
 
 Copy skeleton `.profile` file into home.
@@ -92,7 +74,6 @@ Append the following to `~/.profile`:
 ```shell
 # start xmonad on login
 if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
- eval 'dbus-launch --auto-syntax'  # comment out if you're not using taffybar
  . startx
  logout
 fi
@@ -106,5 +87,5 @@ and restart
 sudo reboot -h now
 ```
 
-# 7) Install other Programs
+# 6) Install other Programs
 Install instructions for some selected programs can be found [here](programs/).
