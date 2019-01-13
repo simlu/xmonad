@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# ensure taffybar keeps running
-watch --interval 2 ~/.config/taffybar/start.sh &> /dev/null &
-
 # map caps lock to shift key
 xmodmap -e "keycode 66 = Shift_L NoSymbol Shift_L"
 
