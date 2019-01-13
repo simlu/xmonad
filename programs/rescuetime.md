@@ -27,7 +27,7 @@ and enter email and password.
 
 ## Misc
 * To check on status click the status icon.
-* Taffybar can be closed once rescuetime is running, but it needs to be running when rescuetime is started.
+* Stalonetray or similar can be closed once rescuetime is running, but it needs to be running when rescuetime is started.
 
 ## Configure Autostart
 Add the following to `~/.xmonad/autostart`.
