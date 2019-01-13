@@ -39,12 +39,13 @@ Do this regularly!
 ```shell
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get dist-upgrade (might not always be necessary)
+sudo apt-get dist-upgrade  # might not always be necessary
 sudo apt-get autoremove
 ```
 
 ### Shutdown and Restart Computer
 ```shell
+rr  # check if reboot is required
 sudo shutdown -h now
 sudo reboot -h now
 ```
