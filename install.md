@@ -11,8 +11,7 @@ Find the latest [MinimalCD](https://help.ubuntu.com/community/Installation/Minim
 ## b) Install Xmonad and Xmobar
 ```shell
 sudo apt-get update
-sudo apt-get install xterm xorg xinit
-sudo apt-get install xmonad xmobar
+sudo apt-get install xterm xorg xinit xmonad xmobar
 ```
 
 We need to disable super keys to allow xmonad shortcuts to work.
