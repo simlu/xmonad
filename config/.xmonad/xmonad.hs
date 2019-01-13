@@ -32,6 +32,7 @@ import XMonad.Layout.ResizableTile
 -------------------------------------------------------------------------------
 -- Main --
 main = do
+       xmproc <- spawnPipe "xmobar"
        xmonad $ ewmh $ def
               { workspaces = workspaces'
               , modMask = modMask'
@@ -46,7 +47,7 @@ main = do
               , focusFollowsMouse = myFocusFollowsMouse
               , clickJustFocuses = myClickJustFocuses
               , startupHook = startupHook'
-              , handleEventHook = handleEventHook def <+> fullscreenEventHook
+              , handleEventHook = handleEventHook def <+> docksEventHook <+> fullscreenEventHook
               }
 
 -------------------------------------------------------------------------------
