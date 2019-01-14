@@ -20,7 +20,7 @@ Run
 sudo update-alternatives --config java
 ```
 
-to find jdk path. **Remove `/bin/java` from the end**.
+to find jdk path. Remove `/bin/java` from the end.
 
 Then edit `/etc/environment` and add the line
 
