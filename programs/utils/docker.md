@@ -2,7 +2,7 @@
 
 Follow instructions here:
 
-https://docs.docker.com/install/linux/docker-ce/ubuntu/#upgrade-docker-ce
+https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository
 
 Then, add yourself to the docker group so you can use docker without sudo:
 
