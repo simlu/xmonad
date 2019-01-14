@@ -7,5 +7,9 @@ Add Repo, Install and Set Env Variables
 ```shell
 sudo add-apt-repository ppa:openjdk-r/ppa \
 && sudo apt-get update -q \
-&& sudo apt install -y openjdk-11-jdk
+&& sudo apt install -y openjdk-11-jdk default-jdk
 ```
+
+## $JAVA_HOME
+
+Follow instructions [here](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04).
