@@ -10,6 +10,20 @@ sudo add-apt-repository ppa:openjdk-r/ppa \
 && sudo apt install -y openjdk-11-jdk default-jdk
 ```
 
-## $JAVA_HOME
+## Configure $JAVA_HOME
 
-Follow instructions [here](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04).
+> [Reference](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04)
+
+Run
+
+```sh
+sudo update-alternatives --config java
+```
+
+to find jdk path.
+
+Then edit `/etc/environment` and add the line
+
+```sh
+JAVA_HOME="FILL/IN/PATH/TO/JDK/HERE"
+```
