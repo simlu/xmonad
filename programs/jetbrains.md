@@ -1,8 +1,6 @@
 
 # JetBrains IDE
 
-Requires [Java](utils/java.md).
-
 ## Important: Possible Clipboard Issue
 There might be a problem with the clipboard in the latest Ubuntu 16.04.2 release. Possibly able to fix it with
 ```shell
@@ -10,15 +8,9 @@ sudo apt-get remove xsel
 ```
 Reference: https://youtrack.jetbrains.com/issue/IDEA-78729
 
-## Install wmname
+## Dependencies
 ```shell
 sudo apt install suckless-tools
-```
-
-## Settings
-Can be found in `~/.<PRODUCT><VERSION>` ([Reference](https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs)). E.g. to save PyCharm Settings run
-```shell
-zip -r ~/tmp-pycharm.zip .PyCharm2016.2
 ```
 
 ## Install
@@ -39,4 +31,10 @@ alias pycharm='wmname LG3D && PYCHARM_JDK=~/Programs/pycharm/jre64 ~/Programs/py
 Install, Unzip and define in `.bash_aliases`:
 ```shell
 alias webstorm='wmname LG3D && WEBSTORM_JDK=~/Programs/webstorm/jre64 ~/Programs/webstorm/bin/webstorm.sh &> /dev/null &'
+```
+
+## Settings
+Can be found in `~/.<PRODUCT><VERSION>` ([Reference](https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs)). E.g. to save PyCharm Settings run
+```shell
+zip -r ~/tmp-pycharm.zip .PyCharm2016.2
 ```
