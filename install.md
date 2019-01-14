@@ -64,6 +64,15 @@ You should be good to start xmonad now using `startx`.
 * If you are using physical hardware you can skip this step
 
 # 4) Install Chrome
+
+## a) Enable all Mouse Buttons
+To allow for mouse button 4 and 5 to operate, please edit the vmware VM \*.vmx file and append
+```sh
+mouse.vusb.enable = "TRUE"
+mouse.vusb.useBasicMouse = "FALSE"
+```
+
+## b) Install
 Instructions [here](programs/chrome.md). Feel free to install another browser like [Firefox](https://help.ubuntu.com/community/FirefoxNewVersion) instead.
 
 # 5) Configure XMonad Autostart
