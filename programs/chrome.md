@@ -33,6 +33,10 @@ chrome some_image.png
 ```
 To open an image in the browser. This also works with urls.
 
+## Prevent Crashes
+This is currently untested, but might help:
+https://askubuntu.com/questions/765974/chrome-freeze-very-frequently-with-ubuntu-16-04
+
 ## Misc / Extensions
 * Dont forget to install [uBlock Origin](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en)
 * [Session Buddy](https://chrome.google.com/webstore/detail/session-buddy/edacconmaakjimmfgnblocblbcdcpbko?hl=en) is great for managing your tabs
