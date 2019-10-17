@@ -63,7 +63,7 @@ function storage () {
 
 # files per folder
 function count () {
-  find . -type f | cut -d/ -f2 | sort | uniq -c | sort -nr
+  find . -type f | cut -d/ -f2 | sort | uniq -c | sort -n
 }
 
 # --------------------------
