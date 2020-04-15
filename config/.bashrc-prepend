@@ -28,6 +28,7 @@ function clip() {
     "unix") date +%s | tr -d '\n' | xclip -selection c ;;
     "uuid") uuidgen | tr -d '\n' | xclip -selection c ;;
     "iso") date --iso-8601=seconds | tr -d '\n' | xclip -selection c ;;
+    "utc") date --utc +%FT%T.%3NZ | tr -d '\n' | xclip -selection c ;;
   esac
 }
 
