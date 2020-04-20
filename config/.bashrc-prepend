@@ -5,7 +5,7 @@ function g() {
     "list") git branch --list --sort creatordate --no-merged ;;
     "stash") git stash ;;
     "pop") git stash pop ;;
-    "pull") git pull upstream develop ;;
+    "pull") git pull upstream dev ;;
     "new") git checkout develop && git pull && git checkout -b $2 ;;
     "track") git branch -u $2/$3 ;;
     "init") mkdir $3 && cd $3 && git init && git remote add origin https://github.com/simlu/$3.git && git remote add upstream https://github.com/$2/$3.git && git fetch --all && git checkout -b master && git pull upstream master && git push --set-upstream origin master && cd ..
