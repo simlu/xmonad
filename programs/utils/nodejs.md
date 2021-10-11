@@ -1,8 +1,8 @@
 # Install
 
 ```sh
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-sudo apt-get install -y nodejs
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh
+nvm install 12
 ```
 
 Check versions with
