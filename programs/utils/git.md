@@ -1,5 +1,7 @@
 # Install Git
 ```
+sudo apt install software-properties-common
+sudo apt update
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt-get update
 sudo apt-get install git
