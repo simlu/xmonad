@@ -14,3 +14,5 @@ sudo apt-get install git
 ```sh
 git config --global credential.helper store
 ```
+
+Then, the next time your are prompted for your credentials, they will be stored permanently.
