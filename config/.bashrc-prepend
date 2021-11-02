@@ -67,6 +67,11 @@ function count () {
   find . -type f | cut -d/ -f2 | sort | uniq -c | sort -n
 }
 
+# search file content
+function search () {
+  grep -rnw '.' -e "$*"
+}
+
 # --------------------------
 # Beginning of Original File
 # --------------------------
