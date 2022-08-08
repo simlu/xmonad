@@ -11,7 +11,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%multicpu% | %memory% | %dynnetwork% }{ %StdinReader% | %CYLW% | %date% "
+   , template = "%multicpu% | %memory% | %disku% | %dynnetwork% }{ %StdinReader% | %CYLW% | %date% "
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -76,6 +76,16 @@ Config {
                              , "--normal"   , "orange"
                              , "--high"     , "#ce0000"
                              ] 10
+
+        -- disk usage monitor
+        , Run DiskU [("/", "Disk:<used>/<size>")]
+                    ["--Low"    , "20"         -- units: %
+                    ,"--High"   , "80"         -- units: %
+                    ,"--low"    , "darkgreen"
+                    ,"--normal" , "#AAAA00"
+                    ,"--high"   , "darkred"
+                    , "--minwidth" , "5"
+                    ] 600
 
         -- battery monitor
         , Run Battery        [ "--template" , "Batt: <acstatus>"
