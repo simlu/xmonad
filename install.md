@@ -5,6 +5,8 @@
 
 ## a) Install Server Version of Ubuntu
 
+Install most barebone server version.
+
 > Tested with Ubuntu 22.04 LTS
 
 **Important:** Ensure you allocate enough virtual machine memory, so that a decent amount of swap space is allocated.
