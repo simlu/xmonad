@@ -3,10 +3,9 @@
 # 1) Ubuntu and Xmonad
 > [Reference](http://askubuntu.com/questions/142061/can-i-completely-remove-gnome-and-leave-xmonad)
 
-## a) Install MinimalCD version of Ubuntu
-Find the latest [MinimalCD](http://archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/current/legacy-images/netboot/) version for the Ubuntu you want to use, download and install with VMware.
+## a) Install Server Version of Ubuntu
 
-> Tested with [Ubuntu 20.04 LTS](http://archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/current/images/netboot/mini.iso)
+> Tested with Ubuntu 22.04 LTS
 
 **Important:** Ensure you allocate enough virtual machine memory, so that a decent amount of swap space is allocated.
 
