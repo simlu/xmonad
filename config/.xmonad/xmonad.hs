@@ -81,12 +81,16 @@ focusedBorderColor' = "#FF0000"
 
 -- workspaces
 workspaces' :: [WorkspaceId]
-workspaces' = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+workspaces' = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "bksp"]
 
 -- layouts
 customLayout = avoidStruts $ smartBorders tiled ||| smartBorders (Mirror tiled)  ||| smartBorders Full
   where
     tiled = ResizableTall 1 (2/100) (1/2) []
+
+-- utils
+isVisible w ws = any ((w ==) . W.tag . W.workspace) (W.visible ws)
+lazyView w ws = if isVisible w ws then ws else W.view w ws
 
 -------------------------------------------------------------------------------
 -- Terminal --
@@ -194,5 +198,10 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- mod-[1..9, 0] %! Switch to workspace N
     -- mod-shift-[1..9, 0] %! Move client to workspace N
     [((m .|. modMask, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7, xK_8, xK_9, xK_0]
-        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7, xK_8, xK_9, xK_0, xK_minus, xK_equal, xK_BackSpace]
+        , (f, m) <- [
+             (W.greedyView, shiftMask)
+           , (W.shift, controlMask)
+           ,  (if k > 48 && k < 58 then W.greedyView else lazyView, 0)
+        ]
+    ]
