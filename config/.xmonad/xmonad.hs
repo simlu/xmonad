@@ -200,8 +200,8 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [((m .|. modMask, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1, xK_2, xK_3, xK_4, xK_5, xK_6, xK_7, xK_8, xK_9, xK_0, xK_minus, xK_equal, xK_BackSpace]
         , (f, m) <- [
-             (W.greedyView, shiftMask)
-           , (W.shift, controlMask)
+             (W.shift, shiftMask)
+           , (W.greedyView, controlMask)
            ,  (if k > 48 && k < 58 then W.greedyView else lazyView, 0)
         ]
     ]
