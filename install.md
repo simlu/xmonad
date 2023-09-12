@@ -71,6 +71,7 @@ To allow for mouse button 4 and 5 to operate, please edit the vmware VM \*.vmx f
 ```sh
 mouse.vusb.enable = "TRUE"
 mouse.vusb.useBasicMouse = "FALSE"
+usb.generic.allowHID = "TRUE"
 ```
 
 ## b) Install
