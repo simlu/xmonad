@@ -17,8 +17,10 @@ vmware-toolbox-cmd -v
 
 Disable autostarts as it is broken:
 ```sh
-sudo systemctl disable vgauth.service
-sudo systemctl disable vmtoolsd.service // or similar
+# check existing services
+systemctl list-units | grep vm
+# disable
+sudo systemctl disable open-vm-tools
 ```
 
 To enable vm tools you need to run `/usr/bin/vmware-user`.
