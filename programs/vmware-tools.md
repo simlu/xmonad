@@ -15,6 +15,12 @@ vmware-toolbox-cmd -v
 ## Configure Autostart
 > [Reference](http://askubuntu.com/questions/777839/fresh-ubuntu-16-04-install-broken-vmware-tools#answer-777922)
 
+Disable autostarts as it is broken:
+```sh
+sudo systemctl disable vgauth.service
+sudo systemctl disable vmtoolsd.service // or similar
+```
+
 To enable vm tools you need to run `/usr/bin/vmware-user`.
 
 Autostart is automatically enabled through the `config/.xmonad/autostart` file (as per install instructions). The `autostart` file is safe to keep around, as it will only fire when VMware Tools are installed.
