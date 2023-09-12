@@ -5,12 +5,3 @@ xmodmap -e "keycode 66 = Shift_L NoSymbol Shift_L"
 
 # Use nice mouse cursor as default
 xsetroot -cursor_name left_ptr
-
-# start vmware tools if appropriate (installed and not running yet)
-if [ -e "/etc/init.d/vmware-tools" ] && [ -e "/usr/bin/vmware-user" ]; then
-  if [ $(/etc/init.d/vmware-tools status | grep 'vmtoolsd is running' -c) -eq 1 ]; then
-    if [ $(ps -ef | grep "vmware-tools/sbin64/vmtoolsd" | grep -v "grep" | wc -l) -eq 0 ]; then
-      /usr/bin/vmware-user
-    fi;
-  fi;
-fi;
