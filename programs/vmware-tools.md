@@ -13,23 +13,7 @@ vmware-toolbox-cmd -v
 ```
 
 ## Configure Autostart
-> [Reference](http://askubuntu.com/questions/777839/fresh-ubuntu-16-04-install-broken-vmware-tools#answer-777922)
-
-Disable existing autostarts as it is broken:
-```sh
-# check existing services
-systemctl list-units | grep vm
-
-sudo systemctl stop open-vm-tools.service
-sudo systemctl disable open-vm-tools.service
-sudo rm /usr/lib/systemd/system/open-vm-tools.service
-sudo systemctl daemon-reload
-sudo systemctl reset-failed
-```
-
-To enable vm tools you need to run `/usr/bin/vmware-user`.
-
-Autostart is automatically enabled through the `config/.xmonad/autostart` file (as per install instructions). The `autostart` file is safe to keep around, as it will only fire when VMware Tools are installed.
+Autostart should work, to fix shared clipboard bug, see here: https://github.com/systemd/systemd/issues/27919#issuecomment-1577864234
 
 ## Uninstall
 If you want to uninstall VMware Tools again, run:
