@@ -15,12 +15,16 @@ vmware-toolbox-cmd -v
 ## Configure Autostart
 > [Reference](http://askubuntu.com/questions/777839/fresh-ubuntu-16-04-install-broken-vmware-tools#answer-777922)
 
-Disable autostarts as it is broken:
+Disable existing autostarts as it is broken:
 ```sh
 # check existing services
 systemctl list-units | grep vm
-# disable
-sudo systemctl disable open-vm-tools
+
+sudo systemctl stop open-vm-tools.service
+sudo systemctl disable open-vm-tools.service
+sudo rm /usr/lib/systemd/system/open-vm-tools.service
+sudo systemctl daemon-reload
+sudo systemctl reset-failed
 ```
 
 To enable vm tools you need to run `/usr/bin/vmware-user`.
