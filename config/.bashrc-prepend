@@ -72,6 +72,15 @@ function search () {
   grep -rnw '.' -e "$*"
 }
 
+# check if reboot is required
+function rr() {
+  if [ -f /var/run/reboot-required ]; then
+    echo "Reboot required";
+  else
+    echo "No reboot needed";
+  fi
+}
+
 # --------------------------
 # Beginning of Original File
 # --------------------------
