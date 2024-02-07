@@ -117,5 +117,5 @@ Merge Settings
 xrdb -merge ~/.Xresources
 ```
 
-# 6) Install other Programs
+# 7) Install other Programs
 Install instructions for some selected programs can be found [here](programs/).
