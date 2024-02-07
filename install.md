@@ -101,5 +101,21 @@ and restart
 sudo reboot -h now
 ```
 
-# 6) Install other Programs
+# 6) Basic Configuration
+
+## Terminal Font Size
+
+Append the following to `~/.Xresources`:
+```
+! Use a truetype font and size.
+xterm*faceName: Monospace
+xterm*faceSize: 14
+```
+
+Merge Settings
+```
+xrdb -merge ~/.Xresources
+```
+
+# 7) Install other Programs
 Install instructions for some selected programs can be found [here](programs/).
