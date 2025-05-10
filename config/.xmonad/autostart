@@ -5,3 +5,7 @@ xmodmap -e "keycode 66 = Shift_L NoSymbol Shift_L"
 
 # Use nice mouse cursor as default
 xsetroot -cursor_name left_ptr
+
+if [ -e "/usr/bin/vmware-user-suid-wrapper" ]; then
+   /usr/bin/vmware-user-suid-wrapper &> /dev/null &
+fi;
