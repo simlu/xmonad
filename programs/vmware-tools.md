@@ -9,11 +9,15 @@ sudo apt install open-vm-tools-desktop
 ```
 
 ## Configure Autostart
-Autostart should work. To enable copy+paste run
+Autostart should work.
+
+To enable copy+paste the following command must be run after xmonad is started
 
 ```
 /usr/bin/vmware-user-suid-wrapper
 ```
+
+This should happen automatically.
 
 ## Uninstall
 If you want to uninstall VMware Tools again, run:
