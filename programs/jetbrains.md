@@ -3,6 +3,7 @@
 
 ## Dependencies
 ```shell
+# this might no longer be necessary
 sudo apt install suckless-tools
 ```
 
@@ -11,19 +12,19 @@ sudo apt install suckless-tools
 ### IntelliJ Idea
 Install, Unzip and define in `.bash_aliases`:
 ```shell
-alias idea='wmname LG3D && IDEA_JDK=~/Programs/idea/jre64 ~/Programs/idea/bin/idea.sh &> /dev/null &'
+alias idea='IDEA_JDK=~/Programs/idea/jre64 ~/Programs/idea/bin/idea.sh &> /dev/null &'
 ```
 
 ### PyCharm
 Install, Unzip and define in `.bash_aliases`:
 ```shell
-alias pycharm='wmname LG3D && PYCHARM_JDK=~/Programs/pycharm/jre64 ~/Programs/pycharm/bin/pycharm.sh &> /dev/null &'
+alias pycharm='PYCHARM_JDK=~/Programs/pycharm/jre64 ~/Programs/pycharm/bin/pycharm.sh &> /dev/null &'
 ```
 
 ### WebStorm
 Install, Unzip and define in `.bash_aliases`:
 ```shell
-alias webstorm='wmname LG3D && WEBSTORM_JDK=~/Programs/webstorm/jre64 ~/Programs/webstorm/bin/webstorm.sh &> /dev/null &'
+alias webstorm='WEBSTORM_JDK=~/Programs/webstorm/jre64 ~/Programs/webstorm/bin/webstorm.sh &> /dev/null &'
 ```
 
 ## Settings
