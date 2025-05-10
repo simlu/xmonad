@@ -32,7 +32,7 @@ import XMonad.Layout.ResizableTile
 -------------------------------------------------------------------------------
 -- Main --
 main = do
-       h <- spawnPipe "xmobar -d"
+       h <- spawnPipe "xmobar -d --font='Bitstream Vera Sans Mono 9'"
        xmonad $ ewmh $ def
               { workspaces = workspaces'
               , modMask = modMask'
