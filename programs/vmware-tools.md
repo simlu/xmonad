@@ -5,7 +5,7 @@ We are using open-vm-tools, as recommend for [Ubuntu 14.x and above](https://kb.
 ## Install
 
 ```
-sudo apt install open-vm-tools
+sudo apt install open-vm-tools open-vm-tools-desktop
 ```
 
 ## Configure Autostart
