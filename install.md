@@ -17,15 +17,6 @@ sudo apt-get update
 sudo apt-get install xterm xorg xinit xmonad xmobar
 ```
 
-We need to disable super keys to allow xmonad shortcuts to work.
-
-Install
-```shell
-sudo apt-get install gconf2
-```
-
-and run `gconftool-2 --set "/apps/compiz-1/plugins/unityshell/screen0/options/show_launcher" --type string ""`
-
 Now restart the OS so the settings are loaded.
 
 # 2) Configuration
@@ -33,8 +24,8 @@ Now restart the OS so the settings are loaded.
 ```shell
 mkdir ~/Downloads
 cd ~/Downloads
+sudo apt-get install unzip wget
 wget https://github.com/simlu/xmonad/archive/master.zip
-sudo apt-get install unzip
 unzip master.zip
 rm master.zip
 ```
