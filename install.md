@@ -66,7 +66,7 @@ usb.generic.allowHID = "TRUE"
 ```
 
 ## b) Install
-Instructions [here](programs/chrome.md). Feel free to install another browser like [Firefox](https://help.ubuntu.com/community/FirefoxNewVersion) instead.
+Instructions [here](programs/chrome.md). Feel free to install another browser like [Firefox](programs/firefox.md) instead.
 
 # 5) Configure XMonad Autostart
 > [Reference](https://linuxexpresso.wordpress.com/2010/10/03/startx-automatically-on-login-ubuntu/)
