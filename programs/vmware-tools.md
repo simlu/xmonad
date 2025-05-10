@@ -9,11 +9,11 @@ We are using open-vm-tools, as recommend for [Ubuntu 14.x and above](https://kb.
 3. In the VM run
 
 ```sh
-mkdir /mnt/cdrom
+sudo mkdir /mnt/cdrom
 sudo mount /dev/cdrom /mnt/cdrom
 cp /mnt/cdrom/VMwareTools-version.tar.gz .
 sudo umount /mnt/cdrom
-rmdir /mnt/cdrom
+sudo rmdir /mnt/cdrom
 tar -zxvf VMwareTools-version.tar.gz
 rm VMWareTools-version.tar.gz
 cd vmware-tools-distrib
