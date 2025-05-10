@@ -9,7 +9,11 @@ sudo apt install open-vm-tools-desktop
 ```
 
 ## Configure Autostart
-Autostart should work.
+Autostart should work. To enable copy+paste run
+
+```
+/usr/bin/vmware-user-suid-wrapper
+```
 
 ## Uninstall
 If you want to uninstall VMware Tools again, run:
