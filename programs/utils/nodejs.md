@@ -1,8 +1,10 @@
 # Install
 
 ```sh
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh
-nvm install 12
+wget https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh > nvm-install.sh
+. nvm-install.sh
+# new terminal
+nvm install 22
 ```
 
 Check versions with
