@@ -7,11 +7,6 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb
 ```
 
-## Lag?
-
-❗If chrome is laggy, consider this anwnser:
-https://askubuntu.com/questions/1402530#answer-1406495
-
 ## Configure Alias `chrome`:
 
 > **Important**: Should already be present if you followed instructions
