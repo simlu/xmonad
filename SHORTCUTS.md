@@ -1,3 +1,7 @@
+_Generated via Gemini_
+
+--------------------------
+
 # XMonad Configuration Shortcuts
 
 This document outlines the keyboard and mouse shortcuts configured in the provided `xmonad.hs` file.
