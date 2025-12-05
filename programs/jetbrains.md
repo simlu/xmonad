@@ -12,19 +12,19 @@ sudo apt install suckless-tools
 ### IntelliJ Idea
 Install, Unzip and define in `.bash_aliases`:
 ```shell
-alias idea='IDEA_JDK=~/Programs/idea/jre64 ~/Programs/idea/bin/idea.sh &> /dev/null &'
+alias idea='IDEA_JDK=~/Programs/idea/jre64 ~/Programs/idea/bin/idea &> /dev/null &'
 ```
 
 ### PyCharm
 Install, Unzip and define in `.bash_aliases`:
 ```shell
-alias pycharm='PYCHARM_JDK=~/Programs/pycharm/jre64 ~/Programs/pycharm/bin/pycharm.sh &> /dev/null &'
+alias pycharm='PYCHARM_JDK=~/Programs/pycharm/jre64 ~/Programs/pycharm/bin/pycharm &> /dev/null &'
 ```
 
 ### WebStorm
 Install, Unzip and define in `.bash_aliases`:
 ```shell
-alias webstorm='WEBSTORM_JDK=~/Programs/webstorm/jre64 ~/Programs/webstorm/bin/webstorm.sh &> /dev/null &'
+alias webstorm='WEBSTORM_JDK=~/Programs/webstorm/jre64 ~/Programs/webstorm/bin/webstorm &> /dev/null &'
 ```
 
 ## Settings
