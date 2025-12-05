@@ -24,3 +24,9 @@ To also force kill running docker containers use
     $ docker rm $(docker ps -a -q) --force
 
     $ docker rmi $(docker images -q) --force
+
+And finally run
+
+    $ docker volume rm $(docker volume ls -qf dangling=true)
+
+    $ docker system prune -a
