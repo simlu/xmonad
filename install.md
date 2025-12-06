@@ -50,7 +50,7 @@ mv --force ~/.bashrc-prepend ~/.bashrc
 
 ```sh
 sudo dpkg-reconfigure tzdata
-// 2 (America) -> 153 (Vancouver)
+# 2 (America) -> 153 (Vancouver)
 ```
 
 ## d) Start Xmonad
