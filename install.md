@@ -46,7 +46,14 @@ cat ~/.bashrc >> ~/.bashrc-prepend
 mv --force ~/.bashrc-prepend ~/.bashrc
 ```
 
-## c) Start Xmonad
+## c) Set Timezone
+
+```sh
+sudo dpkg-reconfigure tzdata
+// 2 (America) -> 153 (Vancouver)
+```
+
+## d) Start Xmonad
 
 You should be good to start xmonad now using `startx`.
 
