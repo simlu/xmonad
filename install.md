@@ -17,6 +17,12 @@ sudo apt-get update
 sudo apt-get install xterm xorg xinit xmonad xmobar
 ```
 
+## c) Install emojis
+
+```sh
+sudo apt install fonts-noto-color-emoji
+```
+
 Now restart the OS so the settings are loaded.
 
 # 2) Configuration
