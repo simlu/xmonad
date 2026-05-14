@@ -27,6 +27,13 @@ Install, Unzip and define in `.bash_aliases`:
 alias webstorm='WEBSTORM_JDK=~/Programs/webstorm/jre64 ~/Programs/webstorm/bin/webstorm &> /dev/null &'
 ```
 
+### CLion
+Install, Unzip and define in `.bash_aliases`:
+```shell
+alias clion='CLION_JDK=~/Programs/clion/jre64 ~/Programs/clion/bin/clion &> /dev/null &'
+```
+
+
 ## Settings
 Can be found in `~/.<PRODUCT><VERSION>` ([Reference](https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs)). E.g. to save PyCharm Settings run
 ```shell
